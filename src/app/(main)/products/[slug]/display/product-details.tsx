@@ -39,7 +39,7 @@ const ProductDetails: FC<{ product: Product }> = ({ product }) => {
 
       <Accordion type="single" collapsible>
         {product.product_accordians.map((description, index) => (
-          <AccordionItem value={"item" + index}>
+          <AccordionItem key={description.title + index} value={"item" + index}>
             <AccordionTrigger>{description.title}</AccordionTrigger>
             <AccordionContent className="text-xs">
               {description.description}
