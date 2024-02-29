@@ -1,0 +1,19 @@
+.banner {
+  position: relative;
+  z-index: 0;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 20%, 20% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 20%, 20% 100%, 0 100%);
+  background-color: #f3e8ff;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -10;
+}

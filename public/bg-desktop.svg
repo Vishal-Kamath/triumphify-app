@@ -1,0 +1,18 @@
+<svg width="630" height="354" viewBox="0 0 630 354" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_313_4770" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="630" height="354">
+<rect x="0.5" y="0.5" width="629" height="353" fill="#D9D9D9" stroke="black"/>
+</mask>
+<g mask="url(#mask0_313_4770)">
+<rect x="-112.5" y="-322.5" width="999" height="999" stroke="black"/>
+<circle cx="387" cy="177" r="499.75" fill="#C084FC" stroke="#C084FC" stroke-width="0.5"/>
+<circle cx="387" cy="177" r="449.75" fill="#C084FC" stroke="#C084FC" stroke-width="0.5"/>
+<circle cx="387" cy="177" r="399.75" fill="#D8B4FE" stroke="#C084FC" stroke-width="0.5"/>
+<circle cx="387" cy="177" r="349.75" fill="#D8B4FE" stroke="#C084FC" stroke-width="0.5"/>
+<circle cx="387" cy="177" r="299.75" fill="#E9D5FF" stroke="#C084FC" stroke-width="0.5"/>
+<circle cx="387" cy="177" r="249.75" fill="#E9D5FF" stroke="#C084FC" stroke-width="0.5"/>
+<circle cx="387" cy="177" r="199.75" fill="#F3E8FF" stroke="#C084FC" stroke-width="0.5"/>
+<circle cx="387" cy="177" r="149.75" fill="#F3E8FF" stroke="#C084FC" stroke-width="0.5"/>
+<circle cx="387" cy="177" r="99.75" fill="#FAF5FF" stroke="#C084FC" stroke-width="0.5"/>
+<circle cx="387" cy="177" r="49.75" fill="#FAF5FF" stroke="#C084FC" stroke-width="0.5"/>
+</g>
+</svg>

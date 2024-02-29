@@ -1,0 +1,26 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1200 400C979.086 400 800 220.914 800 0V0L1200 -1.74846e-05L1200 400V400Z" fill="#E879F9"/>
+<path d="M600 600L400 600V600C400 489.543 489.543 400 600 400V400L600 600Z" fill="#B65CEE"/>
+<path d="M400 200L0 200V200C9.65645e-06 89.543 89.5431 3.37657e-06 200 1.3033e-05L400 3.05176e-05L400 200Z" fill="#B65CEE"/>
+<path d="M600 0L800 0V0C800 110.457 710.457 200 600 200V200V0Z" fill="#FB7185"/>
+<rect x="201" y="400" width="200" height="200" fill="#B9F8B2"/>
+<rect y="200" width="200" height="200" fill="#FFD700"/>
+<rect y="300" width="141.42" height="141.42" transform="rotate(-45 0 300)" fill="#2563EB"/>
+<rect x="65" y="300.355" width="50" height="50" transform="rotate(-45 65 300.355)" fill="#FFD700"/>
+<rect x="226" y="425" width="75" height="75" rx="37.5" fill="#FF722F"/>
+<rect x="301" y="425" width="75" height="75" rx="37.5" fill="#FF722F"/>
+<rect x="226" y="500" width="75" height="75" rx="37.5" fill="#FF722F"/>
+<rect x="301" y="500" width="75" height="75" rx="37.5" fill="#FF722F"/>
+<rect x="25" y="425" width="150" height="150" rx="75" fill="#E879F9"/>
+<rect x="400" width="200" height="200" fill="#81E1BB"/>
+<rect x="600" y="500" width="200" height="100" fill="#FFD700"/>
+<rect x="600" y="400" width="200" height="100" fill="#FF722F"/>
+<rect x="1000" y="400" width="200" height="200" fill="#FB7185"/>
+<path d="M1000 400H1200V400C1200 455.228 1155.23 500 1100 500V500C1044.77 500 1000 455.228 1000 400V400Z" fill="#FFD700"/>
+<path d="M1052 400H1152V400C1152 427.614 1129.61 450 1102 450V450C1074.39 450 1052 427.614 1052 400V400Z" fill="#FB7185"/>
+<path d="M1000 500H1200V500C1200 555.228 1155.23 600 1100 600V600C1044.77 600 1000 555.228 1000 500V500Z" fill="#FFD700"/>
+<path d="M1050 500H1150V500C1150 527.614 1127.61 550 1100 550V550C1072.39 550 1050 527.614 1050 500V500Z" fill="#FB7185"/>
+<rect x="449" y="50" width="100" height="100" rx="50" fill="#81E1BB"/>
+<path d="M1000 600H800L900 500L1000 600Z" fill="#81E1BB"/>
+<path d="M800 400L1000 400L900 500L800 400Z" fill="#81E1BB"/>
+</svg>
