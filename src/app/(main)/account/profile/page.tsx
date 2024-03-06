@@ -212,7 +212,7 @@ const AccountProfile: FC = () => {
             name="dateOfBirth"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Date of birth</FormLabel>
+                <FormLabel className="text-black">Date of birth</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
                     <FormControl>

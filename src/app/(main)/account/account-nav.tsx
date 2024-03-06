@@ -12,6 +12,10 @@ const navElements: { name: string; href: string }[] = [
     href: "/account/profile",
   },
   {
+    name: "Address",
+    href: "/account/address",
+  },
+  {
     name: "Security",
     href: "/account/security",
   },
@@ -32,7 +36,7 @@ const AccountNav: FC = () => {
           href={element.href}
           className={cn(
             buttonVariants({
-              variant: pathname === element.href ? "secondary" : "link",
+              variant: pathname.startsWith(element.href) ? "secondary" : "link",
             }),
             "md:justify-start",
           )}

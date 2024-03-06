@@ -23,7 +23,7 @@ export default function RootLayout({
         <body
           className={cn(
             inter.className,
-            "flex h-full min-h-screen w-full flex-col bg-white",
+            "flex h-full min-h-screen w-full flex-col bg-white scrollbar-none",
           )}
         >
           {children}

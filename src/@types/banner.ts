@@ -1,8 +1,7 @@
 export interface Banner {
   id: string;
-  name: string;
-  description: string;
   link: string;
   is_published: boolean;
-  banner_image: string;
+  banner_image_desktop: string;
+  banner_image_mobile: string;
 }

@@ -17,6 +17,15 @@ export interface Product {
   meta_keywords: string;
 }
 
+export interface Variation {
+  id: string;
+  key: string;
+  combinations: unknown;
+  quantity: number;
+  discount: number;
+  price: number;
+}
+
 export interface ProductWithDetails extends Product {
   attributes: {
     name: string;
@@ -24,14 +33,7 @@ export interface ProductWithDetails extends Product {
       name: string;
     }[];
   }[];
-  variations: {
-    id: string;
-    key: string;
-    combinations: unknown;
-    quantity: number;
-    discount: number;
-    price: number;
-  }[];
+  variations: Variation[];
 }
 
 export type TemplateAContent = {

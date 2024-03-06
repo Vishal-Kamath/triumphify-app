@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { FC } from "react";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { UserRound, LogOut, ShoppingCart } from "lucide-react";
+import { UserRound, LogOut, ShoppingCart, NotepadText } from "lucide-react";
 import axios from "axios";
 import { useToast } from "@/components/ui/use-toast";
 import { invalidateUserData } from "@/lib/auth";
@@ -101,6 +101,17 @@ const UserSectionContent: FC<{
       >
         <ShoppingCart className="h-4 w-4" />
         <span>Cart</span>
+      </Link>
+      <Link
+        className={cn(
+          buttonVariants({ variant: "ghost" }),
+          "w-full justify-start gap-4 px-2 font-light",
+        )}
+        href="/orders"
+        onClick={() => closeMenu()}
+      >
+        <NotepadText className="h-4 w-4" />
+        <span>Orders</span>
       </Link>
       <Button
         variant="ghost"
