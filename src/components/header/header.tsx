@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 import { FC } from "react";
 import UserSection from "./user-section";
 import Image from "next/image";
-import SearchBar from "./searchbar";
+import SearchBar from "./search";
+import CartButton from "./cart-button";
 
 const Header: FC = () => {
   const pathname = usePathname();
@@ -37,7 +38,10 @@ const Header: FC = () => {
           </Link>
 
           <SearchBar className="max-md:hidden" />
-          <UserSection />
+          <div className="flex gap-3">
+            <CartButton />
+            <UserSection />
+          </div>
         </div>
         <SearchBar className="max-w-full md:hidden" />
       </header>

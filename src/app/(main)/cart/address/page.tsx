@@ -112,11 +112,11 @@ const UserCartAddress: FC = () => {
           </Link>
         </div>
 
-        <h4 className="text-justify text-sm text-gray-500">
+        <p className="text-justify text-sm text-gray-500">
           Please fill in both the billing and shipping addresses accurately to
           ensure timely delivery. Contact our support team for assistance. Thank
           you for choosing Triumphify!
-        </h4>
+        </p>
 
         <div className="mt-6 flex w-full flex-col gap-3 lg:flex-row">
           <AddressDropdown

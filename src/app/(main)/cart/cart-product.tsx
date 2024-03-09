@@ -1,8 +1,9 @@
 import { Cart } from "@/@types/cart";
 import { useToast } from "@/components/ui/use-toast";
 import { invalidateAllCarts } from "@/lib/cart";
+import { cn } from "@/lib/utils";
 import axios from "axios";
-import { ExternalLink, Minus, Plus, RotateCw, X } from "lucide-react";
+import { ExternalLink, Minus, Plus, RotateCw, Trash2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useState } from "react";
@@ -69,6 +70,11 @@ const CartProduct: FC<{ cart: Cart }> = ({ cart }) => {
       });
   };
 
+  const variation = cart.variation.key
+    .split(" - ")
+    .map((variation) => variation.replace(":", "="))
+    .join("&");
+
   return (
     <div className="flex gap-4 rounded-xl border border-slate-200 p-4">
       <Image
@@ -85,7 +91,7 @@ const CartProduct: FC<{ cart: Cart }> = ({ cart }) => {
             {cart.product.brand_name}
           </span>
           <Link
-            href={`/products/${cart.product.slug}/buy`}
+            href={`/products/${cart.product.slug}/buy?${variation}`}
             className="ml-auto flex h-6 w-6 items-center justify-center rounded-full border-1 border-slate-200 text-slate-400 hover:border-slate-500 hover:text-slate-600"
           >
             <ExternalLink className="h-4 w-4" />
@@ -102,7 +108,7 @@ const CartProduct: FC<{ cart: Cart }> = ({ cart }) => {
               onClick={handleRemovefromCart}
               className="flex h-6 w-6 items-center justify-center rounded-full border-1 border-slate-200 text-slate-400 hover:border-red-500 hover:text-red-600"
             >
-              <X className="h-4 w-4" />
+              <Trash2 className="h-4 w-4" />
             </button>
           )}
         </div>
@@ -132,11 +138,16 @@ const CartProduct: FC<{ cart: Cart }> = ({ cart }) => {
               </button>
               {cart.quantity}
               <button
-                className="m-0 border-none bg-transparent p-0 outline-none"
+                className={cn(
+                  "m-0 border-none bg-transparent p-0 outline-none",
+                  cart.quantity === 1
+                    ? "cursor-not-allowed opacity-50"
+                    : "cursor-pointer",
+                )}
                 onClick={handleUpdateQuantity("minus")}
                 disabled={cart.quantity === 1}
               >
-                <Minus className="h-3 w-3 cursor-pointer" />
+                <Minus className="h-3 w-3" />
               </button>
             </div>
           )}

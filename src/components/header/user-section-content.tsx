@@ -11,7 +11,7 @@ import { invalidateUserData } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 import { FaRegHeart } from "react-icons/fa";
 import { useWishlists } from "@/lib/wishlist";
-import { Badge } from "@/components/ui/badge";
+import { useAllCart } from "@/lib/cart";
 
 const UserSectionContent: FC<{
   username?: string | null;
@@ -58,6 +58,9 @@ const UserSectionContent: FC<{
         : wishlist?.length
       : 0;
 
+  const { data: carts } = useAllCart();
+  const cartCount = carts?.reduce((acc, cart) => acc + cart.quantity, 0);
+
   return (
     <div className="w-full flex-col p-2 text-sm">
       <div className="flex flex-col p-2">
@@ -86,9 +89,9 @@ const UserSectionContent: FC<{
         <FaRegHeart className="h-4 w-4" />
         <span>Wishlist</span>
         {!!wishlistLength ? (
-          <Badge className="ml-auto bg-purple-700 text-xs">
+          <div className="ml-auto flex h-5 w-5 items-center justify-center rounded-full bg-purple-600 text-xs text-white">
             {wishlistLength}
-          </Badge>
+          </div>
         ) : null}
       </Link>
       <Link
@@ -101,13 +104,18 @@ const UserSectionContent: FC<{
       >
         <ShoppingCart className="h-4 w-4" />
         <span>Cart</span>
+        {!!cartCount ? (
+          <div className="ml-auto flex h-5 w-5 items-center justify-center rounded-full bg-purple-600 text-xs text-white">
+            {cartCount}
+          </div>
+        ) : null}
       </Link>
       <Link
         className={cn(
           buttonVariants({ variant: "ghost" }),
           "w-full justify-start gap-4 px-2 font-light",
         )}
-        href="/orders"
+        href="/orders/history"
         onClick={() => closeMenu()}
       >
         <NotepadText className="h-4 w-4" />

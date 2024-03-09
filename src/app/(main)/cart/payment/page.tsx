@@ -8,8 +8,7 @@ import { Coins, ExternalLink, MoveLeft } from "lucide-react";
 import Link from "next/link";
 import { FC, useState } from "react";
 import Total from "../total";
-import { useAllCart } from "@/lib/cart";
-import Image from "next/image";
+import { invalidateAllCarts, useAllCart } from "@/lib/cart";
 import axios from "axios";
 import { useToast } from "@/components/ui/use-toast";
 import { AiOutlineLoading } from "react-icons/ai";
@@ -34,6 +33,8 @@ const CartPaymentPage: FC = () => {
 
   const { data: carts } = useAllCart();
 
+  const [paymentMethod, setPaymentMethod] = useState("");
+
   function onPlaceOrder() {
     if (!shippingInAddresses || !billingInAddresses) return;
 
@@ -56,7 +57,8 @@ const CartPaymentPage: FC = () => {
           description: res.data.description,
           variant: res.data.type,
         });
-        // router.push("/account/address");
+        invalidateAllCarts();
+        router.push("/orders/history");
       })
       .catch((err) => {
         setLoading(false);
@@ -84,7 +86,38 @@ const CartPaymentPage: FC = () => {
           </Link>
         </div>
 
-        <div className="flex w-full flex-col gap-4">
+        <div className="flex flex-col">
+          <h3 className="text-lg font-semibold">Payment method</h3>
+          <p className="text-justify text-sm text-gray-500">
+            Select your desired payment method to continue with the order
+            process. Contact our support team for assistance. Thank you for
+            choosing Triumphify!
+          </p>
+        </div>
+
+        <div className="flex flex-wrap gap-3">
+          <label
+            htmlFor="cash on delivery"
+            className={cn(
+              "flex cursor-pointer items-center gap-3 rounded-md border-1 p-3",
+              paymentMethod === "cash on delivery"
+                ? "border-purple-500 outline outline-4 outline-purple-100"
+                : "border-slate-200 text-slate-400 hover:border-slate-300 hover:text-slate-600",
+            )}
+          >
+            <input
+              type="radio"
+              id="cash on delivery"
+              name="payment method"
+              className="hidden"
+              onChange={(e) => setPaymentMethod("cash on delivery")}
+            />
+            <Coins className="h-4 w-4" />
+            <p>Cash on Delivery</p>
+          </label>
+        </div>
+
+        {/* <div className="flex w-full flex-col gap-4">
           <h3 className="text-xl">Addresses</h3>
           {shippingInAddresses ? (
             <div className="flex flex-col gap-1 rounded-lg border-1 border-slate-200 p-6 shadow-sm">
@@ -184,7 +217,7 @@ const CartPaymentPage: FC = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* <div className="flex w-full flex-col gap-4">
           <h3 className="text-xl">Payment Methods</h3>
@@ -195,7 +228,7 @@ const CartPaymentPage: FC = () => {
         </div> */}
       </div>
       <Total>
-        {!!shippingInAddresses && !!billingInAddresses ? (
+        {!!shippingInAddresses && !!billingInAddresses && !!paymentMethod ? (
           loading ? (
             <Button disabled className="w-full rounded-full">
               <AiOutlineLoading className="mr-2 h-4 w-4 animate-spin" />

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
-import { FC, HTMLAttributes } from "react";
+import { FC, HTMLAttributes, createContext } from "react";
 
 interface SearchProps extends HTMLAttributes<HTMLDivElement> {}
 const SearchBar: FC<SearchProps> = ({ className }) => {
@@ -16,7 +16,7 @@ const SearchBar: FC<SearchProps> = ({ className }) => {
         className="h-full w-full px-3 outline-none"
         placeholder="Search products..."
       />
-      <Search className="h-10 w-10 p-2" />
+      <Search className="h-10 w-10 p-2 pr-3" />
     </div>
   );
 };

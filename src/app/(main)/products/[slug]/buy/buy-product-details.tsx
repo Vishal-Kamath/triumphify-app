@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { Heart } from "lucide-react";
+import { AlertCircle, Heart } from "lucide-react";
 import { FC } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -85,12 +85,12 @@ const BuyProductDetails: FC<{ product: ProductWithDetails }> = ({
         !!choosenVariant?.discount ? (
           <div className="flex items-baseline gap-2 text-lg">
             <span>
-              &#8377;
+              &#36;
               {choosenVariant?.price *
                 ((100 - (choosenVariant?.discount || 0)) / 100)}
             </span>
             <s className="text-gray-500">
-              &#8377;
+              &#36;
               {choosenVariant?.price}
             </s>
             <span className="font-bold text-green-600">
@@ -98,9 +98,14 @@ const BuyProductDetails: FC<{ product: ProductWithDetails }> = ({
             </span>
           </div>
         ) : (
-          <span className="text-lg">&#8377;{choosenVariant?.price}</span>
+          <span className="text-lg">&#36;{choosenVariant?.price}</span>
         )
-      ) : null}
+      ) : (
+        <div className="flex items-center gap-2 text-yellow-600">
+          <AlertCircle className="h-4 w-4" />
+          <span>Variation not available</span>
+        </div>
+      )}
 
       <Accordion
         type="multiple"
@@ -114,7 +119,7 @@ const BuyProductDetails: FC<{ product: ProductWithDetails }> = ({
             <AccordionItem key={attribute.name + index} value={attribute.name}>
               <AccordionTrigger className="flex gap-3">
                 <span>{attribute.name}</span>
-                <Badge className="mr-auto bg-purple-900">{selectedValue}</Badge>
+                {/* <Badge className="mr-auto bg-purple-900">{selectedValue}</Badge> */}
               </AccordionTrigger>
               <AccordionContent className="flex flex-wrap gap-3 text-xs">
                 {attribute.values.map((value, index) => (

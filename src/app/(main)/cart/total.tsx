@@ -67,32 +67,32 @@ const Total: FC<{ children?: ReactNode }> = ({ children }) => {
       <div className="mb-6 flex w-full flex-col gap-3 [&>*]:flex [&>*]:w-full [&>*]:justify-between">
         <div>
           <span>Total MRP</span>
-          <span>&#8377;{subTotal}</span>
+          <span>&#36;{subTotal}</span>
         </div>
         {!!discount && (
           <div>
             <span>Discount</span>
-            <span className="text-green-400">-&#8377;{discount}</span>
+            <span className="text-green-400">-&#36;{discount}</span>
           </div>
         )}
         {/* {couponDiscount && !!couponDiscount.discount && (
             <div>
               <span>Coupon Discount</span>
               <span className="text-green-400">
-                -&#8377;{couponDiscount.discount}
+                -&#36;{couponDiscount.discount}
               </span>
             </div>
           )} */}
         {!!gst && (
           <div>
             <span>GST</span>
-            <span></span>&#8377;{gst}
+            <span></span>&#36;{gst}
           </div>
         )}
         <div className="border-t-[1px] border-gray-300 pt-5 font-bold">
           <span>Total Amount</span>
           <span>
-            &#8377;
+            &#36;
             {total}
           </span>
         </div>
