@@ -1,9 +1,15 @@
+"use client";
+
 import AuthProvider from "@/components/provider/auth.provider";
 import { Separator } from "@/components/ui/separator";
 import { FC, ReactNode } from "react";
 import OrderNav from "./order-nav";
+import { usePathname } from "next/navigation";
 
 const OrderLayout: FC<{ children: ReactNode }> = ({ children }) => {
+  const pathname = usePathname();
+  if (pathname.startsWith("/orders/details")) return children;
+
   return (
     <AuthProvider>
       <Separator />

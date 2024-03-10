@@ -1,4 +1,10 @@
-import { Product, ProductWithDetails, Showcase } from "@/@types/product";
+import {
+  Product,
+  ProductReview,
+  ProductWithDetails,
+  Showcase,
+} from "@/@types/product";
+import { queryClient } from "@/components/provider/reactquery.provider";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
@@ -51,3 +57,30 @@ export const useShowcases = (slug: string) =>
     retry: 0,
     staleTime: 1000 * 60 * 15,
   });
+
+const getProductReview = (
+  id: string,
+): Promise<ProductReview & { type: string }> =>
+  axios
+    .get<{ data: ProductReview & { type: string } }>(
+      `${process.env.ENDPOINT}/api/products/reviews/${id}`,
+      {
+        withCredentials: true,
+      },
+    )
+    .then((res) => res.data.data)
+    .catch((err) => err.response.data);
+
+export const useProductReview = (id: string) =>
+  useQuery({
+    queryKey: ["products", "reviews", id],
+    queryFn: () => getProductReview(id),
+    retry: 0,
+    staleTime: 1000 * 60 * 15,
+  });
+
+export const invalidateProductReview = (id: string) => {
+  queryClient.invalidateQueries({
+    queryKey: ["products", "reviews", id],
+  });
+};

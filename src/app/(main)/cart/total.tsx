@@ -25,20 +25,9 @@ function getTotals(cart: Cart[]) {
       )
       .toFixed(2),
   );
+  const total = subTotal - discount;
 
-  const gst = parseFloat(
-    cart
-      .reduce(
-        (gst, curr) =>
-          gst +
-          (curr.product.gst_price / 100) * curr.variation.price * curr.quantity,
-        0,
-      )
-      .toFixed(2),
-  );
-  const total = subTotal - discount + gst;
-
-  return { subTotal, gst, discount, total };
+  return { subTotal, discount, total };
 }
 
 const Total: FC<{ children?: ReactNode }> = ({ children }) => {
@@ -57,7 +46,7 @@ const Total: FC<{ children?: ReactNode }> = ({ children }) => {
       </div>
     );
 
-  const { discount, total, gst, subTotal } = getTotals(carts);
+  const { discount, total, subTotal } = getTotals(carts);
   return (
     <div className="flex w-full max-w-sm flex-col gap-2 border-l-1 border-slate-200 px-3 pl-6 text-sm">
       <div className="flex items-baseline gap-2">
@@ -83,12 +72,6 @@ const Total: FC<{ children?: ReactNode }> = ({ children }) => {
               </span>
             </div>
           )} */}
-        {!!gst && (
-          <div>
-            <span>GST</span>
-            <span></span>&#36;{gst}
-          </div>
-        )}
         <div className="border-t-[1px] border-gray-300 pt-5 font-bold">
           <span>Total Amount</span>
           <span>

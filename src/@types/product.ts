@@ -9,7 +9,6 @@ export interface Product {
     title: string;
     description: string;
   }[];
-  gst_price: number;
   product_images: string[];
 
   meta_title: string;
@@ -82,3 +81,14 @@ export type Showcase = {
   created_at: Date;
   updated_at: Date | null;
 } & (TemplateAShema | TemplateBShema | TemplateCShema);
+
+export interface ProductReview {
+  product_id: string;
+
+  review_title: string;
+  review_description: string;
+  rating: number;
+
+  created_at: Date;
+  updated_at: Date | null;
+}
