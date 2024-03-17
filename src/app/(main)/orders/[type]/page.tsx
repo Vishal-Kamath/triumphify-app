@@ -11,10 +11,8 @@ import OrderComponent from "./order-component";
 
 const OrderSearchPages: FC = () => {
   const type = useParams()["type"] as string;
-  if (type !== "history" && type !== "cancelled" && type !== "returned")
-    return notFound();
 
-  const { data: orders, isLoading, refetch } = useOrders(type);
+  const { data: orders, isLoading, refetch } = useOrders(type as any);
   const [search, setSearch] = useState("");
 
   const filteredOrders = orders?.filter(
@@ -22,6 +20,9 @@ const OrderSearchPages: FC = () => {
       order.product_name.toLowerCase().includes(search.toLowerCase()) ||
       order.id.includes(search),
   );
+
+  if (type !== "history" && type !== "cancelled" && type !== "returned")
+    return notFound();
 
   return (
     <div className="flex w-full flex-col gap-6">

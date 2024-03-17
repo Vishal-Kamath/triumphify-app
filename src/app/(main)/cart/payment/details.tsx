@@ -127,8 +127,11 @@ const PaymentDetailsPopup: FC<{ paymentMethod: string }> = ({
 
       <div className="flex w-full flex-col gap-4">
         <h3 className="text-xl">Products</h3>
-        {carts?.map((cart) => (
-          <div className="flex gap-4 rounded-xl border border-slate-200 p-4">
+        {carts?.map((cart, index) => (
+          <div
+            key={cart.id + index}
+            className="flex gap-4 rounded-xl border border-slate-200 p-4"
+          >
             <Image
               src={cart.product.product_images[0]}
               alt={cart.product.name}
