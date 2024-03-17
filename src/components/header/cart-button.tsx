@@ -11,7 +11,9 @@ const CartButton: FC = () => {
   if (isLoading) return <Skeleton className="h-10 w-10 rounded-full" />;
   if (!carts) return null;
 
-  const count = carts.reduce((acc, cart) => acc + cart.quantity, 0);
+  const count = Array.isArray(carts)
+    ? carts.reduce((acc, cart) => acc + cart.quantity, 0)
+    : 0;
   return (
     <Link
       href="/cart"

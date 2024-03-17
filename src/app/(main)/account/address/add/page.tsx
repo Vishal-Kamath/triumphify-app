@@ -24,13 +24,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { AiOutlineLoading } from "react-icons/ai";
 import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { invalidateAddresses } from "@/lib/address";
 
 const AddAddressPage: FC = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  const redirect = useSearchParams().get("redirect");
 
   const form = useForm<AddressFormType>({
     resolver: zodResolver(addAddressSchema),
@@ -60,7 +62,7 @@ const AddAddressPage: FC = () => {
           variant: res.data.type,
         });
         invalidateAddresses();
-        router.push("/account/address");
+        router.push(redirect ? redirect : "/account/address");
       })
       .catch((err) => {
         setLoading(false);

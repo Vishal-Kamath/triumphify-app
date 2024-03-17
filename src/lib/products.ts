@@ -1,6 +1,7 @@
 import {
   Product,
   ProductReview,
+  ProductReviewStats,
   ProductWithDetails,
   Showcase,
 } from "@/@types/product";
@@ -54,6 +55,48 @@ export const useShowcases = (slug: string) =>
   useQuery({
     queryKey: ["products", slug, "showcase"],
     queryFn: () => getShowcases(slug),
+    retry: 0,
+    staleTime: 1000 * 60 * 15,
+  });
+
+const getAllProductReviews = (
+  id: string,
+): Promise<ProductReview[] & { type: string }> =>
+  axios
+    .get<{ data: ProductReview[] & { type: string } }>(
+      `${process.env.ENDPOINT}/api/products/reviews/${id}/all`,
+      {
+        withCredentials: true,
+      },
+    )
+    .then((res) => res.data.data)
+    .catch((err) => err.response.data);
+
+export const useProductReviews = (id: string) =>
+  useQuery({
+    queryKey: ["products", "reviews", "all", id],
+    queryFn: () => getAllProductReviews(id),
+    retry: 0,
+    staleTime: 1000 * 60 * 15,
+  });
+
+const getAllProductReviewsStats = (
+  id: string,
+): Promise<ProductReviewStats & { type: string }> =>
+  axios
+    .get<{ data: ProductReviewStats & { type: string } }>(
+      `${process.env.ENDPOINT}/api/products/reviews/${id}/stats`,
+      {
+        withCredentials: true,
+      },
+    )
+    .then((res) => res.data.data)
+    .catch((err) => err.response.data);
+
+export const useProductReviewsStats = (id: string) =>
+  useQuery({
+    queryKey: ["products", "reviews", "stats", id],
+    queryFn: () => getAllProductReviewsStats(id),
     retry: 0,
     staleTime: 1000 * 60 * 15,
   });

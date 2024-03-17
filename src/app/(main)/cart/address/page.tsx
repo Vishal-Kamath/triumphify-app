@@ -101,7 +101,9 @@ const UserCartAddress: FC = () => {
             <span>Back</span>
           </Link>
           <Link
-            href="/account/address/add"
+            href={`/account/address/add?redirect=${encodeURIComponent(
+              "/cart/address",
+            )}`}
             className={cn(
               buttonVariants({ variant: "outline" }),
               "gap-3 rounded-full",

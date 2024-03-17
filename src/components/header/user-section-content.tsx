@@ -59,7 +59,9 @@ const UserSectionContent: FC<{
       : 0;
 
   const { data: carts } = useAllCart();
-  const cartCount = carts?.reduce((acc, cart) => acc + cart.quantity, 0);
+  const cartCount = Array.isArray(carts)
+    ? carts?.reduce((acc, cart) => acc + cart.quantity, 0)
+    : 0;
 
   return (
     <div className="w-full flex-col p-2 text-sm">

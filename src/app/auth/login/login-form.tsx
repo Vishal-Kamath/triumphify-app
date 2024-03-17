@@ -21,7 +21,7 @@ import axios from "axios";
 import { NotificationType } from "@/@types/notification";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter, useSearchParams } from "next/navigation";
-import { invalidateUserData } from "@/lib/auth";
+import { invalidateAll } from "@/components/provider/reactquery.provider";
 
 const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
   const { toast } = useToast();
@@ -61,7 +61,7 @@ const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
           description: res.data.description,
           variant: res.data.type,
         });
-        invalidateUserData();
+        invalidateAll();
         if (!inline) return router.replace(redirect ?? "/");
       })
       .catch((err) => {

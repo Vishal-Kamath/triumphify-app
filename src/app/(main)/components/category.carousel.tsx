@@ -27,8 +27,7 @@ const CategoryCarousel: FC = () => {
             {categories?.map((category) => (
               <CarouselItem key={category.id} className="w-full md:basis-1/2">
                 <Link
-                  href="#"
-                  target="_blank"
+                  href={`/categories/${category.slug}`}
                   className="flex justify-between gap-6 rounded-xl border-1 border-slate-300 bg-white p-4 shadow-md"
                 >
                   <div className="flex flex-col justify-center gap-3">

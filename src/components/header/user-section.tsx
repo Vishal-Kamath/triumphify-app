@@ -24,11 +24,12 @@ const colors = [
   "bg-yellow-100 text-yellow-800",
   "bg-sky-100 text-sky-800",
 ];
-const AvatarElement: FC<{ image: string | null; username?: string | null }> = ({
-  image,
-  username,
-}) => (
-  <Avatar>
+export const AvatarElement: FC<{
+  image: string | null;
+  username?: string | null;
+  className?: string;
+}> = ({ image, username, className }) => (
+  <Avatar className={className}>
     <AvatarImage src={image || ""} />
     <AvatarFallback
       className={cn(colors[(username?.length || 5) % 5], "font-semibold")}
@@ -62,7 +63,7 @@ const UserSection: FC = () => {
     </Link>
   ) : isMobile ? (
     <Drawer open={open} onOpenChange={(open) => setOpen(open)}>
-      <DrawerTrigger>
+      <DrawerTrigger className="outline-none">
         <AvatarElement image={data.data.image} username={data?.data.username} />
       </DrawerTrigger>
       <DrawerContent>
@@ -75,7 +76,7 @@ const UserSection: FC = () => {
     </Drawer>
   ) : (
     <DropdownMenu open={open} onOpenChange={(open) => setOpen(open)}>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger className="outline-none">
         <AvatarElement image={data.data.image} username={data?.data.username} />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="max-w-[15rem]" align="end">

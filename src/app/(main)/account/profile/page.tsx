@@ -1,7 +1,7 @@
 "use client";
 
 import { invalidateUserData, useMe } from "@/lib/auth";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import AccountProfileLoading from "../loading";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/components/ui/use-toast";
@@ -43,6 +43,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { PhoneInput } from "@/components/ui/phone-input";
 
 const AccountProfile: FC = () => {
   const { toast } = useToast();
@@ -54,17 +55,30 @@ const AccountProfile: FC = () => {
   const form = useForm<AccountProfileFormType>({
     resolver: zodResolver(accountProfileFormSchema),
     defaultValues: {
-      email: user?.data.email || "",
-      username: user?.data.username || "",
-      dateOfBirth: user?.data.dateOfBirth
-        ? new Date(user?.data.dateOfBirth)
-        : undefined,
-      gender: user?.data.gender || undefined,
+      email: "",
+      username: "",
+      dateOfBirth: null,
+      gender: null,
     },
   });
 
+  useEffect(() => {
+    if (user && user.data) {
+      form.setValue("username", user.data.username || "");
+      form.setValue("email", user.data.email);
+      form.setValue(
+        "dateOfBirth",
+        user.data.dateOfBirth ? new Date(user.data.dateOfBirth) : undefined,
+      );
+      form.setValue("gender", user.data.gender || null);
+    }
+  }, [user]);
+
   const onSubmit = (values: AccountProfileFormType) => {
     setLoading(true);
+    const dateOfBirth = values.dateOfBirth
+      ? convertUTCDateToLocalDateString(values.dateOfBirth)
+      : null;
     axios
       .put<NotificationType>(
         `${process.env.ENDPOINT}/api/user/update/details`,
@@ -72,7 +86,8 @@ const AccountProfile: FC = () => {
           email: values.email,
           username: values.username,
           gender: values.gender,
-          dateOfBirth: convertUTCDateToLocalDateString(values.dateOfBirth),
+          tel: values.tel,
+          dateOfBirth,
         },
         {
           headers: {
@@ -181,14 +196,27 @@ const AccountProfile: FC = () => {
           />
           <FormField
             control={form.control}
+            name="tel"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel className="text-black">Mobile Number</FormLabel>
+                <FormControl>
+                  <PhoneInput international defaultCountry="US" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
             name="gender"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel className="text-black">Gender</FormLabel>
                 <FormControl>
                   <Select
-                    value={field.value}
-                    defaultValue={field.value}
+                    value={field.value || undefined}
+                    defaultValue={field.value || undefined}
                     onValueChange={field.onChange}
                   >
                     <SelectTrigger className="w-full">
@@ -233,10 +261,13 @@ const AccountProfile: FC = () => {
                     </FormControl>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
-                    <DateInput value={field.value} onChange={field.onChange} />
+                    <DateInput
+                      value={field.value || undefined}
+                      onChange={field.onChange}
+                    />
                     <Calendar
                       mode="single"
-                      selected={field.value}
+                      selected={field.value || undefined}
                       onSelect={field.onChange}
                       disabled={(date) => {
                         const now = new Date();
@@ -246,8 +277,8 @@ const AccountProfile: FC = () => {
                         return date > above18 || date < new Date("1900-01-01");
                       }}
                       initialFocus
-                      defaultMonth={field.value}
-                      month={field.value}
+                      defaultMonth={field.value || undefined}
+                      month={field.value || undefined}
                       onMonthChange={field.onChange}
                       ISOWeek
                     />

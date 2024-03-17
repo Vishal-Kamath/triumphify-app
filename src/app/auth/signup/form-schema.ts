@@ -4,6 +4,11 @@ export const SignupFormSchema = z
   .object({
     username: z.string().trim().min(3).max(50),
     email: z.string().trim().email().min(1).max(100),
+    tel: z
+      .string()
+      .max(100)
+      // .refine((val) => val.toString().length > 9, "Field is required")
+      .refine((val) => !Number.isNaN(Number(val)), "Invalid input"),
     gender: z.enum(["Male", "Female", "Other"]),
     dateOfBirth: z.date().refine((dob) => {
       return isUser18Plus(dob);

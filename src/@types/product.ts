@@ -83,12 +83,23 @@ export type Showcase = {
 } & (TemplateAShema | TemplateBShema | TemplateCShema);
 
 export interface ProductReview {
+  id: string;
   product_id: string;
-
+  user_username: string;
+  user_image: string;
   review_title: string;
   review_description: string;
   rating: number;
 
   created_at: Date;
   updated_at: Date | null;
+}
+
+export interface ProductReviewStats {
+  ratings: {
+    rating: number;
+    count: number;
+  }[];
+  total_reviews: number;
+  average_rating: number;
 }

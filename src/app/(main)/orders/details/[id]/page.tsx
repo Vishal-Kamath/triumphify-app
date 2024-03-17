@@ -13,6 +13,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { MoveLeft } from "lucide-react";
 import OrderGroupDetails from "./order-group-details";
 import OrderUserReview from "./user-review";
+import OrderCancelForm from "./order-cancel";
 
 const OrderDetails: FC = () => {
   const id = useParams()["id"] as string;
@@ -37,6 +38,7 @@ const OrderDetails: FC = () => {
         <OrderStatus order={data.order} />
         <OrderGroupDetails all_orders={data.all_orders} />
         <OrderUserReview productId={data.order.product_id} />
+        <OrderCancelForm order={data.order} />
       </div>
     </main>
   );

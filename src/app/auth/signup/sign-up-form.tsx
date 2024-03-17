@@ -31,7 +31,6 @@ import axios from "axios";
 import _ from "lodash";
 import { NotificationType } from "@/@types/notification";
 import { useSearchParams, useRouter } from "next/navigation";
-import { invalidateUserData } from "@/lib/auth";
 import {
   Popover,
   PopoverContent,
@@ -42,6 +41,8 @@ import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { DateInput } from "@/components/date-picker/date-picker-input";
+import { PhoneInput } from "@/components/ui/phone-input";
+import { invalidateAll } from "@/components/provider/reactquery.provider";
 
 const SignUpForm: FC = () => {
   const { toast } = useToast();
@@ -82,7 +83,7 @@ const SignUpForm: FC = () => {
           description: res.data.description,
           variant: res.data.type,
         });
-        invalidateUserData();
+        invalidateAll();
         router.replace(redirect ?? "/");
       })
       .catch((err) => {
@@ -133,6 +134,19 @@ const SignUpForm: FC = () => {
                     placeholder="johndoe@email.com"
                     {...field}
                   />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="tel"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel className="text-black">Mobile Number</FormLabel>
+                <FormControl>
+                  <PhoneInput international defaultCountry="US" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

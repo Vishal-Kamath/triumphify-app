@@ -226,9 +226,9 @@ const OrderUserReview: FC<{ productId: string }> = ({ productId }) => {
           )}
         />
         {reviewExist ? (
-          <div className="flex gap-3">
+          <div className="flex justify-end gap-3">
             {loading ? (
-              <Button disabled className="ml-auto max-w-xs">
+              <Button disabled className="ml-auto md:max-w-[15rem]">
                 <AiOutlineLoading className="mr-2 h-4 w-4 animate-spin" />
                 Please wait..
               </Button>
@@ -237,14 +237,14 @@ const OrderUserReview: FC<{ productId: string }> = ({ productId }) => {
                 type="button"
                 variant="secondary"
                 onClick={onDelete}
-                className="w-full max-w-xs hover:bg-red-500 hover:text-white"
+                className="w-full hover:bg-red-600 hover:text-white md:max-w-[15rem]"
               >
                 Delete
               </Button>
             )}
 
             {loading ? (
-              <Button disabled className="max-w-xs">
+              <Button disabled className="md:max-w-[15rem]">
                 <AiOutlineLoading className="mr-2 h-4 w-4 animate-spin" />
                 Please wait..
               </Button>
@@ -252,7 +252,7 @@ const OrderUserReview: FC<{ productId: string }> = ({ productId }) => {
               <Button
                 type="submit"
                 variant="default"
-                className="w-full max-w-xs"
+                className="w-full md:max-w-[15rem]"
                 disabled={loadingDelete || !formDataChanged}
               >
                 Edit review
@@ -260,12 +260,12 @@ const OrderUserReview: FC<{ productId: string }> = ({ productId }) => {
             )}
           </div>
         ) : loading ? (
-          <Button disabled className="ml-auto w-full max-w-xs">
+          <Button disabled className="ml-auto w-full md:max-w-[15rem]">
             <AiOutlineLoading className="mr-2 h-4 w-4 animate-spin" />
             Please wait..
           </Button>
         ) : (
-          <Button type="submit" className="ml-auto w-full max-w-xs">
+          <Button type="submit" className="ml-auto w-full md:max-w-[15rem]">
             Submit review
           </Button>
         )}

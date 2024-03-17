@@ -44,7 +44,14 @@ const MainBanners: FC = () => {
                   alt="Banner image"
                   width={1500}
                   height={1500}
-                  className="w-full object-contain"
+                  className="w-full object-contain max-lg:hidden"
+                />
+                <Image
+                  src={banner.banner_image_mobile}
+                  alt="Banner image"
+                  width={1500}
+                  height={1500}
+                  className="w-full object-contain lg:hidden"
                 />
               </Link>
             </CarouselItem>

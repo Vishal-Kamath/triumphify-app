@@ -20,10 +20,12 @@ const AddToCartButton: FC<{ productId: string; variationId: string }> = ({
   const [quantityLoading, setQuantityLoading] = useState(false);
 
   const { data: carts } = useAllCart();
-  const foundInCart = carts?.find(
-    (cart) =>
-      cart.product.id === productId && cart.variation.id === variationId,
-  );
+  const foundInCart = Array.isArray(carts)
+    ? carts?.find(
+        (cart) =>
+          cart.product.id === productId && cart.variation.id === variationId,
+      )
+    : undefined;
 
   const handleAddToCart = () => {
     if (!productId || !variationId) return;
@@ -123,11 +125,11 @@ const AddToCartButton: FC<{ productId: string; variationId: string }> = ({
 
   return foundInCart?.quantity ? (
     quantityLoading ? (
-      <div className="flex h-10 w-full items-center justify-between rounded-full border-1 border-slate-300 px-3">
+      <div className="flex h-10 w-full max-w-xs items-center justify-between rounded-full border-1 border-slate-300 px-3">
         <AiOutlineLoading className="h-4 w-4 animate-spin" />
       </div>
     ) : (
-      <div className="flex h-10 w-full items-center justify-between rounded-full border-1 border-slate-300 px-3">
+      <div className="flex h-10 w-full max-w-xs items-center justify-between rounded-full border-1 border-slate-300 px-3">
         <Plus
           onClick={handleUpdateQuantity("plus")}
           className="h-4 w-4 cursor-pointer text-slate-600"
@@ -144,7 +146,7 @@ const AddToCartButton: FC<{ productId: string; variationId: string }> = ({
       </div>
     )
   ) : loading ? (
-    <Button disabled className="w-full rounded-full">
+    <Button disabled className="w-full max-w-xs rounded-full">
       <AiOutlineLoading className="mr-2 h-4 w-4 animate-spin" />
       Please wait..
     </Button>
@@ -152,7 +154,7 @@ const AddToCartButton: FC<{ productId: string; variationId: string }> = ({
     <Button
       onClick={handleAddToCart}
       disabled={!productId || !variationId}
-      className="w-full rounded-full"
+      className="w-full max-w-xs rounded-full"
     >
       Add to Cart
     </Button>

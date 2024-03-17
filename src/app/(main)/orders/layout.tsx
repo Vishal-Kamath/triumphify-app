@@ -12,7 +12,6 @@ const OrderLayout: FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <AuthProvider>
-      <Separator />
       <div className="padding-x flex flex-col gap-6 pb-24 pt-9">
         <div className="flex flex-col gap-2">
           <h2 className="text-2xl font-semibold">Orders</h2>

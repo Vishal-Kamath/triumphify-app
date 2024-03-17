@@ -10,4 +10,10 @@ const ReactQueryProvider: FC<{ children: ReactNode }> = ({ children }) => {
   );
 };
 
+export const invalidateAll = () => {
+  queryClient.invalidateQueries({
+    queryKey: [],
+  });
+};
+
 export default ReactQueryProvider;
