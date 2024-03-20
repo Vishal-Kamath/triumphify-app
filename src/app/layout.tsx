@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import ReactQueryProvider from "@/components/provider/reactquery.provider";
 import { cn } from "@/lib/utils";
+import FloatingActionButtons from "@/components/misc/floating-action-bottons";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
+          <FloatingActionButtons />
         </body>
       </ReactQueryProvider>
     </html>
