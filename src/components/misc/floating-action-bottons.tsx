@@ -24,7 +24,8 @@ const HelpDeskButton: FC = () => {
   const pathname = usePathname();
 
   if (isLoading || !me) return <Skeleton className="size-12 rounded-full" />;
-  if (!me || me.type === "error") return null;
+  if (!me || me.type === "error" || pathname.startsWith("/help/create"))
+    return null;
 
   return (
     <Link
