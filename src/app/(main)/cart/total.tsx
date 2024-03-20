@@ -22,7 +22,7 @@ function getTotals(cart: Cart[]) {
           discount +
           curr.variation.price *
             (curr.variation.discount / 100) *
-            curr.variation.quantity,
+            curr.quantity,
         0,
       )
       .toFixed(2),
