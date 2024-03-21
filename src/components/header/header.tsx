@@ -20,6 +20,9 @@ const Header: FC = () => {
     pathname.startsWith("/account") ||
     pathname.startsWith("/wishlist");
 
+  const isSearchHidden =
+    pathname.startsWith("/auth") || pathname.startsWith("/tickets/");
+
   const [top, setTop] = useState(true);
 
   useEffect(() => {
@@ -81,7 +84,12 @@ const Header: FC = () => {
               <UserSection />
             </div>
           </div>
-          <SearchBar className="max-w-full md:hidden" />
+          <SearchBar
+            className={cn(
+              "max-w-full md:hidden",
+              isSearchHidden ? "hidden" : "",
+            )}
+          />
         </header>
       </div>
     </>

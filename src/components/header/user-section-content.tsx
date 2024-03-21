@@ -119,7 +119,7 @@ const UserSectionContent: FC<{
     {
       name: "Chat",
       type: "link",
-      href: "/orders/tickets",
+      href: "/tickets",
       icon: Mailbox,
     },
     {
