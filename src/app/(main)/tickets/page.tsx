@@ -8,10 +8,16 @@ import { useTickets } from "@/lib/ticket";
 import { dateFormater } from "@/utils/dateFormater";
 import { MessageCircleQuestion } from "lucide-react";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useState } from "react";
 
 const TicketsPage: FC = () => {
   const { data: tickets } = useTickets();
+  const [search, setSearch] = useState("");
+
+  const filteredTickets = tickets?.filter((ticket) =>
+    ticket.title.toLowerCase().includes(search.toLowerCase()),
+  );
+
   return (
     <AuthProvider>
       <div className="padding-x flex flex-col gap-6 pb-24 pt-9">
@@ -21,10 +27,14 @@ const TicketsPage: FC = () => {
         </div>
         <Separator />
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-9">
-          <Input placeholder="Search by title..." />
+          <Input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search by title..."
+          />
 
           <div className="flex flex-col gap-3">
-            {tickets?.map((ticket) => (
+            {filteredTickets?.map((ticket) => (
               <Link
                 href={`/tickets/${ticket.id}`}
                 className="flex flex-col gap-4 border-b-1 border-slate-200 px-3 py-6 hover:bg-slate-50/50"
