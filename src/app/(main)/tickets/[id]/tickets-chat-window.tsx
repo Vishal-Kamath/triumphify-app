@@ -13,15 +13,15 @@ const TicketChatWindow: FC = () => {
 
   if (isLoading) {
     return (
-      <div className="flex h-full w-full items-center justify-center">
+      <div className="flex h-full min-h-screen w-full items-center justify-center">
         <AiOutlineLoading className="size-12 animate-spin text-slate-500" />
       </div>
     );
   }
 
   return (
-    <div className="relative flex h-full w-full flex-col gap-4">
-      <div className="flex h-full max-h-full flex-col-reverse justify-end gap-3 overflow-y-auto">
+    <div className="relative flex h-full  w-full flex-col gap-4">
+      <div className="flex h-full max-h-full min-h-screen flex-col-reverse justify-end gap-3 overflow-y-auto">
         {chats?.map((chat, index) => (
           <TicketChat key={chat.id} chat={chat} id={id} />
         ))}
