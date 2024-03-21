@@ -141,6 +141,7 @@ const UserSectionContent: FC<{
       {navElements.map((nav, index) =>
         nav.type === "link" ? (
           <Link
+            key={index}
             className={cn(
               buttonVariants({ variant: "ghost" }),
               "w-full justify-start gap-4 px-2 font-light text-slate-600",
@@ -159,6 +160,7 @@ const UserSectionContent: FC<{
           </Link>
         ) : (
           <Button
+            key={index}
             variant="ghost"
             className={cn(
               "w-full justify-start gap-4 px-2 font-light text-slate-600",

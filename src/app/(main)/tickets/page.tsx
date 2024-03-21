@@ -45,6 +45,7 @@ const TicketsPage: FC = () => {
           <div className="flex flex-col gap-3">
             {filteredTickets?.map((ticket) => (
               <Link
+                key={ticket.id}
                 href={`/tickets/${ticket.id}`}
                 className="flex flex-col gap-4 border-b-1 border-slate-200 px-3 py-6 hover:bg-slate-50/50"
               >
