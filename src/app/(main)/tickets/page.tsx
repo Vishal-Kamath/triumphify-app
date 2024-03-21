@@ -1,17 +1,17 @@
 "use client";
 
 import AuthProvider from "@/components/provider/auth.provider";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useTickets } from "@/lib/ticket";
 import { dateFormater } from "@/utils/dateFormater";
-import { MessageCircleQuestion } from "lucide-react";
+import { MessageCircleQuestion, RefreshCw } from "lucide-react";
 import Link from "next/link";
 import { FC, useState } from "react";
 
 const TicketsPage: FC = () => {
-  const { data: tickets } = useTickets();
+  const { data: tickets, refetch } = useTickets();
   const [search, setSearch] = useState("");
 
   const filteredTickets = tickets?.filter((ticket) =>
@@ -27,11 +27,20 @@ const TicketsPage: FC = () => {
         </div>
         <Separator />
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-9">
-          <Input
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search by title..."
-          />
+          <div className="flex gap-3">
+            <Input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search by title..."
+            />
+            <Button
+              variant="secondary"
+              className="group flex size-10 flex-shrink-0 items-center justify-center p-0 active:bg-purple-100"
+              onClick={() => refetch()}
+            >
+              <RefreshCw className="size-4 group-active:animate-spin " />
+            </Button>
+          </div>
 
           <div className="flex flex-col gap-3">
             {filteredTickets?.map((ticket) => (
