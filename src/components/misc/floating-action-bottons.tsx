@@ -24,13 +24,19 @@ const HelpDeskButton: FC = () => {
   const pathname = usePathname();
 
   if (isLoading || !me) return <Skeleton className="size-12 rounded-full" />;
-  if (!me || me.type === "error" || pathname.startsWith("/help/create"))
-    return null;
+  if (!me || me.type === "error") return null;
 
+  const isHidden =
+    pathname.startsWith("/help/create") ||
+    pathname.startsWith("/tickets") ||
+    pathname.startsWith("/cart");
   return (
     <Link
       href={`/help/create?redirect=${encodeURIComponent(pathname)}`}
-      className="flex size-12 items-center justify-center rounded-full border-1 border-gray-200 bg-white text-slate-500 shadow-md transition-all duration-500 ease-in-out hover:text-slate-800"
+      className={cn(
+        "flex size-12 items-center justify-center rounded-full border-1 border-gray-200 bg-white text-slate-500 shadow-md transition-all duration-500 ease-in-out hover:text-slate-800",
+        isHidden ? "hidden" : "",
+      )}
     >
       <MessageCircleQuestion className="size-6" />
     </Link>
