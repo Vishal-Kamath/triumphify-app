@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useTickets } from "@/lib/ticket";
 import { dateFormater } from "@/utils/dateFormater";
-import { MessageCircleQuestion, RefreshCw } from "lucide-react";
+import { MessageCircleQuestion, PackageX, RefreshCw } from "lucide-react";
 import Link from "next/link";
 import { FC, useState } from "react";
 
@@ -50,9 +50,15 @@ const TicketsPage: FC = () => {
                 className="flex flex-col gap-4 border-b-1 border-slate-200 px-3 py-6 hover:bg-slate-50/50"
               >
                 <div className="flex gap-4">
-                  <div className="flex size-12 flex-shrink-0 items-center justify-center rounded-full bg-sky-100 text-sky-600">
-                    <MessageCircleQuestion className="size-6" />
-                  </div>
+                  {ticket.type === "request" ? (
+                    <div className="flex size-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600">
+                      <PackageX className="size-6" />
+                    </div>
+                  ) : (
+                    <div className="flex size-12 flex-shrink-0 items-center justify-center rounded-full bg-sky-100 text-sky-600">
+                      <MessageCircleQuestion className="size-6" />
+                    </div>
+                  )}
                   <div className="flex w-full flex-col gap-4">
                     <div className="flex justify-between gap-6">
                       <div className="flex flex-col">
