@@ -9,6 +9,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { usePathname } from "next/navigation";
 
 const FloatingActionButtons: FC = () => {
+  const pathname = usePathname();
+  if (pathname.startsWith("/contact")) return null;
   return (
     <div className="fixed bottom-5 right-5 flex flex-col-reverse items-center gap-3">
       <HelpDeskButton />
