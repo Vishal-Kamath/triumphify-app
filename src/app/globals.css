@@ -92,3 +92,7 @@
   padding-left: max(calc(50vw - 35rem), 4vw);
   padding-right: max(calc(50vw - 35rem), 4vw);
 }
+
+.min-h-remaining {
+  @apply min-h-[calc(100vh-7.75rem)] md:min-h-[calc(100vh-4.5rem)]
+}
