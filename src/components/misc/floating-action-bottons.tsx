@@ -23,7 +23,7 @@ const HelpDeskButton: FC = () => {
   const { data: me, isLoading } = useMe();
   const pathname = usePathname();
 
-  if (isLoading || !me) return <Skeleton className="size-12 rounded-full" />;
+  if (isLoading) return <Skeleton className="size-12 rounded-full" />;
   if (!me || me.type === "error") return null;
 
   const isHidden =
