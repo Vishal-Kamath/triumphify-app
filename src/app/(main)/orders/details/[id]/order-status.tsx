@@ -14,9 +14,19 @@ const OrderStatus: FC<{ order?: Order }> = ({ order }) => {
 
   return (
     <div className="flex w-full flex-col gap-6 px-3">
-      <h3 className="font-medium">Order Status</h3>
+      <div className="flex gap-2">
+        <h3 className="font-medium">Order Status:</h3>
+        {order.cancelled ? (
+          <h3 className="font-semibold text-red-600">Cancelled</h3>
+        ) : null}
+      </div>
 
-      <div className="overflow-x-auto scrollbar-none">
+      <div
+        className={cn(
+          "overflow-x-auto scrollbar-none",
+          order.cancelled ? "opacity-50" : "",
+        )}
+      >
         <div className="mx-auto flex h-fit w-full min-w-[32rem] max-w-3xl items-start  text-[10px]">
           {currentStatusesArray.map((step, index) => (
             <div
