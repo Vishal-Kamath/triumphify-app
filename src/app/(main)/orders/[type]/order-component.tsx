@@ -61,10 +61,10 @@ const OrderComponent: FC<{ order: Order }> = ({ order }) => {
   return (
     <Link
       href={`/orders/details/${order.id}`}
-      className="flex w-full flex-col gap-3 rounded-lg bg-purple-50/60 p-3 hover:shadow-md hover:shadow-purple-500/25"
+      className="flex w-full flex-col gap-3 rounded-xl border-1 border-slate-300/70 bg-slate-50/60 p-3 hover:shadow-md hover:shadow-slate-500/10"
     >
       <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-purple-200 bg-white text-purple-500">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full border-1 border-slate-200 bg-white text-slate-500">
           <orderDisplay.icon className="h-4 w-4" />
         </div>
 
@@ -83,7 +83,7 @@ const OrderComponent: FC<{ order: Order }> = ({ order }) => {
         </div>
       </div>
 
-      <div className="flex gap-6 rounded-md border-1 border-purple-200 bg-white p-3">
+      <div className="flex gap-6 rounded-md border-1 border-slate-200 bg-white p-3">
         <Image
           src={order.product_image || ""}
           alt={order.product_brand_name}
