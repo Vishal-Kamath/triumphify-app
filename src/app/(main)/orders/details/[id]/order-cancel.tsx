@@ -13,6 +13,8 @@ import { useToast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineLoading } from "react-icons/ai";
@@ -26,9 +28,13 @@ const orderCancelSchema = z.object({
 });
 type OrderCancelFormType = z.infer<typeof orderCancelSchema>;
 
-const OrderCancelForm: FC<{ order: Order }> = ({ order }) => {
+const OrderCancelForm: FC<{
+  order: Order;
+  isCancelledRequested: string | boolean;
+}> = ({ order, isCancelledRequested }) => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const pathname = usePathname();
 
   const form = useForm<OrderCancelFormType>({
     resolver: zodResolver(orderCancelSchema),
@@ -68,7 +74,18 @@ const OrderCancelForm: FC<{ order: Order }> = ({ order }) => {
       });
   }
 
-  return (
+  return isCancelledRequested ? (
+    <span className="text-xs text-slate-500">
+      Your cancellation request is already submitted. Please wait for the
+      approval from the seller{" "}
+      <Link
+        href={`/tickets/${isCancelledRequested}?redirect=${pathname}`}
+        className="text-blue-500 underline hover:text-blue-700"
+      >
+        View Request
+      </Link>
+    </span>
+  ) : (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}

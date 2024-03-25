@@ -26,6 +26,7 @@ interface GetOrderById {
   order: Order;
   order_details: OrderDetails;
   all_orders: Order[];
+  isCancelledRequested: string | boolean;
 }
 const getOrder = (id: string): Promise<GetOrderById & { type: string }> =>
   axios

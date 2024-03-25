@@ -38,7 +38,10 @@ const OrderDetails: FC = () => {
         <OrderStatus order={data.order} />
         <OrderGroupDetails all_orders={data.all_orders} />
         <OrderUserReview productId={data.order.product_id} />
-        <OrderCancelForm order={data.order} />
+        <OrderCancelForm
+          order={data.order}
+          isCancelledRequested={data.isCancelledRequested}
+        />
       </div>
     </main>
   );
