@@ -10,6 +10,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
+import { invalidateAllOrders, invalidateOrder } from "@/lib/order";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
@@ -58,6 +59,7 @@ const OrderCancelForm: FC<{
       )
       .then((res) => {
         setLoading(false);
+        invalidateAllOrders();
         toast({
           title: res.data.title,
           description: res.data.description,
