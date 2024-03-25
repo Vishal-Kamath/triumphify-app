@@ -70,11 +70,16 @@ const GoToTopButton: FC = () => {
     };
   }, []);
 
+  const pathname = usePathname();
+  const isHidden =
+    pathname.startsWith("/tickets") || pathname.startsWith("/cart");
+
   return (
     <button
       className={cn(
         "flex size-9 items-center justify-center rounded-full border-1 border-gray-200 bg-white text-slate-500 shadow-md transition-all duration-500 ease-in-out hover:text-slate-800",
         !isVisible && "-z-50 cursor-default opacity-0",
+        isHidden && "hidden",
       )}
       onClick={scrollToTop}
     >
