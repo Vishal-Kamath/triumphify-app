@@ -4,7 +4,7 @@ import { FC, ReactNode, Suspense } from "react";
 
 const AuthLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <div className="padding-x relative isolate flex h-full min-h-screen w-full bg-[#1E0020] max-md:flex-col">
+    <div className="padding-x relative isolate flex h-full min-h-screen w-full bg-slate-950 max-md:flex-col">
       <Image
         alt="auth background image"
         src="/auth-bg.svg"
