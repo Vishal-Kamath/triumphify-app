@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { AiOutlineLoading } from "react-icons/ai";
-import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import axios from "axios";
 import { useToast } from "@/components/ui/use-toast";

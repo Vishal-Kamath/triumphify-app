@@ -22,12 +22,17 @@ import axios from "axios";
 import { useToast } from "@/components/ui/use-toast";
 import { invalidateUserData } from "@/lib/auth";
 import AuthInput from "../auth-input";
+import Link from "next/link";
 
 const ResetPasswordPage: FC = () => {
   const { toast } = useToast();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirect") as string | undefined;
+  const redirectPath = redirect
+    ? `?redirect=${encodeURIComponent(redirect)}`
+    : "";
 
   const form = useForm<ResetPasswordType>({
     resolver: zodResolver(resetPaswordSchema),
@@ -128,6 +133,17 @@ const ResetPasswordPage: FC = () => {
             Reset
           </Button>
         )}
+
+        <div className="mt-4 flex gap-1 text-sm text-gray-400">
+          <span>Go back to</span>
+
+          <Link
+            href={`/auth/login${redirectPath}`}
+            className="font-semibold hover:text-white hover:underline"
+          >
+            Login
+          </Link>
+        </div>
       </form>
     </Form>
   );
