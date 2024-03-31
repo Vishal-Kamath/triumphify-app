@@ -9,10 +9,6 @@ export const SignupFormSchema = z
       .max(100)
       // .refine((val) => val.toString().length > 9, "Field is required")
       .refine((val) => !Number.isNaN(Number(val)), "Invalid input"),
-    gender: z.enum(["Male", "Female", "Other"]),
-    dateOfBirth: z.date().refine((dob) => {
-      return isUser18Plus(dob);
-    }, "You must be 18 years or older"),
     password: z.string().trim().min(3).max(50),
     confirmPassword: z.string().trim().min(3).max(50),
   })
