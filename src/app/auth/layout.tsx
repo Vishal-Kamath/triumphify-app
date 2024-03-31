@@ -19,7 +19,7 @@ const AuthLayout: FC<{ children: ReactNode }> = ({ children }) => {
       <div className="h-24 w-full max-md:mx-auto max-md:max-w-sm">
         <Logo className="w-full max-w-[12.5rem] fill-white md:hidden" />
       </div>
-      <div className="flex h-full min-h-screen w-full flex-col items-center py-12 md:justify-center md:py-20">
+      <div className="flex h-full w-full flex-col items-center py-12 md:min-h-screen md:justify-center md:py-20">
         <Suspense>{children}</Suspense>
       </div>
     </div>
