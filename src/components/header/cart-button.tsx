@@ -5,15 +5,20 @@ import { FC } from "react";
 import { Skeleton } from "../ui/skeleton";
 import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import { useMe } from "@/lib/auth";
 
 const CartButton: FC = () => {
-  const { data: carts, isLoading } = useAllCart();
-  if (isLoading) return <Skeleton className="h-10 w-10 rounded-full" />;
-  if (!carts) return null;
+  const { data: carts, isLoading: isMeLoading } = useAllCart();
+  const { data: me, isLoading, isError } = useMe();
+
+  if (isLoading || isMeLoading)
+    return <Skeleton className="h-10 w-10 rounded-full" />;
+  if (!carts || !me || me.type !== "success") return null;
 
   const count = Array.isArray(carts)
     ? carts.reduce((acc, cart) => acc + cart.quantity, 0)
     : 0;
+
   return (
     <Link
       href="/cart"
