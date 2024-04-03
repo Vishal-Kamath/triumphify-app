@@ -35,12 +35,15 @@ const Header: FC = () => {
 
   const [open, setOpen] = useState(false);
 
+  // search
+  const [search, setSearch] = useState("");
+
   return (
     <>
       <div className="h-[7.75rem] md:h-[4.5rem]"></div>
       <div
         className={cn(
-          "padding-x fixed left-0 top-0 z-[999] w-full bg-white",
+          "padding-x fixed left-0 top-0 z-[995] w-full bg-white",
           isHidden && "hidden",
           !top && "border-b-1 border-slate-200 shadow-sm",
         )}
@@ -78,13 +81,19 @@ const Header: FC = () => {
               </Link>
             </div>
 
-            <SearchBar className="max-md:hidden" />
+            <SearchBar
+              value={search}
+              onValueChange={setSearch}
+              className="max-md:hidden"
+            />
             <div className="flex gap-3">
               <CartButton />
               <UserSection />
             </div>
           </div>
           <SearchBar
+            value={search}
+            onValueChange={setSearch}
             className={cn(
               "max-w-full md:hidden",
               isSearchHidden ? "hidden" : "",

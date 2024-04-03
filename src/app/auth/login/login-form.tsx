@@ -82,10 +82,10 @@ const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex h-full w-full max-w-sm flex-col items-center gap-6"
+        className="flex h-full w-full max-w-sm flex-col items-start gap-6"
       >
-        <div className="flex w-full flex-col items-center gap-2">
-          <h2 className="text-2xl font-semibold text-slate-950">
+        <div className="flex w-full flex-col items-start gap-2">
+          <h2 className="text-2xl font-semibold text-fuchsia-900">
             {inline ? "You seem to be Logged out" : "Welcome back!"}
           </h2>
           <p className="text-sm text-gray-500">
@@ -102,6 +102,7 @@ const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
                 <FormControl>
                   <Input
                     type="email"
+                    className="border-gray-300 bg-white/50 focus-visible:ring-fuchsia-300/50"
                     placeholder="johndoe@email.com"
                     {...field}
                   />
@@ -117,7 +118,12 @@ const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
               <FormItem className="w-full">
                 {/* <FormLabel>Password</FormLabel> */}
                 <FormControl>
-                  <Input type="password" placeholder="******" {...field} />
+                  <Input
+                    className="border-gray-300 bg-white/50 focus-visible:ring-fuchsia-300/50"
+                    type="password"
+                    placeholder="******"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -133,36 +139,42 @@ const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
         </div>
 
         {loading ? (
-          <Button disabled className="w-full">
+          <Button
+            disabled
+            className="w-full bg-fuchsia-400/20 text-black hover:bg-fuchsia-400/30"
+          >
             <AiOutlineLoading className="mr-2 h-4 w-4 animate-spin" />
-            Please wait..
+            Please wait...
           </Button>
         ) : (
-          <Button type="submit" className="w-full">
+          <Button
+            type="submit"
+            className="w-full bg-fuchsia-400/20 text-black hover:bg-fuchsia-400/30"
+          >
             Login
           </Button>
         )}
-        <Separator className="relative">
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-2 text-sm text-gray-400">
-            OR CONTINUE WITH
-          </span>
-        </Separator>
+        <div className="flex w-full max-w-sm items-center gap-3">
+          <Separator className="w-full shrink bg-gray-500" />
+          <span className="text-nowrap text-xs text-gray-800">OR</span>
+          <Separator className="w-full shrink bg-gray-500" />
+        </div>
 
         <Button
           variant="outline"
           type="button"
           onClick={handleGoogle}
-          className="w-full gap-2 text-gray-700 hover:text-gray-950"
+          className="w-full gap-3 border-gray-400 bg-transparent text-gray-700 hover:border-black  hover:bg-transparent hover:text-black"
         >
           <FaGoogle className="h-4 w-4" />
-          Google
+          <span>Continue with Google</span>
         </Button>
 
-        <div className="flex gap-1 text-sm text-gray-500">
+        <div className="flex gap-1 text-sm text-gray-600">
           <span>Don&apos;t have an account?</span>
           <Link
             href={`/auth/signup${redirectPath}`}
-            className="font-semibold hover:text-foreground hover:underline"
+            className="font-semibold hover:text-black hover:underline"
           >
             Sign up
           </Link>
