@@ -12,7 +12,7 @@ const SearchBar: FC<SearchProps> = ({ className }) => {
       )}
     >
       <input
-        type="text"
+        type="search"
         className="h-full w-full px-3 outline-none"
         placeholder="Search products..."
       />
