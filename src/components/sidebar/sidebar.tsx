@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import SidebarEmmiter from "./sidebar-event";
 import { cn } from "@/lib/utils";
 import { Separator } from "../ui/separator";
@@ -23,13 +23,18 @@ export const SidebarButton: FC<SidebarButtonProps> = ({
   ...props
 }) => {
   const [open, setOpen] = useState(defaulOpenState);
+  const [exist, setExist] = useState(false);
 
   sidebarManager.on("sidebar-event", (newState: boolean) => {
     setOpen(newState);
     onOpenChange && onOpenChange(newState);
   });
 
-  return (
+  sidebarManager.on("sidebar-exist", (newState: boolean) => {
+    setExist(newState);
+  });
+
+  return exist ? (
     <button
       className={className}
       onClick={() => {
@@ -38,7 +43,7 @@ export const SidebarButton: FC<SidebarButtonProps> = ({
     >
       {children}
     </button>
-  );
+  ) : null;
 };
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -52,6 +57,13 @@ export const Sidebar: FC<SidebarProps> = ({
   sidebarManager.on("sidebar-event", (newState: boolean) => {
     setOpen(newState);
   });
+
+  useEffect(() => {
+    sidebarManager.sidebarExist(true);
+    return () => {
+      sidebarManager.sidebarExist(false);
+    };
+  }, []);
 
   return (
     <>
