@@ -3,12 +3,8 @@
 import { useMe } from "@/lib/auth";
 import { isServer } from "@tanstack/react-query";
 import { FC, ReactNode } from "react";
-import { Dialog, DialogClose, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import LoginForm from "@/app/auth/login/login-form";
-import Link from "next/link";
-import { MoveLeft } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "../ui/button";
 import Logo from "../misc/logo";
 import Image from "next/image";
 
