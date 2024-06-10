@@ -100,19 +100,19 @@ const Marquee: FC<ComponentProps<"div">> = ({ className, ...props }) => {
           PILL TRIUMPHIFY THE PURPLE PILL TRIUMPHIFY THE PURPLE
         </h1>
       </motion.div>
-      {/* <motion.div
+      <motion.div
         className="track"
         variants={marqueeVariants}
         animate="animate"
       >
         <h1
           ref={reference}
-          className="m-0 text-nowrap p-0 text-[8rem] font-bold leading-none text-slate-500/35"
+          className="m-0 text-nowrap p-0 text-[8rem] font-bold leading-none text-slate-500/35 md:hidden"
         >
           TRIUMPHIFY THE PURPLE PILL TRIUMPHIFY THE PURPLE PILL TRIUMPHIFY THE
           PURPLE PILL TRIUMPHIFY THE PURPLE PILL
         </h1>
-      </motion.div> */}
+      </motion.div>
     </div>
   );
 };

@@ -88,6 +88,13 @@
   padding-right: max(calc(50vw - 35rem), 4vw);
 }
 
+.right-x {
+  right: max(calc(50vw - 35rem), 4vw);
+}
+.left-x {
+  left: max(calc(50vw - 35rem), 4vw);
+}
+
 .padding-2x {
   padding-left: max(calc(50vw - 35rem), 4vw);
   padding-right: max(calc(50vw - 35rem), 4vw);
