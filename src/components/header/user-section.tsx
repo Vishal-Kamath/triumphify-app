@@ -56,7 +56,7 @@ const UserSection: FC = () => {
   if (isLoading) return <Skeleton className="h-10 w-10 rounded-full" />;
   return !data || data.type !== "success" ? (
     <Link
-      className={buttonVariants({ variant: "link" })}
+      className={(buttonVariants({ variant: "link" }), "text-white")}
       href={`/auth/login${redirect}`}
     >
       Login

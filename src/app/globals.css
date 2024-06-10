@@ -119,3 +119,20 @@ input[type="search"].dark::-webkit-search-cancel-button {
   cursor: pointer;
   filter: invert(1);
 }
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar {
+  right: 0;
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d1d5db55;
+  border-radius: 8px;
+  width: 10px;
+  height: 10px
+}

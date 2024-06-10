@@ -1,12 +1,9 @@
-import Image from "next/image";
-import MainBanners from "./components/main.banner";
-import CategoryCarousel from "./components/category.carousel";
+import HeroSection from "./components/hero";
 
 export default function Home() {
   return (
-    <main className="pb-52">
-      <MainBanners />
-      <CategoryCarousel />
+    <main className="bg-slate-950 pb-52">
+      <HeroSection />
     </main>
   );
 }

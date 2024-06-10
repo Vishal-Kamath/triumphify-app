@@ -11,6 +11,7 @@ import CartButton from "./cart-button";
 import { SidebarButton } from "../sidebar/sidebar";
 import { buttonVariants } from "../ui/button";
 import { Menu, X } from "lucide-react";
+import Logo from "../misc/logo";
 
 const Header: FC = () => {
   const pathname = usePathname();
@@ -22,6 +23,7 @@ const Header: FC = () => {
 
   const isSearchHidden =
     pathname.startsWith("/auth") || pathname.startsWith("/tickets/");
+  const isDark = pathname === "/";
 
   const [top, setTop] = useState(true);
 
@@ -40,12 +42,13 @@ const Header: FC = () => {
 
   return (
     <>
-      <div className="h-[7.75rem] md:h-[4.5rem]"></div>
+      <div className="h-[7.25rem] md:h-[4.5rem]"></div>
       <div
         className={cn(
-          "padding-x fixed left-0 top-0 z-[995] w-full bg-white",
+          "padding-x fixed left-0 top-0 z-[995] w-full",
           isHidden && "hidden",
-          !top && "border-b-1 border-slate-200 shadow-sm",
+          isDark ? "bg-slate-950 text-white" : "bg-white",
+          !top && "border-b-1 border-slate-700 shadow-sm",
         )}
       >
         <header className="relative flex flex-col gap-3 py-4">
@@ -70,15 +73,7 @@ const Header: FC = () => {
                   <Menu className="h-6 w-6" />
                 )}
               </SidebarButton>
-              <Link href="/" className="text-xl">
-                <Image
-                  src="/logo.svg"
-                  alt="triumphify"
-                  width={500}
-                  height={200}
-                  className="aspect-auto h-8 w-full object-contain object-left"
-                />
-              </Link>
+              <Logo className="aspect-auto h-8 w-full fill-white object-contain object-left" />
             </div>
 
             <SearchBar

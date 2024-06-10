@@ -22,7 +22,7 @@ const CartButton: FC = () => {
   return (
     <Link
       href="/cart"
-      className="relative flex h-10 w-10 items-center justify-center rounded-full border-1 border-slate-200 text-slate-500 hover:border-slate-500 hover:bg-slate-50 hover:text-slate-700"
+      className="relative flex h-10 w-10 items-center justify-center rounded-full border-2 border-slate-400/40 text-slate-500 hover:border-slate-400/70 hover:bg-purple-900 hover:text-purple-400"
     >
       <ShoppingCart className="h-4 w-4" />
 

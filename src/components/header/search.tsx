@@ -10,7 +10,7 @@ const SearchBar: FC<SearchProps> = ({ className, value, onValueChange }) => {
   return (
     <div
       className={cn(
-        "ml-auto flex h-10 w-full max-w-lg items-center gap-2 overflow-hidden rounded-full border border-slate-200 text-slate-300 focus-within:border-slate-500 focus-within:text-slate-500",
+        "ml-auto flex h-10 w-full max-w-lg items-center gap-2 overflow-hidden rounded-full border-2 border-slate-400/40 text-slate-500 focus-within:border-slate-400/70 focus-within:text-slate-300",
         className,
       )}
     >
@@ -20,7 +20,7 @@ const SearchBar: FC<SearchProps> = ({ className, value, onValueChange }) => {
         type="search"
         value={value}
         onChange={(e) => onValueChange(e.target.value)}
-        className="h-full w-full pr-3 outline-none"
+        className="h-full w-full bg-transparent pr-3 outline-none"
         placeholder="Search products..."
       />
     </div>
