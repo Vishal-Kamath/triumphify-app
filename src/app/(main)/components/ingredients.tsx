@@ -118,7 +118,7 @@ const IngredientsSection: FC = () => {
               <AccordionContent className="text-xs text-slate-400 md:text-sm">
                 Shilajeet contains fulvic acid and more than 84 minerals
                 offering numerous health benefits. It functions as an
-                antioxidant to improve your body's immunity and memory, an
+                antioxidant to improve your body&apos;s immunity and memory, an
                 anti-inflammatory, an energy booster, and a diuretic to remove
                 excess fluid from your body. It is known to boost libido and
                 energy levels and is a top herb for sexual health problems. Used
