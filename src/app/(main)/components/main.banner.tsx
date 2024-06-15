@@ -17,18 +17,7 @@ import "./main.banner.css";
 const MainBanners: FC = () => {
   const { data: mainBanners } = useBanners("main");
   return mainBanners && Array.isArray(mainBanners) ? (
-    <div
-      style={{
-        boxShadow: "inset 0px 2px #0f172a05, inset 0px -2px #0f172a05",
-      }}
-      className="padding-2x banner flex max-h-screen items-center justify-center border-y-1 border-slate-300 bg-purple-50 pb-24 pt-12 lg:pb-32"
-    >
-      <div
-        style={{
-          boxShadow: "inset 0px 2px #0f172a05, inset 0px -2px #0f172a05",
-        }}
-        className="bg"
-      ></div>
+    <div className="padding-x w-full py-12">
       <Carousel
         opts={{
           skipSnaps: true,
