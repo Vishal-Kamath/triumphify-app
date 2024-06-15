@@ -1,0 +1,13 @@
+.counterspin {
+  display: hidden;
+  animation: counterspinner 21s linear infinite forwards;
+}
+
+@keyframes counterspinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
