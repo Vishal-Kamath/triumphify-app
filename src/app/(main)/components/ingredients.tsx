@@ -68,7 +68,7 @@ const IngredientsSection: FC = () => {
           : "none";
 
   return (
-    <div className="flex flex-col py-12">
+    <div className="flex flex-col gap-9 py-12">
       <div className="padding-x flex w-full items-center justify-center gap-6 text-slate-500">
         <Separator className="w-full max-w-12 bg-slate-700 sm:max-w-28" />
         <div className="flex items-center justify-center gap-3">
