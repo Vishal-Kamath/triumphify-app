@@ -116,12 +116,12 @@ const AccountEmailVerificationPage: FC = () => {
 
       <div className="flex flex-col gap-2 text-sm">
         {user?.data.emailVerified ? (
-          <h4 className="flex items-center gap-1 text-green-600">
+          <h4 className="flex items-center gap-1 text-green-400">
             <CheckCircle2 className="h-4 w-4" />
             <span className="font-medium">Email verified</span>
           </h4>
         ) : (
-          <h4 className="flex items-center gap-1 text-yellow-600">
+          <h4 className="flex items-center gap-1 text-yellow-400">
             <AlertCircle className="h-4 w-4" />
             <span className="font-medium">Email not verified</span>
           </h4>

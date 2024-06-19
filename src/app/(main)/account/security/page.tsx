@@ -103,14 +103,14 @@ const AccountSecurityPage: FC = () => {
     <main className="flex w-full max-w-xl flex-col gap-6 pb-12">
       <div className="flex flex-col">
         <h3 className="text-xl font-medium">Security</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-slate-500">
           Manage your password to keep your account secure.
         </p>
       </div>
-      <Separator />
+      <Separator className="bg-slate-300" />
       {user?.data.needs_to_reset_password ? (
         <div className="flex flex-col gap-6">
-          <p className="text-xs text-slate-600">
+          <p className="text-xs text-slate-400">
             It appears that you signed up for an account on our platform using
             Google authentication. We require all users who signed up via Google
             authentication to reset their passwords.
@@ -131,7 +131,9 @@ const AccountSecurityPage: FC = () => {
               name="currentPassword"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel>Current Password</FormLabel>
+                  <FormLabel className="text-slate-300">
+                    Current Password
+                  </FormLabel>
                   <FormControl>
                     <Input type="password" placeholder="******" {...field} />
                   </FormControl>
@@ -148,7 +150,7 @@ const AccountSecurityPage: FC = () => {
               name="newPassword"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel>New Password</FormLabel>
+                  <FormLabel className="text-slate-300">New Password</FormLabel>
                   <FormControl>
                     <Input type="password" placeholder="******" {...field} />
                   </FormControl>
@@ -164,7 +166,9 @@ const AccountSecurityPage: FC = () => {
               name="confirmNewPassword"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel>Confirm New Password</FormLabel>
+                  <FormLabel className="text-slate-300">
+                    Confirm New Password
+                  </FormLabel>
                   <FormControl>
                     <Input type="password" placeholder="******" {...field} />
                   </FormControl>
@@ -181,7 +185,7 @@ const AccountSecurityPage: FC = () => {
                 Please wait..
               </Button>
             ) : (
-              <Button type="submit" className="max-w-xs">
+              <Button type="submit" className="max-w-xs hover:bg-purple-900">
                 Change Password
               </Button>
             )}
