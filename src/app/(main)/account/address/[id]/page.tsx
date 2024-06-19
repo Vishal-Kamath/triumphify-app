@@ -99,20 +99,25 @@ const EditAddressPage: FC = () => {
     form.watch("email") !== address?.email;
 
   return (
-    <main className="flex w-full max-w-xl flex-col gap-6 pb-12">
+    <main className="flex w-full max-w-xl flex-col gap-6 pb-12 text-white">
       <div className="flex items-center gap-3">
         <Link
           href="/account/address"
-          className={buttonVariants({ variant: "ghost" })}
+          className={cn(
+            buttonVariants({ variant: "ghost" }),
+            "text-slate-400 hover:bg-slate-800 hover:text-white",
+          )}
         >
           <MoveLeft />
         </Link>
         <div className="flex flex-col">
           <h3 className="text-xl font-medium">Edit Address</h3>
-          <p className="text-sm text-gray-500">Enter in your address details</p>
+          <p className="text-sm text-slate-500">
+            Enter in your address details
+          </p>
         </div>
       </div>
-      <Separator />
+      <Separator className="bg-slate-400" />
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -123,11 +128,11 @@ const EditAddressPage: FC = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-black">Address Name</FormLabel>
+                <FormLabel className="text-slate-300">Address Name</FormLabel>
                 <FormControl>
                   <Input placeholder="John Doe" {...field} />
                 </FormControl>
-                <FormDescription className="text-xs text-slate-600">
+                <FormDescription className="text-xs text-slate-400">
                   Enter the full name.
                 </FormDescription>
                 <FormMessage />
@@ -139,11 +144,11 @@ const EditAddressPage: FC = () => {
             name="tel"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-black">Mobile Number</FormLabel>
+                <FormLabel className="text-slate-300">Mobile Number</FormLabel>
                 <FormControl>
                   <PhoneInput international defaultCountry="US" {...field} />
                 </FormControl>
-                <FormDescription className="text-xs text-slate-600">
+                <FormDescription className="text-xs text-slate-400">
                   Provide a mobile number where you can be reached, including
                   the country code if applicable.
                 </FormDescription>
@@ -157,7 +162,7 @@ const EditAddressPage: FC = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-black">Email</FormLabel>
+                <FormLabel className="text-slate-300">Email</FormLabel>
                 <FormControl>
                   <Input
                     type="email"
@@ -165,7 +170,7 @@ const EditAddressPage: FC = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription className="text-xs text-slate-600">
+                <FormDescription className="text-xs text-slate-400">
                   Enter your email address.
                 </FormDescription>
                 <FormMessage />
@@ -178,7 +183,7 @@ const EditAddressPage: FC = () => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel className="flex items-baseline justify-between">
-                  <p className="text-black">Street Address</p>
+                  <p className="text-slate-300">Street Address</p>
                   <p
                     className={cn(
                       "text-xs font-light",
@@ -196,7 +201,7 @@ const EditAddressPage: FC = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription className="text-xs text-slate-600">
+                <FormDescription className="text-xs text-slate-400">
                   Provide the street name and number where you reside or where
                   you want products to be sent.
                 </FormDescription>
@@ -209,11 +214,11 @@ const EditAddressPage: FC = () => {
             name="city"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-black">City</FormLabel>
+                <FormLabel className="text-slate-300">City</FormLabel>
                 <FormControl>
                   <Input placeholder="New york City" {...field} />
                 </FormControl>
-                <FormDescription className="text-xs text-slate-600">
+                <FormDescription className="text-xs text-slate-400">
                   Input the name of the city where your address is located.
                 </FormDescription>
                 <FormMessage />
@@ -225,11 +230,11 @@ const EditAddressPage: FC = () => {
             name="state"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-black">State</FormLabel>
+                <FormLabel className="text-slate-300">State</FormLabel>
                 <FormControl>
                   <Input placeholder="New York" {...field} />
                 </FormControl>
-                <FormDescription className="text-xs text-slate-600">
+                <FormDescription className="text-xs text-slate-400">
                   Specify the state or region where your address is situated.
                 </FormDescription>
                 <FormMessage />
@@ -241,11 +246,11 @@ const EditAddressPage: FC = () => {
             name="country"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-black">Country</FormLabel>
+                <FormLabel className="text-slate-300">Country</FormLabel>
                 <FormControl>
                   <Input placeholder="United States of America" {...field} />
                 </FormControl>
-                <FormDescription className="text-xs text-slate-600">
+                <FormDescription className="text-xs text-slate-400">
                   Input the name of the country where your address is located.
                 </FormDescription>
                 <FormMessage />
@@ -257,7 +262,7 @@ const EditAddressPage: FC = () => {
             name="zip"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-black">Zip code</FormLabel>
+                <FormLabel className="text-slate-300">Zip code</FormLabel>
                 <FormControl>
                   <Input
                     inputMode="numeric"
@@ -266,7 +271,7 @@ const EditAddressPage: FC = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription className="text-xs text-slate-600">
+                <FormDescription className="text-xs text-slate-400">
                   Enter the ZIP or postal code corresponding to your address.
                 </FormDescription>
                 <FormMessage />
@@ -282,7 +287,7 @@ const EditAddressPage: FC = () => {
             <Button
               disabled={!buttonIsEnabled}
               type="submit"
-              className="max-w-xs"
+              className="max-w-xs hover:bg-purple-900"
             >
               Update Address
             </Button>

@@ -75,20 +75,25 @@ const AddAddressPage: FC = () => {
   }
 
   return (
-    <main className="flex w-full max-w-xl flex-col gap-6 pb-12">
+    <main className="flex w-full max-w-xl flex-col gap-6 pb-12 text-white">
       <div className="flex items-center gap-3">
         <Link
           href="/account/address"
-          className={buttonVariants({ variant: "ghost" })}
+          className={cn(
+            buttonVariants({ variant: "ghost" }),
+            "text-slate-400 hover:bg-slate-800 hover:text-white",
+          )}
         >
           <MoveLeft />
         </Link>
         <div className="flex flex-col">
           <h3 className="text-xl font-medium">Add Address</h3>
-          <p className="text-sm text-gray-500">Enter in your address details</p>
+          <p className="text-sm text-slate-500">
+            Enter in your address details
+          </p>
         </div>
       </div>
-      <Separator />
+      <Separator className="bg-slate-400" />
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -99,7 +104,7 @@ const AddAddressPage: FC = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-black">Address Name</FormLabel>
+                <FormLabel className="text-slate-300">Address Name</FormLabel>
                 <FormControl>
                   <Input placeholder="John Doe" {...field} />
                 </FormControl>
@@ -115,7 +120,7 @@ const AddAddressPage: FC = () => {
             name="tel"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-black">Mobile Number</FormLabel>
+                <FormLabel className="text-slate-300">Mobile Number</FormLabel>
                 <FormControl>
                   <PhoneInput international defaultCountry="US" {...field} />
                 </FormControl>
@@ -133,7 +138,7 @@ const AddAddressPage: FC = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-black">Email</FormLabel>
+                <FormLabel className="text-slate-300">Email</FormLabel>
                 <FormControl>
                   <Input
                     type="email"
@@ -154,7 +159,7 @@ const AddAddressPage: FC = () => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel className="flex items-baseline justify-between">
-                  <p className="text-black">Street Address</p>
+                  <p className="text-slate-300">Street Address</p>
                   <p
                     className={cn(
                       "text-xs font-light",
@@ -185,7 +190,7 @@ const AddAddressPage: FC = () => {
             name="city"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-black">City</FormLabel>
+                <FormLabel className="text-slate-300">City</FormLabel>
                 <FormControl>
                   <Input placeholder="New york City" {...field} />
                 </FormControl>
@@ -201,7 +206,7 @@ const AddAddressPage: FC = () => {
             name="state"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-black">State</FormLabel>
+                <FormLabel className="text-slate-300">State</FormLabel>
                 <FormControl>
                   <Input placeholder="New York" {...field} />
                 </FormControl>
@@ -217,7 +222,7 @@ const AddAddressPage: FC = () => {
             name="country"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-black">Country</FormLabel>
+                <FormLabel className="text-slate-300">Country</FormLabel>
                 <FormControl>
                   <Input placeholder="United States of America" {...field} />
                 </FormControl>
@@ -233,7 +238,7 @@ const AddAddressPage: FC = () => {
             name="zip"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-black">Zip code</FormLabel>
+                <FormLabel className="text-slate-300">Zip code</FormLabel>
                 <FormControl>
                   <Input
                     inputMode="numeric"
@@ -255,7 +260,7 @@ const AddAddressPage: FC = () => {
               Please wait..
             </Button>
           ) : (
-            <Button type="submit" className="max-w-xs">
+            <Button type="submit" className="max-w-xs hover:bg-purple-900">
               Add Address
             </Button>
           )}

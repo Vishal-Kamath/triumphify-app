@@ -47,7 +47,10 @@ const UserAddressPage: FC = () => {
         <Input placeholder="Search addressess..." className="w-full" />
         <Link
           href="/account/address/add"
-          className={cn(buttonVariants({ variant: "outline" }), "gap-3")}
+          className={cn(
+            buttonVariants({ variant: "outline" }),
+            "gap-3 border-slate-600 bg-slate-800 hover:bg-slate-700 hover:text-white",
+          )}
         >
           <Plus className="w-4" />
           <span>Add Address</span>
@@ -57,21 +60,21 @@ const UserAddressPage: FC = () => {
       {addresses?.map((address) => (
         <div
           key={address.id}
-          className="flex flex-col gap-1 rounded-lg border-1 border-slate-200 p-6 shadow-sm"
+          className="flex flex-col gap-1 rounded-lg border-1 border-slate-600 bg-slate-900 p-6 shadow-sm"
         >
           <div className="flex items-baseline justify-between gap-3">
             <h5 className="text-xl font-medium">{address.name}</h5>
             <div className="flex gap-3">
               <Link
                 href={`/account/address/${address.id}`}
-                className="flex h-6 w-6 items-center justify-center rounded-full border-1 border-slate-200 text-slate-400 hover:border-slate-500 hover:text-slate-600"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-slate-400 hover:bg-sky-900/50 hover:text-white"
               >
                 <PencilLine className="h-4 w-4" />
               </Link>
               {deleteLoading ? (
                 <button
                   disabled
-                  className="flex h-6 w-6 items-center justify-center rounded-full border-1 border-slate-200 text-slate-400 hover:border-red-500 hover:text-red-600"
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-slate-400 hover:bg-red-900/40 hover:text-red-600"
                 >
                   <RotateCw className="h-4 w-4 animate-spin" />
                 </button>
@@ -79,7 +82,7 @@ const UserAddressPage: FC = () => {
                 <ConfirmDelete
                   confirmText={address.name}
                   deleteFn={() => deleteAddress(address.id)}
-                  className="flex h-6 w-6 items-center justify-center rounded-full border-1 border-slate-200 text-slate-400 hover:border-red-500 hover:text-red-600"
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-slate-400 hover:bg-red-900/40 hover:text-red-600"
                 >
                   <Trash2 className="h-4 w-4" />
                 </ConfirmDelete>
@@ -92,7 +95,7 @@ const UserAddressPage: FC = () => {
             <span>{address.tel}</span>
           </div>
 
-          <div className="mt-6 flex flex-col gap-1 text-sm text-slate-600">
+          <div className="mt-6 flex flex-col gap-1 text-sm text-slate-400">
             <p>{address.street_address}</p>
             <div className="flex items-center gap-3">
               <span>{address.city}</span>
