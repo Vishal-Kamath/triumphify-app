@@ -46,12 +46,12 @@ const ProductShowcaseTemplateB: FC<TemplateBContent> = ({
                 alt="Product Showcase"
                 width={400}
                 height={400}
-                className="w-full rounded-3xl border border-slate-300 bg-white object-contain shadow-md shadow-gray-950/5"
+                className="w-full rounded-3xl border border-slate-700 bg-slate-950 object-contain shadow-md shadow-gray-950/5"
               />
             </div>
             <div className="flex w-full flex-col gap-3">
-              <h3 className="text-2xl font-semibold text-gray-800">{title0}</h3>
-              <p className="text-sm text-gray-500">{description0}</p>
+              <h3 className="text-2xl font-semibold text-gray-200">{title0}</h3>
+              <p className="text-sm text-gray-400">{description0}</p>
             </div>
           </CarouselItem>
           <CarouselItem className="flex w-full flex-col gap-12 px-6 md:basis-1/2 lg:basis-1/3">
@@ -61,12 +61,12 @@ const ProductShowcaseTemplateB: FC<TemplateBContent> = ({
                 alt="Product Showcase"
                 width={400}
                 height={400}
-                className="w-full rounded-3xl border border-slate-300 bg-white object-contain shadow-md shadow-gray-950/5"
+                className="w-full rounded-3xl border border-slate-700 bg-slate-950 object-contain shadow-md shadow-gray-950/5"
               />
             </div>
             <div className="flex w-full flex-col gap-3">
-              <h3 className="text-2xl font-semibold text-gray-800">{title1}</h3>
-              <p className="text-sm text-gray-500">{description1}</p>
+              <h3 className="text-2xl font-semibold text-gray-200">{title1}</h3>
+              <p className="text-sm text-gray-400">{description1}</p>
             </div>
           </CarouselItem>
           <CarouselItem className="flex w-full flex-col gap-12 px-6 md:basis-1/2 lg:basis-1/3">
@@ -76,12 +76,12 @@ const ProductShowcaseTemplateB: FC<TemplateBContent> = ({
                 alt="Product Showcase"
                 width={400}
                 height={400}
-                className="w-full rounded-3xl border border-slate-300 bg-white object-contain shadow-md shadow-gray-950/5"
+                className="w-full rounded-3xl border border-slate-700 bg-slate-950 object-contain shadow-md shadow-gray-950/5"
               />
             </div>
             <div className="flex w-full flex-col gap-3">
-              <h3 className="text-2xl font-semibold text-gray-800">{title2}</h3>
-              <p className="text-sm text-gray-500">{description2}</p>
+              <h3 className="text-2xl font-semibold text-gray-200">{title2}</h3>
+              <p className="text-sm text-gray-400">{description2}</p>
             </div>
           </CarouselItem>
         </CarouselContent>

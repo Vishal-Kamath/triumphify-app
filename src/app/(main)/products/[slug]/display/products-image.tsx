@@ -10,14 +10,13 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 
 const ProductImages: FC<{ name: string; images: string[] }> = ({
   name,
   images,
 }) => {
   const [api, setApi] = useState<CarouselApi>();
-  // const slideIndex = api?.
 
   function selectSlide(index: number) {
     api?.scrollTo(index);
@@ -27,7 +26,10 @@ const ProductImages: FC<{ name: string; images: string[] }> = ({
     <div className="flex w-full flex-col gap-3">
       <Carousel
         setApi={setApi}
-        className="w-full overflow-hidden rounded-[2rem] border bg-white shadow-md shadow-gray-950/5"
+        style={{
+          boxShadow: "0 0 10px #c084fc77",
+        }}
+        className="w-full overflow-hidden rounded-[2rem] border-2 border-purple-900 bg-slate-950"
       >
         <CarouselContent>
           {images.map((image, index) => (
@@ -40,6 +42,7 @@ const ProductImages: FC<{ name: string; images: string[] }> = ({
                 alt={name + "image"}
                 width={1080}
                 height={1080}
+                className="aspect-square w-full object-contain object-center"
               />
             </CarouselItem>
           ))}
@@ -47,7 +50,7 @@ const ProductImages: FC<{ name: string; images: string[] }> = ({
         <CarouselNext className="right-3" />
         <CarouselPrevious className="left-3" />
 
-        <div className="absolute bottom-0 w-full bg-slate-50 bg-opacity-25 py-5">
+        <div className="absolute bottom-0 w-full bg-gradient-to-t from-slate-600/40 to-transparent py-5">
           <Carousel className={"mx-auto w-full max-w-[31.5rem] gap-6"}>
             <CarouselContent className="justify-center">
               {images.map((image, index) => (
@@ -62,7 +65,7 @@ const ProductImages: FC<{ name: string; images: string[] }> = ({
                     height={200}
                     onClick={() => selectSlide(index)}
                     className={cn(
-                      "aspect-square w-[4rem] cursor-pointer rounded-full bg-white",
+                      "aspect-square w-[4rem] cursor-pointer rounded-full border-2 border-slate-700 object-cover",
                     )}
                   />
                 </CarouselItem>

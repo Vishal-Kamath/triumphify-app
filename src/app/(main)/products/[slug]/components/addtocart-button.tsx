@@ -1,13 +1,13 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { invalidateAllCarts, useAllCart } from "@/lib/cart";
 import axios from "axios";
-import { Minus, Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
+import { Minus, Plus } from "lucide-react";
+import CartWindow from "./cart-window";
 
 const AddToCartButton: FC<{ productId: string; variationId: string }> = ({
   productId,
@@ -16,8 +16,16 @@ const AddToCartButton: FC<{ productId: string; variationId: string }> = ({
   const { toast } = useToast();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [deleteLoading, setdeleteLoading] = useState(false);
   const [quantityLoading, setQuantityLoading] = useState(false);
+
+  const [open, setOpen] = useState(true);
+  const [CartWindowName, setCartWindowName] = useState("");
+  const [CartWindowImage, setCartWindowImage] = useState("");
+  const [CartWindowVariationId, setCartWindowVariationId] = useState("");
+
+  useEffect(() => {
+    console.log("CE", CartWindowVariationId);
+  }, [CartWindowVariationId]);
 
   const { data: carts } = useAllCart();
   const foundInCart = Array.isArray(carts)
@@ -31,7 +39,13 @@ const AddToCartButton: FC<{ productId: string; variationId: string }> = ({
     if (!productId || !variationId) return;
     setLoading(true);
     axios
-      .post(
+      .post<{
+        data: {
+          name: string;
+          variationId: string;
+          image: string;
+        };
+      }>(
         `${process.env.ENDPOINT}/api/cart`,
         {
           productId,
@@ -46,12 +60,12 @@ const AddToCartButton: FC<{ productId: string; variationId: string }> = ({
       )
       .then((res) => {
         setLoading(false);
-        toast({
-          title: res.data.title,
-          description: res.data.description,
-          variant: res.data.type,
-        });
+        setCartWindowImage(res.data.data.image);
+        setCartWindowName(res.data.data.name);
+        setCartWindowVariationId(res.data.data.variationId);
+        setOpen(true);
         invalidateAllCarts();
+        console.log(res.data);
         // router.push("/cart");
       })
       .catch((err) => {
@@ -70,13 +84,13 @@ const AddToCartButton: FC<{ productId: string; variationId: string }> = ({
     );
     if (!userWantsToDeleteCartItem) return;
 
-    setdeleteLoading(true);
+    setQuantityLoading(true);
     axios
       .delete(`${process.env.ENDPOINT}/api/cart/${foundInCart?.id}`, {
         withCredentials: true,
       })
       .then((res) => {
-        setdeleteLoading(false);
+        setQuantityLoading(false);
         toast({
           title: res.data.title,
           description: res.data.description,
@@ -85,7 +99,7 @@ const AddToCartButton: FC<{ productId: string; variationId: string }> = ({
         invalidateAllCarts();
       })
       .catch((err) => {
-        setdeleteLoading(false);
+        setQuantityLoading(false);
         toast({
           title: err?.response?.data?.title || "Error",
           description: err?.response?.data?.description,
@@ -123,41 +137,60 @@ const AddToCartButton: FC<{ productId: string; variationId: string }> = ({
       });
   };
 
-  return foundInCart?.quantity ? (
-    quantityLoading ? (
-      <div className="flex h-10 w-full max-w-xs items-center justify-between rounded-full border-1 border-slate-300 px-3">
-        <AiOutlineLoading className="h-4 w-4 animate-spin" />
-      </div>
-    ) : (
-      <div className="flex h-10 w-full max-w-xs items-center justify-between rounded-full border-1 border-slate-300 px-3">
-        <Plus
-          onClick={handleUpdateQuantity("plus")}
-          className="h-4 w-4 cursor-pointer text-slate-600"
-        />
-        <span>{foundInCart.quantity}</span>
-        <Minus
-          onClick={() =>
-            foundInCart.quantity === 1
-              ? handleRemovefromCart()
-              : handleUpdateQuantity("minus")()
-          }
-          className="h-4 w-4 cursor-pointer text-slate-600"
-        />
-      </div>
-    )
-  ) : loading ? (
-    <Button disabled className="w-full max-w-xs rounded-full">
-      <AiOutlineLoading className="mr-2 h-4 w-4 animate-spin" />
-      Please wait..
-    </Button>
-  ) : (
-    <Button
-      onClick={handleAddToCart}
-      disabled={!productId || !variationId}
-      className="w-full max-w-xs rounded-full"
-    >
-      Add to Cart
-    </Button>
+  return (
+    <>
+      {loading ? (
+        <button
+          disabled
+          className="group flex h-12 items-center justify-center gap-3 rounded-md bg-slate-700 hover:bg-slate-600"
+        >
+          <AiOutlineLoading className="mr-2 h-4 w-4 animate-spin" />
+          Please wait..
+        </button>
+      ) : foundInCart?.variation.id === variationId ? (
+        quantityLoading ? (
+          <div className="group flex h-12 w-full items-center justify-evenly gap-3 rounded-md border-2 border-slate-700 px-4 text-slate-900">
+            <AiOutlineLoading className="h-4 w-4 animate-spin" />
+          </div>
+        ) : (
+          <div className="group flex w-full items-center justify-center gap-3 overflow-hidden rounded-md border-2 border-slate-700 p-0 text-white">
+            <button
+              onClick={handleUpdateQuantity("plus")}
+              className="flex h-12 w-full items-center justify-center bg-slate-700 text-slate-200 hover:bg-purple-600 hover:text-purple-300"
+            >
+              <Plus className="h-4 w-4 cursor-pointer" />
+            </button>
+            <span className="w-full text-center">{foundInCart.quantity}</span>
+            <button
+              onClick={() =>
+                foundInCart.quantity === 1
+                  ? handleRemovefromCart()
+                  : handleUpdateQuantity("minus")()
+              }
+              className="flex h-12 w-full items-center justify-center bg-slate-700 text-slate-200 hover:bg-purple-600 hover:text-purple-300"
+            >
+              <Minus className="h-4 w-4 cursor-pointer" />
+            </button>
+          </div>
+        )
+      ) : (
+        <button
+          onClick={handleAddToCart}
+          disabled={!productId || !variationId}
+          className="group flex h-12 items-center justify-center gap-3 rounded-md bg-slate-700 hover:bg-slate-600"
+        >
+          Add to Cart
+        </button>
+      )}
+      <CartWindow
+        open={open}
+        setOpen={setOpen}
+        productId={productId}
+        variationId={CartWindowVariationId}
+        image={CartWindowImage}
+        name={CartWindowName}
+      />
+    </>
   );
 };
 

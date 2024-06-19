@@ -11,8 +11,8 @@ const ProductShowcaseTemplateA: FC<TemplateAContent> = ({
   return (
     <div className="padding-x relative z-0 flex w-full items-center gap-12 overflow-hidden py-28 max-lg:flex-col">
       <div className="flex w-full flex-col gap-3">
-        <h3 className="text-4xl font-semibold text-gray-800">{title}</h3>
-        <p className="text-sm text-gray-600">{description}</p>
+        <h3 className="text-4xl font-semibold text-gray-200">{title}</h3>
+        <p className="text-sm text-gray-400">{description}</p>
       </div>
       <div className="relative w-full">
         <Image
@@ -20,7 +20,7 @@ const ProductShowcaseTemplateA: FC<TemplateAContent> = ({
           alt="Product Showcase"
           width={400}
           height={400}
-          className="w-full rounded-3xl border border-slate-300 bg-white object-contain shadow-md shadow-gray-950/5"
+          className="w-full rounded-3xl border border-slate-600 bg-slate-950 object-contain shadow-md shadow-gray-950/5"
         />
         <Image
           src="/splatter-1.svg"

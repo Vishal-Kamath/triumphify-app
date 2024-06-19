@@ -9,9 +9,9 @@ import { FC } from "react";
 
 const ProductLoadingPage: FC = () => {
   return (
-    <div className="padding-x flex items-start gap-9 max-lg:flex-col">
+    <div className="padding-x flex w-full items-start gap-9 max-lg:flex-col">
       <Skeleton className="aspect-square h-full w-full rounded-[2rem]" />
-      <div className="flex w-2/3 flex-col gap-6 pt-12">
+      <div className="flex w-full flex-col gap-6 pt-12 lg:w-2/3">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
             <Skeleton className="h-6 w-[10rem]" />
@@ -43,11 +43,6 @@ const ProductLoadingPage: FC = () => {
             </AccordionItem>
           ))}
         </Accordion>
-
-        <div className="flex gap-3">
-          <Skeleton className="h-10 w-full rounded-full" />
-          <Skeleton className="h-10 w-full rounded-full" />
-        </div>
       </div>
     </div>
   );

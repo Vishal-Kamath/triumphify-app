@@ -23,7 +23,7 @@ const Header: FC = () => {
 
   const isSearchHidden =
     pathname.startsWith("/auth") || pathname.startsWith("/tickets/");
-  const isDark = pathname === "/";
+  const isDark = pathname === "/" || pathname.startsWith("/products");
 
   const [top, setTop] = useState(true);
 

@@ -65,7 +65,7 @@ const LikeButton: FC<{ productId: string; className?: string }> = ({
         disabled
         className={cn(
           className,
-          "ml-auto flex h-8 w-8 items-center justify-center rounded-full border-1 border-slate-300 text-slate-400 hover:border-slate-700 hover:fill-red-600 hover:text-red-600",
+          "ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-slate-500 hover:bg-red-950 hover:fill-red-600 hover:text-red-600",
         )}
       >
         <RotateCw className="h-4 w-4 animate-spin" />
@@ -78,7 +78,7 @@ const LikeButton: FC<{ productId: string; className?: string }> = ({
         disabled
         className={cn(
           className,
-          "ml-auto flex h-8 w-8 items-center justify-center rounded-full border-1 border-slate-300 text-slate-400 hover:border-slate-700 hover:fill-red-600 hover:text-red-600",
+          "ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-slate-500 hover:bg-red-950 hover:fill-red-600 hover:text-red-600",
         )}
       >
         <RotateCw className="h-4 w-4 animate-spin" />
@@ -106,7 +106,7 @@ const LikeButton: FC<{ productId: string; className?: string }> = ({
       onClick={handleRemoveFromWishlist}
       className={cn(
         className,
-        "ml-auto flex h-8 w-8 items-center justify-center rounded-full border-1 border-slate-300 text-red-600 hover:border-slate-700",
+        "ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-red-600 hover:bg-red-950",
       )}
     >
       <FaHeart className="text-re h-4 w-4" />
@@ -116,7 +116,7 @@ const LikeButton: FC<{ productId: string; className?: string }> = ({
       onClick={handleAddToWishlist}
       className={cn(
         className,
-        "ml-auto flex h-8 w-8 items-center justify-center rounded-full border-1 border-slate-300 text-slate-400 hover:border-slate-700 hover:fill-red-600 hover:text-red-600",
+        "ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-slate-500 hover:bg-red-950 hover:fill-red-600 hover:text-red-600",
       )}
     >
       <FaRegHeart className="h-4 w-4" />

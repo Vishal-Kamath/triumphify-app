@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Marquee from "./marquee";
 import Image from "next/image";
+import Link from "next/link";
 
 const HeroSection: FC = () => {
   return (
@@ -31,6 +32,17 @@ const HeroSection: FC = () => {
             satisfaction, promoting sexual health without artificial additives.
             Feel confident and fulfilled today.
           </p>
+          <div className="flex gap-6">
+            <Link href="/products/the-purple-pill">
+              <button className="rounded-sm bg-purple-600 px-4 py-3 text-sm text-white hover:bg-purple-500">
+                GET STARTED
+              </button>
+            </Link>
+
+            <button className="rounded-sm border-2 border-purple-600 px-4 py-3 text-sm text-white hover:bg-purple-500/25">
+              KNOW MORE
+            </button>
+          </div>
         </div>
         <Image
           src="/home/hero-image.svg"

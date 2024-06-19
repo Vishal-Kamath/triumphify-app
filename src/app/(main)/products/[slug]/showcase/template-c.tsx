@@ -25,7 +25,7 @@ const ProductShowcaseTemplateC: FC<TemplateCContent> = ({
             alt="Product Showcase"
             width={400}
             height={400}
-            className="w-full rounded-3xl border border-slate-300 bg-white object-contain shadow-md shadow-gray-950/5"
+            className="w-full rounded-3xl border border-slate-700 bg-slate-950 object-contain shadow-md shadow-gray-950/5"
           />
           <Image
             src="/splatter-1.svg"
@@ -36,13 +36,13 @@ const ProductShowcaseTemplateC: FC<TemplateCContent> = ({
           />
         </div>
         <div className="flex w-full flex-col gap-3">
-          <h3 className="text-4xl font-semibold text-gray-800">{title0}</h3>
+          <h3 className="text-4xl font-semibold text-gray-200">{title0}</h3>
           <p className="text-sm text-gray-400">{description0}</p>
         </div>
       </div>
       <div className="flex w-full gap-16 max-lg:flex-col-reverse">
         <div className="flex w-full flex-col gap-3">
-          <h3 className="text-4xl font-semibold text-gray-800">{title1}</h3>
+          <h3 className="text-4xl font-semibold text-gray-200">{title1}</h3>
           <p className="text-sm text-gray-400">{description1}</p>
         </div>
         <div className="w-full">
@@ -51,7 +51,7 @@ const ProductShowcaseTemplateC: FC<TemplateCContent> = ({
             alt="Product Showcase"
             width={400}
             height={400}
-            className="w-full rounded-3xl border border-slate-300 bg-white object-contain shadow-md shadow-gray-950/5"
+            className="w-full rounded-3xl border border-slate-700 bg-slate-950 object-contain shadow-md shadow-gray-950/5"
           />
         </div>
       </div>

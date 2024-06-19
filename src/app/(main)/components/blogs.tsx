@@ -46,16 +46,15 @@ const BlogsSections: FC = () => {
                   height={1500}
                   className="aspect-video w-full overflow-hidden border-1 border-slate-500 object-cover"
                 />
-                <div className="flex h-[5.25rem] flex-col">
+                <div className="flex flex-col gap-3">
+                  <p className="text-right text-xs text-slate-400">
+                    {dateFormater(new Date(blog.created_at))}
+                  </p>
                   <h4 className="text-lg font-semibold text-slate-300">
                     {blog.title.length > 43
                       ? blog.title.slice(0, 43) + "..."
                       : blog.title}
                   </h4>
-
-                  <p className="mt-auto text-right text-xs text-slate-400">
-                    {dateFormater(new Date(blog.created_at))}
-                  </p>
                 </div>
               </Link>
             </CarouselItem>
