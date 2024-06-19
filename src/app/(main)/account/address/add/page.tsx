@@ -78,7 +78,7 @@ const AddAddressPage: FC = () => {
     <main className="flex w-full max-w-xl flex-col gap-6 pb-12 text-white">
       <div className="flex items-center gap-3">
         <Link
-          href="/account/address"
+          href={redirect ? redirect : "/account/address"}
           className={cn(
             buttonVariants({ variant: "ghost" }),
             "text-slate-400 hover:bg-slate-800 hover:text-white",

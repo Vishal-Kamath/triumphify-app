@@ -5,10 +5,9 @@ import Total from "../total";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { MoveLeft, Plus } from "lucide-react";
+import { ChevronRight, MoveLeft, Plus } from "lucide-react";
 import { useAddressState } from "@/lib/hooks/use-address";
 import AddressDropdown from "./addressDropdown";
-import { useRouter } from "next/navigation";
 import { useAddresses } from "@/lib/address";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -94,33 +93,26 @@ const UserCartAddress: FC = () => {
             href="/cart"
             className={cn(
               buttonVariants({ variant: "secondary" }),
-              "gap-3 rounded-full",
+              "gap-3 rounded-md bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-300",
             )}
           >
             <MoveLeft className="w-4" />
             <span>Back</span>
           </Link>
-          <Link
-            href={`/account/address/add?redirect=${encodeURIComponent(
-              "/cart/address",
-            )}`}
-            className={cn(
-              buttonVariants({ variant: "outline" }),
-              "gap-3 rounded-full",
-            )}
-          >
-            <Plus className="w-4" />
-            <span>Add Address</span>
-          </Link>
         </div>
 
-        <p className="text-justify text-sm text-gray-500">
-          Please fill in both the billing and shipping addresses accurately to
-          ensure timely delivery. Contact our support team for assistance. Thank
-          you for choosing Triumphify!
-        </p>
+        <div className="flex flex-col gap-2">
+          <h2 className="text-xl font-semibold text-slate-300">
+            Select shipping and billing address
+          </h2>
+          <p className="text-justify text-sm text-gray-500">
+            Please fill in both the billing and shipping addresses accurately to
+            ensure timely delivery. Contact our support team for assistance.
+            Thank you for choosing Triumphify!
+          </p>
+        </div>
 
-        <div className="mt-6 flex w-full flex-col gap-3 lg:flex-row">
+        <div className="mt-6 flex w-full flex-col gap-6 lg:flex-row">
           <AddressDropdown
             main={
               shippingInAddresses || {
@@ -148,6 +140,15 @@ const UserCartAddress: FC = () => {
             openAndClose={openAndCloseBilling}
           />
         </div>
+        <Link
+          href={`/account/address/add?redirect=${encodeURIComponent(
+            "/cart/address",
+          )}`}
+          className="mt-6 flex justify-between border-b-1 border-slate-500 p-4 hover:border-slate-400"
+        >
+          <span>Add a new Address</span>
+          <ChevronRight className="h-4 w-4" />
+        </Link>
       </div>
       <Total>
         {!!shippingInAddresses && !!billingInAddresses ? (
@@ -155,7 +156,7 @@ const UserCartAddress: FC = () => {
             href="/cart/payment"
             className={cn(
               buttonVariants({ variant: "default" }),
-              "w-full rounded-full",
+              "w-full rounded-md hover:bg-purple-900",
             )}
           >
             Continue
@@ -163,7 +164,7 @@ const UserCartAddress: FC = () => {
         ) : (
           <Button
             onClick={fillAllDetails}
-            className="w-full cursor-not-allowed rounded-full bg-slate-700"
+            className="w-full cursor-not-allowed rounded-md bg-slate-700"
           >
             Continue
           </Button>
