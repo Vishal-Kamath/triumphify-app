@@ -24,7 +24,7 @@ const CartPage: FC = () => {
           href="/cart/address"
           className={cn(
             buttonVariants({ variant: "default" }),
-            "w-full rounded-full",
+            "w-full rounded-md hover:bg-purple-900",
           )}
         >
           Continue

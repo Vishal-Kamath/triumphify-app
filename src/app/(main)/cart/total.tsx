@@ -38,13 +38,13 @@ const Total: FC<{ children?: ReactNode }> = ({ children }) => {
 
   if (isLoading)
     return (
-      <div className="flex w-full max-w-sm flex-col gap-2 border-l-1 border-slate-200 px-3 pl-6">
+      <div className="flex w-full max-w-sm flex-col gap-2 border-l-1 border-slate-700 px-3 pl-6">
         Loading...
       </div>
     );
   if (!carts)
     return (
-      <div className="flex w-full max-w-sm flex-col gap-2 border-l-1 border-slate-200 px-3 pl-6">
+      <div className="flex w-full max-w-sm flex-col gap-2 border-l-1 border-slate-700 px-3 pl-6">
         Something went wrong
       </div>
     );
@@ -53,14 +53,14 @@ const Total: FC<{ children?: ReactNode }> = ({ children }) => {
   return (
     <div
       className={cn(
-        "flex w-full flex-col gap-2 border-slate-300 bg-white text-sm",
-        "padding-x border-slate-400 max-md:fixed max-md:bottom-0 max-md:left-0 max-md:rounded-t-xl max-md:border-t-1 max-md:pb-6",
-        "md:max-w-sm md:border-l-1 md:border-slate-300 md:px-3 md:pl-6",
+        "flex w-full flex-col gap-2 border-slate-700 bg-slate-950 text-sm text-white",
+        "padding-x border-slate-600 max-md:fixed max-md:bottom-0 max-md:left-0 max-md:rounded-t-xl max-md:border-t-1 max-md:pb-6",
+        "md:max-w-sm md:border-none md:px-0",
       )}
     >
       <button
         onClick={() => setOpen(!open)}
-        className="flex justify-center pt-3 text-slate-400 hover:text-slate-700 md:hidden"
+        className="flex justify-center pt-3 text-slate-600 hover:text-slate-300 md:hidden"
       >
         {open ? (
           <ChevronDown className="size-6" />
@@ -92,7 +92,7 @@ const Total: FC<{ children?: ReactNode }> = ({ children }) => {
               </span>
             </div>
           )} */}
-          <div className="border-t-[1px] border-gray-300 pt-5 font-bold">
+          <div className="border-t-[1px] border-gray-700 pt-5 font-bold">
             <span>Total Amount</span>
             <span>
               &#36;

@@ -27,7 +27,8 @@ const Header: FC = () => {
     pathname === "/" ||
     pathname.startsWith("/products") ||
     pathname.startsWith("/account") ||
-    pathname.startsWith("/wishlist");
+    pathname.startsWith("/wishlist") ||
+    pathname.startsWith("/cart");
 
   const [top, setTop] = useState(true);
 
