@@ -51,6 +51,7 @@ const AccountProfile: FC = () => {
   const { data: user, isLoading } = useMe();
 
   const [loading, setLoading] = useState(false);
+  const [popoverOpen, setPopoverOpen] = useState(false);
 
   const form = useForm<AccountProfileFormType>({
     resolver: zodResolver(accountProfileFormSchema),
@@ -133,11 +134,11 @@ const AccountProfile: FC = () => {
     <main className="flex w-full max-w-xl flex-col gap-6 pb-12">
       <div className="flex flex-col">
         <h3 className="text-xl font-medium">Profile</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-slate-500">
           customize how your profile details.
         </p>
       </div>
-      <Separator />
+      <Separator className="bg-slate-400" />
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -241,14 +242,18 @@ const AccountProfile: FC = () => {
             render={({ field }) => (
               <FormItem className="flex flex-col">
                 <FormLabel className="text-black">Date of birth</FormLabel>
-                <Popover>
+                <Popover
+                  open={popoverOpen}
+                  onOpenChange={setPopoverOpen}
+                  defaultOpen={popoverOpen}
+                >
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
                         variant={"outline"}
                         className={cn(
-                          "w-full pl-3 text-left font-normal",
-                          !field.value && "text-muted-foreground",
+                          "w-full border-slate-600 bg-slate-700/50 pl-3 text-left font-normal text-white hover:bg-slate-700 hover:text-white",
+                          !field.value && "text-slate-500",
                         )}
                       >
                         {field.value ? (
@@ -260,7 +265,10 @@ const AccountProfile: FC = () => {
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
+                  <PopoverContent
+                    className="w-auto overflow-hidden border-slate-600 bg-slate-900 p-0"
+                    align="start"
+                  >
                     <DateInput
                       value={field.value || undefined}
                       onChange={field.onChange}
@@ -282,6 +290,15 @@ const AccountProfile: FC = () => {
                       onMonthChange={field.onChange}
                       ISOWeek
                     />
+
+                    <div className="flex w-full justify-end px-4 pb-4">
+                      <button
+                        onClick={() => setPopoverOpen(false)}
+                        className="text-slate-300 underline-offset-1 hover:text-white hover:underline"
+                      >
+                        Done
+                      </button>
+                    </div>
                   </PopoverContent>
                 </Popover>
                 <FormDescription className="text-xs">
@@ -299,7 +316,7 @@ const AccountProfile: FC = () => {
           ) : (
             <Button
               type="submit"
-              className="max-w-xs"
+              className="max-w-xs hover:bg-purple-900"
               disabled={!buttonIsEnabled}
             >
               Save Changes

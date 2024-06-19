@@ -26,7 +26,7 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> =
       <RPNInput.default
         ref={ref}
         className={cn(
-          "flex rounded-md focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-slate-200 focus-within:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+          "flex rounded-md focus-within:outline-none focus-within:ring-2 focus-within:ring-purple-600/50 disabled:cursor-not-allowed disabled:opacity-50",
           className,
         )}
         flagComponent={FlagComponent}
@@ -52,7 +52,7 @@ const InputComponent = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, ...props }, ref) => (
     <Input
       className={cn(
-        "focus-visible:ring-none rounded-e-lg rounded-s-none focus-visible:ring-transparent",
+        "focus-visible:ring-none rounded-e-lg rounded-s-none border-gray-600 bg-gray-700/50 focus-visible:ring-transparent",
         className,
       )}
       {...props}
@@ -86,6 +86,34 @@ const CountrySelect = ({
 
   const [search, setSearch] = React.useState("");
 
+  const filteredContryList = options
+    .filter((x) => x.label.toLowerCase().includes(search.toLowerCase()))
+    .map((option) => (
+      <button
+        type="button"
+        className={cn(
+          "flex w-full items-center justify-start gap-3 border-none px-3 py-2 text-left outline-none",
+          option.value === value ? "bg-sky-950" : "bg-none",
+        )}
+        key={option.value}
+        onClick={() => handleSelect(option.value)}
+      >
+        <FlagComponent country={option.value} countryName={option.label} />
+        <span className="text-sm">{option.label}</span>
+        {option.value && (
+          <p className="ml-auto text-sm text-slate-400">
+            {`+${RPNInput.getCountryCallingCode(option.value)}`}
+          </p>
+        )}
+        <CheckIcon
+          className={cn(
+            "h-4 w-4",
+            option.value === value ? "opacity-100" : "opacity-0",
+          )}
+        />
+      </button>
+    ));
+
   return (
     <Popover onOpenChange={(open) => !open && setSearch("")}>
       <PopoverTrigger asChild>
@@ -93,7 +121,7 @@ const CountrySelect = ({
           type="button"
           variant={"outline"}
           className={cn(
-            "flex gap-1 rounded-e-none rounded-s-lg border-r-0 pl-3 pr-1",
+            "flex gap-1 rounded-e-none rounded-s-md border-r-0 border-gray-600 bg-gray-700/50 pl-3 pr-1 hover:bg-gray-700/80",
           )}
           disabled={disabled}
         >
@@ -106,46 +134,23 @@ const CountrySelect = ({
           />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="flex w-[300px] flex-col p-0">
-        <div className="p-2 shadow-md shadow-slate-900/5">
+      <PopoverContent className="flex w-[300px] flex-col border-slate-600 bg-slate-900 p-0 text-white">
+        <div className="border-b-1 border-slate-600 p-2">
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="outline-none focus-visible:ring-transparent"
+            className="border-gray-600 bg-gray-700/50 outline-none focus-visible:ring-transparent"
             placeholder="Search by country name..."
           />
         </div>
-        <div className="scrollbar-none flex max-h-52 flex-col overflow-y-auto pt-2">
-          {options
-            .filter((x) => x.label.toLowerCase().includes(search.toLowerCase()))
-            .map((option) => (
-              <button
-                type="button"
-                className={cn(
-                  "flex w-full items-center justify-start gap-3 rounded-md border-none px-3 py-2 text-left outline-none",
-                  option.value === value ? "bg-sky-50" : "bg-none",
-                )}
-                key={option.value}
-                onClick={() => handleSelect(option.value)}
-              >
-                <FlagComponent
-                  country={option.value}
-                  countryName={option.label}
-                />
-                <span className="text-sm">{option.label}</span>
-                {option.value && (
-                  <p className="ml-auto text-sm text-foreground/50">
-                    {`+${RPNInput.getCountryCallingCode(option.value)}`}
-                  </p>
-                )}
-                <CheckIcon
-                  className={cn(
-                    "h-4 w-4",
-                    option.value === value ? "opacity-100" : "opacity-0",
-                  )}
-                />
-              </button>
-            ))}
+        <div className="flex max-h-52 flex-col overflow-y-auto pt-2 scrollbar-none">
+          {!!filteredContryList.length ? (
+            filteredContryList
+          ) : (
+            <div className="w-full py-4 text-center text-sm">
+              No Items found
+            </div>
+          )}
         </div>
       </PopoverContent>
     </Popover>
@@ -156,7 +161,7 @@ const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
   const Flag = flags[country];
 
   return (
-    <span className="flex h-4 w-6 overflow-hidden rounded-sm bg-foreground/20">
+    <span className="flex h-4 w-6 overflow-hidden rounded-sm bg-slate-700">
       {Flag && <Flag title={countryName} />}
     </span>
   );

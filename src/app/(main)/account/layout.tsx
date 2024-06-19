@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 const AccountLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <AuthProvider>
-      <div className="padding-x flex flex-col gap-6 pb-24 pt-9">
+      <div className="padding-x flex flex-col gap-6 bg-slate-950 pb-24 pt-9 text-white">
         <div className="flex flex-col gap-2">
           <h2 className="text-2xl font-semibold">Account</h2>
           <p className="text-sm text-gray-500">

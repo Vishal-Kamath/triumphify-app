@@ -1,6 +1,5 @@
 "use client";
 
-import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -35,10 +34,10 @@ const AccountNav: FC = () => {
           id={element.name + index}
           href={element.href}
           className={cn(
-            buttonVariants({
-              variant: pathname.startsWith(element.href) ? "secondary" : "link",
-            }),
-            "md:justify-start",
+            "flex h-10 w-full items-center justify-center px-4 text-slate-300 md:justify-start",
+            pathname.startsWith(element.href)
+              ? "rounded-sm bg-slate-900 hover:bg-slate-800"
+              : "underline-offset-2 hover:underline",
           )}
         >
           {element.name}

@@ -428,6 +428,36 @@ video {
  
     --radius: 0.5rem;
   }
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+ 
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
   * {
   border-color: hsl(var(--border));
 }
@@ -1749,6 +1779,13 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(71 85 105 / var(--tw-bg-opacity));
 }
+.bg-slate-700\/50 {
+  background-color: rgb(51 65 85 / 0.5);
+}
+.bg-purple-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(126 34 206 / var(--tw-bg-opacity));
+}
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
 }
@@ -2011,6 +2048,9 @@ video {
 }
 .pt-\[7\.75rem\] {
   padding-top: 7.75rem;
+}
+.pb-2 {
+  padding-bottom: 0.5rem;
 }
 .text-left {
   text-align: left;
@@ -2307,11 +2347,21 @@ video {
   --tw-text-opacity: 1;
   color: rgb(133 77 14 / var(--tw-text-opacity));
 }
+.text-slate-100 {
+  --tw-text-opacity: 1;
+  color: rgb(241 245 249 / var(--tw-text-opacity));
+}
 .underline {
   text-decoration-line: underline;
 }
 .underline-offset-4 {
   text-underline-offset: 4px;
+}
+.underline-offset-2 {
+  text-underline-offset: 2px;
+}
+.underline-offset-1 {
+  text-underline-offset: 1px;
 }
 .opacity-0 {
   opacity: 0;
@@ -2391,6 +2441,9 @@ video {
 }
 .ring-offset-background {
   --tw-ring-offset-color: hsl(var(--background));
+}
+.ring-offset-slate-700\/50 {
+  --tw-ring-offset-color: rgb(51 65 85 / 0.5);
 }
 .blur {
   --tw-blur: blur(8px);
@@ -2596,6 +2649,9 @@ input[type="search"].dark::-webkit-search-cancel-button {
 }
 .focus-within\:ring-white\/50:focus-within {
   --tw-ring-color: rgb(255 255 255 / 0.5);
+}
+.focus-within\:ring-purple-600\/50:focus-within {
+  --tw-ring-color: rgb(147 51 234 / 0.5);
 }
 .focus-within\:ring-offset-2:focus-within {
   --tw-ring-offset-width: 2px;
@@ -2927,6 +2983,20 @@ input[type="search"].dark::-webkit-search-cancel-button {
 .hover\:bg-white\/30:hover {
   background-color: rgb(255 255 255 / 0.3);
 }
+.hover\:bg-slate-800:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+}
+.hover\:bg-purple-50\/20:hover {
+  background-color: rgb(250 245 255 / 0.2);
+}
+.hover\:bg-purple-500\/20:hover {
+  background-color: rgb(168 85 247 / 0.2);
+}
+.hover\:bg-purple-800:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 33 168 / var(--tw-bg-opacity));
+}
 .hover\:fill-red-600:hover {
   fill: #dc2626;
 }
@@ -3043,11 +3113,22 @@ input[type="search"].dark::-webkit-search-cancel-button {
 .focus\:bg-primary:focus {
   background-color: hsl(var(--primary));
 }
+.focus\:bg-sky-700\/50:focus {
+  background-color: rgb(3 105 161 / 0.5);
+}
+.focus\:bg-purple-700:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(126 34 206 / var(--tw-bg-opacity));
+}
 .focus\:text-accent-foreground:focus {
   color: hsl(var(--accent-foreground));
 }
 .focus\:text-primary-foreground:focus {
   color: hsl(var(--primary-foreground));
+}
+.focus\:text-white:focus {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .focus\:opacity-100:focus {
   opacity: 1;
@@ -3067,6 +3148,9 @@ input[type="search"].dark::-webkit-search-cancel-button {
 .focus\:ring-slate-100:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(241 245 249 / var(--tw-ring-opacity));
+}
+.focus\:ring-purple-600\/50:focus {
+  --tw-ring-color: rgb(147 51 234 / 0.5);
 }
 .focus\:ring-offset-2:focus {
   --tw-ring-offset-width: 2px;
@@ -3105,6 +3189,34 @@ input[type="search"].dark::-webkit-search-cancel-button {
 }
 .focus-visible\:ring-white\/50:focus-visible {
   --tw-ring-color: rgb(255 255 255 / 0.5);
+}
+.focus-visible\:ring-slate-400:focus-visible {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(148 163 184 / var(--tw-ring-opacity));
+}
+.focus-visible\:ring-white\/20:focus-visible {
+  --tw-ring-color: rgb(255 255 255 / 0.2);
+}
+.focus-visible\:ring-white\/30:focus-visible {
+  --tw-ring-color: rgb(255 255 255 / 0.3);
+}
+.focus-visible\:ring-purple-400\/20:focus-visible {
+  --tw-ring-color: rgb(192 132 252 / 0.2);
+}
+.focus-visible\:ring-purple-600\/20:focus-visible {
+  --tw-ring-color: rgb(147 51 234 / 0.2);
+}
+.focus-visible\:ring-purple-600\/60:focus-visible {
+  --tw-ring-color: rgb(147 51 234 / 0.6);
+}
+.focus-visible\:ring-purple-600\/40:focus-visible {
+  --tw-ring-color: rgb(147 51 234 / 0.4);
+}
+.focus-visible\:ring-purple-600\/30:focus-visible {
+  --tw-ring-color: rgb(147 51 234 / 0.3);
+}
+.focus-visible\:ring-purple-600\/50:focus-visible {
+  --tw-ring-color: rgb(147 51 234 / 0.5);
 }
 .focus-visible\:ring-offset-2:focus-visible {
   --tw-ring-offset-width: 2px;
@@ -3611,6 +3723,14 @@ input[type="search"].dark::-webkit-search-cancel-button {
 .\[\&\:has\(\[aria-selected\]\)\]\:bg-accent:has([aria-selected]) {
   background-color: hsl(var(--accent));
 }
+.\[\&\:has\(\[aria-selected\]\)\]\:bg-purple-600:has([aria-selected]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 51 234 / var(--tw-bg-opacity));
+}
+.\[\&\:has\(\[aria-selected\]\)\]\:bg-slate-900:has([aria-selected]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+}
 .first\:\[\&\:has\(\[aria-selected\]\)\]\:rounded-l-md:has([aria-selected]):first-child {
   border-top-left-radius: calc(var(--radius) - 2px);
   border-bottom-left-radius: calc(var(--radius) - 2px);
@@ -3621,6 +3741,12 @@ input[type="search"].dark::-webkit-search-cancel-button {
 }
 .\[\&\:has\(\[aria-selected\]\.day-outside\)\]\:bg-accent\/50:has([aria-selected].day-outside) {
   background-color: hsl(var(--accent) / 0.5);
+}
+.\[\&\:has\(\[aria-selected\]\.day-outside\)\]\:bg-purple-600\/50:has([aria-selected].day-outside) {
+  background-color: rgb(147 51 234 / 0.5);
+}
+.\[\&\:has\(\[aria-selected\]\.day-outside\)\]\:bg-purple-600\/10:has([aria-selected].day-outside) {
+  background-color: rgb(147 51 234 / 0.1);
 }
 .\[\&\:has\(\[aria-selected\]\.day-range-end\)\]\:rounded-r-md:has([aria-selected].day-range-end) {
   border-top-right-radius: calc(var(--radius) - 2px);
