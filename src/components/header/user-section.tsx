@@ -66,7 +66,7 @@ const UserSection: FC = () => {
       <DrawerTrigger className="outline-none">
         <AvatarElement image={data.data.image} username={data?.data.username} />
       </DrawerTrigger>
-      <DrawerContent>
+      <DrawerContent className="border-slate-700 bg-slate-900">
         <UserSectionContent
           username={data?.data.username}
           email={data?.data.email}
@@ -79,7 +79,10 @@ const UserSection: FC = () => {
       <DropdownMenuTrigger className="outline-none">
         <AvatarElement image={data.data.image} username={data?.data.username} />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="max-w-[15rem]" align="end">
+      <DropdownMenuContent
+        className="max-w-[15rem] border-t-1 border-slate-700 bg-slate-900 shadow-slate-600/40"
+        align="end"
+      >
         <UserSectionContent
           username={data?.data.username}
           email={data?.data.email}

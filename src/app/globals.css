@@ -1517,6 +1517,9 @@ video {
 .border-t-\[1px\] {
   border-top-width: 1px;
 }
+.border-t-1 {
+  border-top-width: 1px;
+}
 .border-none {
   border-style: none;
 }
@@ -1785,6 +1788,14 @@ video {
 .bg-purple-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(126 34 206 / var(--tw-bg-opacity));
+}
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+.bg-purple-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(192 132 252 / var(--tw-bg-opacity));
 }
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
@@ -2420,6 +2431,22 @@ video {
   --tw-shadow-color: rgb(15 23 42 / 0.05);
   --tw-shadow: var(--tw-shadow-colored);
 }
+.shadow-white\/30 {
+  --tw-shadow-color: rgb(255 255 255 / 0.3);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+.shadow-slate-600 {
+  --tw-shadow-color: #475569;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+.shadow-slate-600\/20 {
+  --tw-shadow-color: rgb(71 85 105 / 0.2);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+.shadow-slate-600\/40 {
+  --tw-shadow-color: rgb(71 85 105 / 0.4);
+  --tw-shadow: var(--tw-shadow-colored);
+}
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -3022,6 +3049,12 @@ input[type="search"].dark::-webkit-search-cancel-button {
 }
 .hover\:bg-sky-900\/50:hover {
   background-color: rgb(12 74 110 / 0.5);
+}
+.hover\:bg-red-900\/50:hover {
+  background-color: rgb(127 29 29 / 0.5);
+}
+.hover\:bg-red-900\/30:hover {
+  background-color: rgb(127 29 29 / 0.3);
 }
 .hover\:fill-red-600:hover {
   fill: #dc2626;

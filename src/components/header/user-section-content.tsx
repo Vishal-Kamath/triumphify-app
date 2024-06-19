@@ -125,7 +125,7 @@ const UserSectionContent: FC<{
     {
       name: "Logout",
       type: "button",
-      className: "hover:bg-red-50 hover:text-red-600",
+      className: "hover:bg-red-900/30 hover:text-red-600",
       action: onSignOut,
       icon: LogOut,
     },
@@ -134,8 +134,8 @@ const UserSectionContent: FC<{
   return (
     <div className="w-full flex-col p-2 text-sm">
       <div className="flex flex-col p-2">
-        <h2 className="font-medium text-black">{username}</h2>
-        <p className="font-light text-gray-600">{email}</p>
+        <h2 className="font-medium text-white">{username}</h2>
+        <p className="font-light text-gray-400">{email}</p>
       </div>
 
       {navElements.map((nav, index) =>
@@ -144,7 +144,7 @@ const UserSectionContent: FC<{
             key={index}
             className={cn(
               buttonVariants({ variant: "ghost" }),
-              "w-full justify-start gap-4 px-2 font-light text-slate-600",
+              "w-full justify-start gap-4 px-2 font-light text-slate-400 hover:bg-slate-800 hover:text-white",
               nav.className,
             )}
             href={nav.href}
@@ -163,7 +163,7 @@ const UserSectionContent: FC<{
             key={index}
             variant="ghost"
             className={cn(
-              "w-full justify-start gap-4 px-2 font-light text-slate-600",
+              "w-full justify-start gap-4 px-2 font-light text-slate-400 hover:bg-slate-800 hover:text-white",
               nav.className,
             )}
             onClick={nav.action}
