@@ -26,7 +26,8 @@ const Header: FC = () => {
   const isDark =
     pathname === "/" ||
     pathname.startsWith("/products") ||
-    pathname.startsWith("/account");
+    pathname.startsWith("/account") ||
+    pathname.startsWith("/wishlist");
 
   const [top, setTop] = useState(true);
 

@@ -3056,6 +3056,10 @@ input[type="search"].dark::-webkit-search-cancel-button {
 .hover\:bg-red-900\/30:hover {
   background-color: rgb(127 29 29 / 0.3);
 }
+.hover\:bg-purple-950:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 7 100 / var(--tw-bg-opacity));
+}
 .hover\:fill-red-600:hover {
   fill: #dc2626;
 }
