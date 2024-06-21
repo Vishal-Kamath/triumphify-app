@@ -18,7 +18,7 @@ const BlogsSections: FC = () => {
   const { data: blogs } = useBlogs();
   const { maxLg, maxSm } = useResponsive();
 
-  return blogs && Array.isArray(blogs) ? (
+  return blogs && Array.isArray(blogs) && blogs.length ? (
     <div className="padding-x flex flex-col gap-9 py-20">
       <h2 className="text-4xl font-semibold text-white">
         Read <span className="text-purple-300">More</span> from us.
