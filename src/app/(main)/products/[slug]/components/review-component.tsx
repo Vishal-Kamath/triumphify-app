@@ -38,23 +38,23 @@ const ReviewComponent: FC<{ review: ProductReview }> = ({ review }) => {
               />
             ))}
           </div>
-          <h5 className="mt-6 text-[16px] font-medium text-slate-800 max-lg:hidden">
+          <h5 className="mt-6 text-[16px] font-medium text-slate-200 max-lg:hidden">
             {review.review_title}
           </h5>
-          <p className="text-sm text-slate-600 max-lg:hidden">
+          <p className="text-sm text-slate-400 max-lg:hidden">
             {review.review_description}
           </p>
         </div>
       </div>
       <div className="flex flex-col gap-2 lg:hidden">
-        <h5 className="text-[16px] font-medium text-slate-800">
+        <h5 className="text-[16px] font-medium text-slate-200">
           {review.review_title}
         </h5>
-        <p className="mt-1 text-sm text-slate-600">
+        <p className="mt-1 text-sm text-slate-400">
           {review.review_description}
         </p>
       </div>
-      <Separator />
+      <Separator className="bg-slate-600" />
     </div>
   );
 };
