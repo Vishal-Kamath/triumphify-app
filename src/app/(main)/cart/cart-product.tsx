@@ -106,7 +106,7 @@ const CartProduct: FC<{ cart: Cart }> = ({ cart }) => {
 
             <div className="flex flex-col gap-1">
               {cart.variation.key.split(" - ").map((variation, index) => (
-                <div className="flex gap-2">
+                <div key={variation + index} className="flex gap-2">
                   <span className="text-xs text-slate-300">
                     {variation.split(":")[0]}:
                   </span>
