@@ -23,7 +23,7 @@ const OrderStatus: FC<{ order?: Order }> = ({ order }) => {
 
       <div
         className={cn(
-          "overflow-x-auto scrollbar-none",
+          "overflow-x-auto pb-6 scrollbar-thin",
           order.cancelled ? "opacity-50" : "",
         )}
       >
@@ -36,27 +36,27 @@ const OrderStatus: FC<{ order?: Order }> = ({ order }) => {
               {/* dash */}
               <div
                 className={cn(
-                  "absolute right-1/2 top-[8px] -z-10 h-[1px] w-full",
+                  "absolute right-1/2 top-[8px] h-[2px] w-full -translate-y-1/2",
                   index === 0 && "hidden",
-                  index <= currentStep ? "bg-purple-500" : "bg-slate-300",
+                  index <= currentStep ? "bg-purple-500" : "bg-slate-700",
                 )}
               ></div>
 
               {/* content */}
               <div
                 className={cn(
-                  "grid h-4 w-4 place-content-center rounded-full bg-purple-100 font-bold",
+                  "z-10 flex h-4 w-4 items-center justify-center rounded-full bg-purple-900 text-xs font-bold",
                   index <= currentStep && "bg-purple-500 text-white",
-                  index > currentStep && "bg-slate-300",
+                  index > currentStep && "bg-slate-700",
                 )}
               >
                 {index <= currentStep ? (
-                  <Check className="h-2 w-2" />
+                  <Check strokeWidth={5} className="h-[0.6rem] w-[0.6rem]" />
                 ) : (
                   index + 1
                 )}
               </div>
-              <div className="px-[2px] text-center text-gray-600">{step}</div>
+              <div className="px-[2px] text-center text-gray-400">{step}</div>
             </div>
           ))}
         </div>

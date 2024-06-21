@@ -51,30 +51,34 @@ const OrderNav: FC = () => {
           type="multiple"
           defaultValue={navElements.map((element) => element.name)}
         >
-          {navElements.map((element, index) => (
-            <AccordionItem key={element.name + index} value={element.name}>
-              <AccordionTrigger>{element.name}</AccordionTrigger>
-              <AccordionContent className="flex flex-col">
-                {element.children.map((child, index) => (
-                  <Link
-                    key={child.name + index}
-                    id={child.name + index}
-                    href={child.href}
-                    className={cn(
-                      buttonVariants({
-                        variant: pathname.startsWith(child.href)
-                          ? "secondary"
-                          : "link",
-                      }),
-                      "md:justify-start",
-                    )}
-                  >
-                    {child.name}
-                  </Link>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
+          {navElements
+            .filter((element) => element.children.length)
+            .map((element, index) => (
+              <AccordionItem
+                className="border-slate-700"
+                key={element.name + index}
+                value={element.name}
+              >
+                <AccordionTrigger>{element.name}</AccordionTrigger>
+                <AccordionContent className="flex flex-col">
+                  {element.children.map((child, index) => (
+                    <Link
+                      key={child.name + index}
+                      id={child.name + index}
+                      href={child.href}
+                      className={cn(
+                        "flex h-10 w-full items-center justify-center px-4 text-slate-300 md:justify-start",
+                        pathname.startsWith(child.href)
+                          ? "rounded-sm bg-slate-900 hover:bg-slate-800"
+                          : "underline-offset-2 hover:underline",
+                      )}
+                    >
+                      {child.name}
+                    </Link>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
         </Accordion>
       }
     </nav>

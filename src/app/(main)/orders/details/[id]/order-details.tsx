@@ -14,14 +14,19 @@ const OrderProductDetails: FC<{ order?: Order }> = ({ order }) => {
   return (
     <div className="flex w-full flex-col gap-6">
       <div className="flex items-center justify-end gap-3 text-sm max-lg:text-xs">
-        <Link href={`/orders/history`} className="mr-auto px-3 lg:hidden">
+        <Link
+          href={`/orders/history`}
+          className="mr-auto flex h-9 w-9 items-center justify-center rounded-full bg-slate-900 text-slate-300 hover:bg-slate-800 hover:text-white lg:hidden"
+        >
           <MoveLeft className="h-4 w-4" />
         </Link>
         <span>Order id:</span>
-        <span className="rounded-sm bg-slate-50 px-2 py-1">{order.id}</span>
+        <span className="rounded-sm bg-slate-900 px-2 py-1 text-slate-300">
+          {order.id}
+        </span>
       </div>
       {/* Product */}
-      <div className="flex gap-6 rounded-lg border-1 border-slate-200 p-4 max-sm:flex-col lg:max-xl:flex-col">
+      <div className="flex gap-6 rounded-lg border-1 border-slate-700 bg-slate-900 p-4 max-sm:flex-col lg:max-xl:flex-col">
         <Image
           src={order.product_image || ""}
           alt={order.product_name}
@@ -36,7 +41,7 @@ const OrderProductDetails: FC<{ order?: Order }> = ({ order }) => {
             </h4>
             <p className="text-slate-500">{order.product_brand_name}</p>
           </div>
-          <p className="text-xs text-slate-600">
+          <p className="text-xs text-slate-400">
             {order.product_description &&
             order.product_description?.length > 250
               ? order.product_description?.slice(0, 247) + "..."
@@ -45,13 +50,13 @@ const OrderProductDetails: FC<{ order?: Order }> = ({ order }) => {
           <div className="flex flex-wrap gap-2 text-xs">
             {variations.map((variation, index) => (
               <span
-                className="rounded-full border-1 border-slate-700 bg-slate-50 px-2 py-1"
+                className="rounded-full border-1 border-slate-700 bg-slate-800 px-2 py-1"
                 key={variation + index}
               >
                 {variation}
               </span>
             ))}
-            <span className="rounded-full border-1 border-slate-700 bg-slate-50 px-2 py-1">
+            <span className="rounded-full border-1 border-slate-700 bg-slate-800 px-2 py-1">
               Quantity: {order.product_quantity}
             </span>
           </div>

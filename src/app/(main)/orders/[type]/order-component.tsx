@@ -61,10 +61,10 @@ const OrderComponent: FC<{ order: Order }> = ({ order }) => {
   return (
     <Link
       href={`/orders/details/${order.id}`}
-      className="flex w-full flex-col gap-3 rounded-xl border-1 border-slate-300/70 bg-slate-50/60 p-3 hover:shadow-md hover:shadow-slate-500/10"
+      className="flex w-full flex-col gap-3 rounded-xl border-1 border-slate-700 bg-slate-900 p-3 hover:shadow-md hover:shadow-purple-500/20"
     >
       <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full border-1 border-slate-200 bg-white text-slate-500">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full border-1 border-slate-700 bg-slate-800 text-slate-500">
           <orderDisplay.icon className="h-4 w-4" />
         </div>
 
@@ -83,24 +83,26 @@ const OrderComponent: FC<{ order: Order }> = ({ order }) => {
         </div>
       </div>
 
-      <div className="flex gap-6 rounded-md border-1 border-slate-200 bg-white p-3">
+      <div className="flex gap-6 rounded-md bg-slate-800 p-3">
         <Image
           src={order.product_image || ""}
           alt={order.product_brand_name}
           width={300}
           height={500}
-          className="max-h-32 max-w-32 object-contain object-left"
+          className="max-h-32 max-w-32 rounded-sm object-contain object-left"
         />
         <div className="flex flex-col">
-          <h6 className="text-sm font-medium">{order.product_name}</h6>
+          <h6 className="text-sm font-medium text-slate-300">
+            {order.product_name}
+          </h6>
           <p className="text-xs text-slate-500">{order.product_brand_name}</p>
 
-          <div className="mt-4 flex flex-wrap gap-3 text-xs text-slate-500">
+          <div className="mt-2 flex flex-wrap gap-3 text-xs text-slate-400">
             {Object.keys(order.product_variation_combinations).map(
               (key, index) => (
                 <span
                   key={key + index}
-                  className="border-r-2 border-slate-300 pr-3 capitalize"
+                  className="border-r-2 border-slate-600 pr-3 capitalize"
                 >
                   {key}: {order.product_variation_combinations[key]}
                 </span>

@@ -26,7 +26,7 @@ const OrderSearchPages: FC = () => {
 
   return (
     <div className="flex w-full flex-col gap-6">
-      <div className="flex w-full items-end gap-3 max-md:flex-col">
+      <div className="flex w-full items-end gap-3">
         <Input
           type="text"
           placeholder="Search orders by name or id"
@@ -37,14 +37,14 @@ const OrderSearchPages: FC = () => {
         <div className="flex gap-3">
           <Button
             variant="secondary"
-            className="group active:bg-purple-100"
+            className="group flex h-10 w-10 items-center justify-center border-1 border-slate-600 bg-slate-800 p-0 text-white outline-none ring-0 hover:bg-purple-950/80 active:bg-purple-900"
             onClick={() => refetch()}
           >
             <RefreshCw className="h-3 w-3 group-active:animate-spin " />
           </Button>
         </div>
       </div>
-      <div className="flex w-full flex-col gap-3">
+      <div className="flex w-full flex-col gap-6">
         {filteredOrders?.map((order) => (
           <OrderComponent order={order} key={order.id} />
         ))}

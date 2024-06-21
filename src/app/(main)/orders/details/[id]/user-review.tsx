@@ -142,17 +142,17 @@ const OrderUserReview: FC<{ productId: string }> = ({ productId }) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-6 rounded-lg border-1 p-6"
+        className="flex flex-col gap-6 rounded-lg border-1 border-slate-700 bg-slate-900 p-6"
       >
         <h3 className="font-medium">Leave us a review</h3>
-        <Separator />
+        <Separator className="bg-slate-500" />
         <div className="flex gap-6 max-md:flex-col">
           <FormField
             control={form.control}
             name="review_title"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel className="text-black">Review Title</FormLabel>
+                <FormLabel className="text-slate-300">Review Title</FormLabel>
                 <FormControl>
                   <Input placeholder="Review title" {...field} />
                 </FormControl>
@@ -166,15 +166,15 @@ const OrderUserReview: FC<{ productId: string }> = ({ productId }) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel className="flex items-baseline justify-between py-1 text-black">
-                  <p className="text-black">Rating</p>
+                  <p className="text-slate-300">Rating</p>
                   <p className="text-xs font-light">{field.value} / 5</p>
                 </FormLabel>
                 <div
                   className={cn(
                     "flex h-10 items-center justify-evenly gap-3 rounded-md border-1",
                     field.value === 5
-                      ? "border-yellow-200 bg-yellow-50"
-                      : "border-slate-200 bg-slate-50",
+                      ? "border-yellow-200/30 bg-yellow-200/25"
+                      : "border-slate-700 bg-slate-800",
                   )}
                 >
                   {[1, 2, 3, 4, 5].map((rating, index) =>
@@ -203,7 +203,7 @@ const OrderUserReview: FC<{ productId: string }> = ({ productId }) => {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel className="flex items-baseline justify-between">
-                <p className="text-black">Review Description</p>
+                <p className="text-slate-300">Review Description</p>
                 <p
                   className={cn(
                     "text-xs font-light",
@@ -237,14 +237,17 @@ const OrderUserReview: FC<{ productId: string }> = ({ productId }) => {
                 type="button"
                 variant="secondary"
                 onClick={onDelete}
-                className="w-full hover:bg-red-600 hover:text-white md:max-w-[15rem]"
+                className="w-full bg-transparent text-slate-300 underline underline-offset-2 hover:bg-red-600 hover:text-white hover:no-underline md:max-w-[15rem]"
               >
                 Delete
               </Button>
             )}
 
             {loading ? (
-              <Button disabled className="md:max-w-[15rem]">
+              <Button
+                disabled
+                className="bg-slate-700 text-slate-300 hover:bg-purple-900 hover:text-white md:max-w-[15rem]"
+              >
                 <AiOutlineLoading className="mr-2 h-4 w-4 animate-spin" />
                 Please wait..
               </Button>
@@ -252,7 +255,7 @@ const OrderUserReview: FC<{ productId: string }> = ({ productId }) => {
               <Button
                 type="submit"
                 variant="default"
-                className="w-full md:max-w-[15rem]"
+                className="w-full bg-slate-700 text-slate-300 hover:bg-purple-900 hover:text-white md:max-w-[15rem]"
                 disabled={loadingDelete || !formDataChanged}
               >
                 Edit review
@@ -260,12 +263,18 @@ const OrderUserReview: FC<{ productId: string }> = ({ productId }) => {
             )}
           </div>
         ) : loading ? (
-          <Button disabled className="ml-auto w-full md:max-w-[15rem]">
+          <Button
+            disabled
+            className="ml-auto w-full bg-slate-700 text-slate-300 hover:bg-purple-900 hover:text-white md:max-w-[15rem]"
+          >
             <AiOutlineLoading className="mr-2 h-4 w-4 animate-spin" />
             Please wait..
           </Button>
         ) : (
-          <Button type="submit" className="ml-auto w-full md:max-w-[15rem]">
+          <Button
+            type="submit"
+            className="ml-auto w-full bg-slate-700 text-slate-300 hover:bg-purple-900 hover:text-white md:max-w-[15rem]"
+          >
             Submit review
           </Button>
         )}

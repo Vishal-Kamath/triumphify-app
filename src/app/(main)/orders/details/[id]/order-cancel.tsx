@@ -77,12 +77,12 @@ const OrderCancelForm: FC<{
   }
 
   return isCancelledRequested ? (
-    <span className="text-xs text-slate-500">
+    <span className="text-xs text-slate-400">
       Your cancellation request is already submitted. Please wait for the
       approval from the seller{" "}
       <Link
         href={`/tickets/${isCancelledRequested}?redirect=${pathname}`}
-        className="text-blue-500 underline hover:text-blue-700"
+        className="text-blue-500 underline hover:text-blue-400"
       >
         View Request
       </Link>
@@ -91,7 +91,7 @@ const OrderCancelForm: FC<{
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="relative isolate flex flex-col gap-6 overflow-hidden rounded-lg border-1 border-red-200 p-6"
+        className="relative isolate flex flex-col gap-6 overflow-hidden rounded-lg border-1 border-red-900 bg-slate-900 p-6"
       >
         <div
           style={{
@@ -99,22 +99,22 @@ const OrderCancelForm: FC<{
             backgroundSize: "4.5rem",
             backgroundRepeat: "repeat",
           }}
-          className="absolute left-0 top-0 -z-10 h-full w-full opacity-[3%]"
+          className="absolute left-0 top-0 -z-10 h-full w-full opacity-[17%]"
         ></div>
         <h3 className="font-medium text-red-700">Cancellation form</h3>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-slate-400">
           Please mention the reason for order cancellation below.{" "}
           <strong>Note</strong> that once the form is submited it cannot be
           updated. So please fill carefully
         </p>
-        <Separator className="bg-red-200" />
+        <Separator className="bg-red-700" />
         <FormField
           control={form.control}
           name="reason"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel className="flex items-baseline justify-between">
-                <p className="text-black">Reason for Cancellation</p>
+              <FormLabel className="flex items-baseline justify-between pb-2">
+                <p className="text-slate-300">Reason for Cancellation</p>
                 <p
                   className={cn(
                     "text-xs font-light",
@@ -128,7 +128,7 @@ const OrderCancelForm: FC<{
                 <Textarea
                   maxLength={750}
                   placeholder="description..."
-                  className="max-h-[12.5rem] min-h-[7.5rem] border-red-200 bg-white"
+                  className="max-h-[12.5rem] min-h-[7.5rem] bg-slate-950 focus-visible:border-slate-500 focus-visible:ring-0"
                   {...field}
                 />
               </FormControl>
@@ -136,12 +136,18 @@ const OrderCancelForm: FC<{
           )}
         />
         {loading ? (
-          <Button disabled className="ml-auto w-full md:max-w-[15rem]">
+          <Button
+            disabled
+            className="ml-auto w-full bg-slate-800 hover:bg-red-700 hover:text-white md:max-w-[15rem]"
+          >
             <AiOutlineLoading className="mr-2 h-4 w-4 animate-spin" />
             Please wait..
           </Button>
         ) : (
-          <Button type="submit" className="ml-auto w-full md:max-w-[15rem]">
+          <Button
+            type="submit"
+            className="ml-auto w-full bg-slate-800 hover:bg-red-700 hover:text-white md:max-w-[15rem]"
+          >
             Submit
           </Button>
         )}
