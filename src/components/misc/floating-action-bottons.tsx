@@ -36,7 +36,7 @@ const HelpDeskButton: FC = () => {
     <Link
       href={`/help/create?redirect=${encodeURIComponent(pathname)}`}
       className={cn(
-        "flex size-12 items-center justify-center rounded-full border-1 border-gray-200 bg-white text-slate-500 shadow-md transition-all duration-500 ease-in-out hover:text-slate-800",
+        "flex size-12 items-center justify-center rounded-full bg-slate-700 text-slate-300 transition-all duration-500 ease-in-out hover:bg-slate-600 hover:text-white",
         isHidden ? "hidden" : "",
       )}
     >
@@ -77,13 +77,13 @@ const GoToTopButton: FC = () => {
   return (
     <button
       className={cn(
-        "flex size-9 items-center justify-center rounded-full border-1 border-gray-200 bg-white text-slate-500 shadow-md transition-all duration-500 ease-in-out hover:text-slate-800",
+        "flex size-9 items-center justify-center rounded-full bg-slate-700 text-slate-300 outline-none transition-all duration-500 ease-in-out hover:bg-slate-600 hover:text-white",
         !isVisible && "-z-50 cursor-default opacity-0",
         isHidden && "hidden",
       )}
       onClick={scrollToTop}
     >
-      <ChevronUp className="size-4" />
+      <ChevronUp strokeWidth={3} className="size-4" />
     </button>
   );
 };
