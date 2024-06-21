@@ -43,7 +43,7 @@ export const AvatarElement: FC<{
   </Avatar>
 );
 
-const UserSection: FC = () => {
+const UserSection: FC<{ showRounded?: boolean }> = ({ showRounded }) => {
   const { data, isLoading, isError } = useMe();
   const { isMobile } = useMediaQuery();
 
@@ -80,7 +80,10 @@ const UserSection: FC = () => {
         <AvatarElement image={data.data.image} username={data?.data.username} />
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="max-w-[15rem] border-t-1 border-slate-700 bg-slate-900 shadow-slate-600/40"
+        className={cn(
+          "z-[995] max-w-[15rem] translate-y-16 border-slate-700 bg-slate-900 shadow-slate-600/40 md:translate-y-3",
+          !!showRounded ? "" : "rounded-t-none",
+        )}
         align="end"
       >
         <UserSectionContent

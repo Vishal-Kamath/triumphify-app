@@ -28,7 +28,8 @@ const Header: FC = () => {
     pathname.startsWith("/products") ||
     pathname.startsWith("/account") ||
     pathname.startsWith("/wishlist") ||
-    pathname.startsWith("/cart");
+    pathname.startsWith("/cart") ||
+    pathname.startsWith("/orders");
 
   const [top, setTop] = useState(true);
 
@@ -38,7 +39,7 @@ const Header: FC = () => {
     };
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
-  }, [top]);
+  }, []);
 
   const [open, setOpen] = useState(false);
 
@@ -50,7 +51,7 @@ const Header: FC = () => {
       <div className="h-[7.25rem] md:h-[4.5rem]"></div>
       <div
         className={cn(
-          "padding-x fixed left-0 top-0 z-[995] w-full",
+          "padding-x fixed left-0 top-0 isolate z-[995] w-full",
           isHidden && "hidden",
           isDark ? "bg-slate-950 text-white" : "bg-white",
           !top && "border-b-1 border-slate-700 shadow-sm",
@@ -88,7 +89,7 @@ const Header: FC = () => {
             />
             <div className="flex gap-3">
               <CartButton />
-              <UserSection />
+              <UserSection showRounded={top} />
             </div>
           </div>
           <SearchBar
