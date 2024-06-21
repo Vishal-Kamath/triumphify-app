@@ -81,7 +81,7 @@ export const Sidebar: FC<SidebarProps> = ({
           open ? "" : "max-lg:-translate-x-full",
         )}
       >
-        <Separator className="bg-slate-300" />
+        <Separator />
         {children}
       </nav>
     </>

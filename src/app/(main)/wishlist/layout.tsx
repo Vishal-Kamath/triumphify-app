@@ -10,7 +10,7 @@ const AccountLayout: FC<{ children: ReactNode }> = ({ children }) => {
           <h2 className="text-2xl font-semibold">Wishlist</h2>
           <p className="text-sm text-slate-500">Manage your wishlist</p>
         </div>
-        <Separator className="bg-slate-300" />
+        <Separator />
         <div className="flex gap-6 max-md:flex-col">{children}</div>
       </div>
     </AuthProvider>

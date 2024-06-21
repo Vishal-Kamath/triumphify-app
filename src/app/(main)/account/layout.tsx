@@ -13,7 +13,7 @@ const AccountLayout: FC<{ children: ReactNode }> = ({ children }) => {
             Manage your account settings and set e-mail preferences.
           </p>
         </div>
-        <Separator className="bg-slate-300" />
+        <Separator />
         <div className="flex gap-6 max-md:flex-col">
           <AccountNav />
           {children}

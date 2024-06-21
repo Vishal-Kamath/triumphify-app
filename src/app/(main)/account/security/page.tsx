@@ -107,7 +107,7 @@ const AccountSecurityPage: FC = () => {
           Manage your password to keep your account secure.
         </p>
       </div>
-      <Separator className="bg-slate-300" />
+      <Separator />
       {user?.data.needs_to_reset_password ? (
         <div className="flex flex-col gap-6">
           <p className="text-xs text-slate-400">
