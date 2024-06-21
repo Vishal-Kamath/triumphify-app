@@ -78,7 +78,7 @@ const CartPaymentPage: FC = () => {
             href="/cart/address"
             className={cn(
               buttonVariants({ variant: "secondary" }),
-              "gap-3 rounded-full",
+              "gap-3 rounded-md bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-300",
             )}
           >
             <MoveLeft className="w-4" />
@@ -86,7 +86,7 @@ const CartPaymentPage: FC = () => {
           </Link>
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-2">
           <h3 className="text-lg font-semibold">Payment method</h3>
           <p className="text-justify text-sm text-gray-500">
             Select your desired payment method to continue with the order
