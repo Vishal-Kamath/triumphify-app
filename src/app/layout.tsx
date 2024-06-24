@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import ReactQueryProvider from "@/components/provider/reactquery.provider";
 import { cn } from "@/lib/utils";
 import FloatingActionButtons from "@/components/misc/floating-action-bottons";
+import GoogleTagManagerProvider from "@/components/provider/tag.manager";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ReactQueryProvider>
+        <GoogleTagManagerProvider />
         <body
           className={cn(
             inter.className,
