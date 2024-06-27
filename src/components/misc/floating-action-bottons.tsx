@@ -1,20 +1,15 @@
 "use client";
 
-import { useMe } from "@/lib/auth";
 import { cn } from "@/lib/utils";
-import { ChevronUp, MessageCircleQuestion } from "lucide-react";
-import Link from "next/link";
+import { ChevronUp } from "lucide-react";
 import { FC, useEffect, useState } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
 import { usePathname } from "next/navigation";
-import ChatWindow from "./chat-window";
 
 const FloatingActionButtons: FC = () => {
   const pathname = usePathname();
   if (pathname.startsWith("/contact")) return null;
   return (
-    <div className="fixed bottom-5 right-5 flex flex-col-reverse items-center gap-3">
-      <ChatWindow />
+    <div className="fixed bottom-24 right-9 flex flex-col-reverse items-center gap-3">
       <GoToTopButton />
     </div>
   );

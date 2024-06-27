@@ -94,7 +94,7 @@ const CookieConfigProvider: FC = () => {
       {!configureCookiePageOpen ? (
         <form
           onSubmit={form.handleSubmit(handleSetAllCookieSubmit)}
-          className="fixed bottom-0 left-0 z-50 flex w-full flex-col gap-3 border-t-2 border-slate-700 bg-slate-950/70 p-6 text-white backdrop-blur-md md:max-w-lg md:rounded-tr-lg md:border-r-2"
+          className="fixed bottom-0 left-0 isolate z-[2000000001] flex w-full flex-col gap-3 border-t-2 border-slate-700 bg-slate-950/70 p-6 text-white backdrop-blur-md md:max-w-lg md:rounded-tr-lg md:border-r-2"
         >
           <h4 className="pb-3 text-xs text-slate-200">
             This website stores cookies on your device. We use this information
@@ -120,7 +120,7 @@ const CookieConfigProvider: FC = () => {
       ) : (
         <form
           onSubmit={form.handleSubmit(handleConfigureCookieSubmit)}
-          className="fixed bottom-0 left-0 z-50 flex w-full flex-col gap-6 border-t-2 border-slate-700 bg-slate-950/70 p-6 text-white backdrop-blur-md md:max-w-lg md:rounded-tr-lg md:border-r-2"
+          className="fixed bottom-0 left-0 isolate z-[2000000001] flex w-full flex-col gap-6 border-t-2 border-slate-700 bg-slate-950/70 p-6 text-white backdrop-blur-md md:max-w-lg md:rounded-tr-lg md:border-r-2"
         >
           <button
             type="button"
