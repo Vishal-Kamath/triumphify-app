@@ -162,7 +162,7 @@ const IngredientsSection: FC = () => {
                     1
                   </div>
                   <h3 className="text-lg text-purple-300 md:text-xl">
-                    Abhrak Bhasma
+                    Abhrak Bhasma / calcined mica ash
                   </h3>
                 </div>
                 <div className="flex items-center gap-4">
@@ -170,21 +170,23 @@ const IngredientsSection: FC = () => {
                     2
                   </div>
                   <h3 className="text-lg text-purple-300 md:text-xl">
-                    Dalchinni
+                    Dalchinni / cinnamomum zylanicum
                   </h3>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800">
                     3
                   </div>
-                  <h3 className="text-lg text-purple-300 md:text-xl">Gokhru</h3>
+                  <h3 className="text-lg text-purple-300 md:text-xl">
+                    Gokhru / tribulus trerrestris
+                  </h3>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800">
                     4
                   </div>
                   <h3 className="text-lg text-purple-300 md:text-xl">
-                    Shilajeet
+                    Shilajeet / Asphaltum, Black Bitumen, or Mineral Pitch
                   </h3>
                 </div>
               </div>
