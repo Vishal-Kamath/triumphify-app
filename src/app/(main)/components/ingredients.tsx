@@ -8,6 +8,7 @@ import useResponsive from "@/lib/hooks/use-responsive";
 import { ChevronDown, Mouse } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import "./ingredients.css";
+import Logo from "@/components/misc/logo";
 
 const IngredientsSection: FC = () => {
   const { maxMd } = useResponsive();
@@ -295,10 +296,26 @@ const IngredientsSection: FC = () => {
             </motion.div>
             <div
               className={cn(
-                "h-12 w-24 rounded-full bg-purple-500",
+                "relative h-12 w-24 overflow-hidden rounded-full border-2 border-fuchsia-500 bg-fuchsia-500",
                 progress > section5End ? "" : "hidden",
               )}
-            ></div>
+            >
+              <div
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.6) 100%)",
+                }}
+                className="absolute right-0 top-1/2 h-12 w-12 -translate-y-1/2 translate-x-1/2"
+              ></div>
+              <div
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%)",
+                }}
+                className="absolute left-0 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2"
+              ></div>
+              <Logo className="absolute left-1/2 top-1/2 w-14 -translate-x-1/2 -translate-y-1/2 fill-fuchsia-900" />
+            </div>
           </div>
         </div>
 
