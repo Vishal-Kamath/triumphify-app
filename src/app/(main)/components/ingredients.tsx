@@ -59,13 +59,13 @@ const IngredientsSection: FC = () => {
           : 0;
 
   const ingredient_name = section1Range
-    ? "Abhrak Bhasma"
+    ? "Abhrak Bhasma / calcined mica ash"
     : section2Range
-      ? "Dalchinni"
+      ? "Dalchinni / cinnamomum zylanicum"
       : section3Range
-        ? "Gokhru"
+        ? "Gokhru / tribulus trerrestris"
         : section4Range
-          ? "Shilajeet"
+          ? "Shilajeet / Asphaltum, Black Bitumen, or Mineral Pitch"
           : "none";
 
   return (
@@ -101,7 +101,7 @@ const IngredientsSection: FC = () => {
             {progress < section4End ? (
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800">
+                  <div className="flex h-8 w-8 items-center justify-center break-words rounded-full bg-slate-800">
                     {ingredient_number}
                   </div>
                   <h3 className="text-lg text-purple-300 md:text-xl">
@@ -296,24 +296,12 @@ const IngredientsSection: FC = () => {
             </motion.div>
             <div
               className={cn(
-                "relative h-12 w-24 overflow-hidden rounded-full border-2 border-fuchsia-500 bg-fuchsia-500",
+                "relative h-12 w-24 overflow-hidden rounded-full border-2 border-fuchsia-600 bg-[#B44EC3]",
                 progress > section5End ? "" : "hidden",
               )}
             >
-              <div
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.6) 100%)",
-                }}
-                className="absolute right-0 top-1/2 h-12 w-12 -translate-y-1/2 translate-x-1/2"
-              ></div>
-              <div
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%)",
-                }}
-                className="absolute left-0 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2"
-              ></div>
+              <div className="absolute right-0 top-1/2 h-12 w-12 -translate-y-1/2 translate-x-1/2 bg-gradient-to-l from-white/30 to-transparent"></div>
+              <div className="absolute left-0 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-white/30 to-transparent"></div>
               <Logo className="absolute left-1/2 top-1/2 w-14 -translate-x-1/2 -translate-y-1/2 fill-fuchsia-900" />
             </div>
           </div>

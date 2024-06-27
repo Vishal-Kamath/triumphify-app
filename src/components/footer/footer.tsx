@@ -9,7 +9,7 @@ import Link from "next/link";
 const Footer: FC = () => {
   const { data: categories } = useCategories();
   return (
-    <footer className="padding-x mt-auto flex w-full gap-6 bg-slate-950 py-16 text-white">
+    <footer className="padding-x mt-auto flex w-full gap-6 bg-purple-950/20 py-16 text-white">
       <div className="flex w-full flex-col gap-3">
         <TriumphifyLogo className="h-fit w-[10rem] fill-white" />
 
