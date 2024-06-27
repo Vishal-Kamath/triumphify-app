@@ -18,6 +18,7 @@ const BlogsPage: FC = () => {
         {blogs && Array.isArray(blogs) && blogs.length ? (
           blogs.map((blog) => (
             <Link
+              key={blog.id}
               href={`/blogs/${blog.slug}`}
               className="flex h-full w-full flex-col gap-3"
             >
