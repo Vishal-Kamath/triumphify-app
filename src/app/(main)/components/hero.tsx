@@ -1,9 +1,14 @@
+"use client";
+
 import { FC } from "react";
 import Marquee from "./marquee";
 import Image from "next/image";
 import Link from "next/link";
+import { useBannersLinkedContent } from "@/lib/banners";
 
 const HeroSection: FC = () => {
+  const { data } = useBannersLinkedContent();
+
   return (
     <div className="relative isolate overflow-hidden py-12">
       <Marquee className="absolute left-0 top-0 isolate z-0" />
@@ -33,15 +38,21 @@ const HeroSection: FC = () => {
             Feel confident and fulfilled today.
           </p>
           <div className="flex gap-6">
-            <Link href="/products/the-purple-pill">
-              <button className="rounded-sm bg-purple-600 px-4 py-3 text-sm text-white hover:bg-purple-500">
-                GET STARTED
-              </button>
-            </Link>
+            {data?.product ? (
+              <Link href={`/products/${data.product.slug}`}>
+                <button className="rounded-sm bg-purple-600 px-4 py-3 text-sm text-white hover:bg-purple-500">
+                  GET STARTED
+                </button>
+              </Link>
+            ) : null}
 
-            <button className="rounded-sm border-2 border-purple-600 px-4 py-3 text-sm text-white hover:bg-purple-500/25">
-              KNOW MORE
-            </button>
+            {data?.blog ? (
+              <Link href={`/blogs/${data.blog.slug}-${data.blog.id}`}>
+                <button className="rounded-sm border-2 border-purple-600 px-4 py-3 text-sm text-white hover:bg-purple-500/25">
+                  KNOW MORE
+                </button>
+              </Link>
+            ) : null}
           </div>
         </div>
         <Image
