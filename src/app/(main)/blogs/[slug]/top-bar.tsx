@@ -5,7 +5,7 @@ import { FC } from "react";
 
 const BlogTopBar: FC<{ date: Date }> = ({ date }) => {
   return (
-    <div className="mb-6 flex w-full max-w-2xl items-center justify-between gap-6">
+    <div className="mb-6 flex w-full max-w-3xl items-center justify-between gap-6">
       <Link
         href="/blogs"
         className="group flex h-10 items-center gap-3 rounded-md bg-slate-900 px-4 text-slate-300 transition-all duration-300 ease-in-out hover:bg-slate-700 hover:text-white"

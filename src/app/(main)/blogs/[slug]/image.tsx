@@ -6,7 +6,7 @@ interface BlogImageProps {
 }
 const BlogImage: FC<BlogImageProps> = ({ imgSrc }) => {
   return (
-    <div className="w-full max-w-4xl py-6">
+    <div className="w-full max-w-4xl py-4 md:py-6">
       <div className="w-full max-w-4xl rounded-2xl bg-gradient-to-b from-slate-800/90 to-slate-800/80 p-5 md:p-6">
         <Image
           src={imgSrc}
