@@ -23,13 +23,6 @@ const Header: FC = () => {
 
   const isSearchHidden =
     pathname.startsWith("/auth") || pathname.startsWith("/tickets/");
-  const isDark =
-    pathname === "/" ||
-    pathname.startsWith("/products") ||
-    pathname.startsWith("/account") ||
-    pathname.startsWith("/wishlist") ||
-    pathname.startsWith("/cart") ||
-    pathname.startsWith("/orders");
 
   const [top, setTop] = useState(true);
 
@@ -53,7 +46,7 @@ const Header: FC = () => {
         className={cn(
           "padding-x fixed left-0 top-0 isolate z-[995] w-full",
           isHidden && "hidden",
-          isDark ? "bg-slate-950 text-white" : "bg-white",
+          "bg-slate-950 text-white",
           !top && "border-b-1 border-slate-700 shadow-sm",
         )}
       >

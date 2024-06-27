@@ -47,7 +47,7 @@ const HeroSection: FC = () => {
             ) : null}
 
             {data?.blog ? (
-              <Link href={`/blogs/${data.blog.slug}-${data.blog.id}`}>
+              <Link href={`/blogs/${data.blog.slug}`}>
                 <button className="rounded-sm border-2 border-purple-600 px-4 py-3 text-sm text-white hover:bg-purple-500/25">
                   KNOW MORE
                 </button>
