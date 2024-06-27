@@ -22,7 +22,7 @@ const NotFoundPage: FC = () => {
           href="/"
           className={cn(
             buttonVariants({ variant: "default" }),
-            "rounded-full px-6",
+            "rounded-full px-6 text-slate-400 hover:bg-purple-900 hover:text-white",
           )}
         >
           Go Back to Homepage
