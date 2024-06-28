@@ -8,7 +8,7 @@ import useResponsive from "@/lib/hooks/use-responsive";
 import { ChevronDown, Mouse } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import "./ingredients.css";
-import Logo from "@/components/misc/logo";
+import { LogoSvg } from "@/components/misc/logo";
 
 const IngredientsSection: FC = () => {
   const { maxMd } = useResponsive();
@@ -304,7 +304,7 @@ const IngredientsSection: FC = () => {
             >
               <div className="absolute right-0 top-1/2 h-12 w-12 -translate-y-1/2 translate-x-1/2 bg-gradient-to-l from-white/30 to-transparent"></div>
               <div className="absolute left-0 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-white/30 to-transparent"></div>
-              <Logo className="absolute left-1/2 top-1/2 w-14 -translate-x-1/2 -translate-y-1/2 fill-fuchsia-900" />
+              <LogoSvg className="absolute left-1/2 top-1/2 w-14 -translate-x-1/2 -translate-y-1/2 fill-fuchsia-900" />
             </div>
           </div>
         </div>

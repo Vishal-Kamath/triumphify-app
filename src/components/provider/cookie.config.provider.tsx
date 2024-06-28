@@ -61,7 +61,7 @@ const CookieConfigProvider: FC = () => {
       }
     } catch (err) {
       console.error(err);
-      deleteCookie(cookieName);
+      // deleteCookie(cookieName);
       form.setValue("config_has_been_set", false);
       return;
     }
