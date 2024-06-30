@@ -61,7 +61,7 @@ const CookieConfigProvider: FC = () => {
       }
     } catch (err) {
       console.error(err);
-      // deleteCookie(cookieName);
+      deleteCookie(cookieName);
       form.setValue("config_has_been_set", false);
       return;
     }
@@ -74,7 +74,9 @@ const CookieConfigProvider: FC = () => {
     };
 
     console.log(config);
-    setCookie(cookieName, JSON.stringify(config));
+    setCookie(cookieName, JSON.stringify(config), {
+      maxAge: 30 * 24 * 60 * 60,
+    });
     fetchConfig();
   }
 
