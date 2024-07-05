@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, MouseEvent, MouseEventHandler, useState } from "react";
+import { FC, useContext, useState } from "react";
 import {
   Form,
   FormControl,
@@ -22,9 +22,12 @@ import { NotificationType } from "@/@types/notification";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter, useSearchParams } from "next/navigation";
 import { invalidateAll } from "@/components/provider/reactquery.provider";
+import { Socket } from "@/components/provider/socket.provider";
 
 const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
   const { toast } = useToast();
+  const { login } = useContext(Socket);
+
   const router = useRouter();
   const redirect = useSearchParams().get("redirect") as string | undefined;
   const redirectPath = redirect
@@ -62,6 +65,7 @@ const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
           variant: res.data.type,
         });
         invalidateAll();
+        login();
         if (!inline) return router.replace(redirect ?? "/");
       })
       .catch((err) => {

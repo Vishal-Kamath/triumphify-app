@@ -4,12 +4,14 @@ import { cn } from "@/lib/utils";
 import { ChevronUp } from "lucide-react";
 import { FC, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import ChatButton from "../chat/button";
 
 const FloatingActionButtons: FC = () => {
   const pathname = usePathname();
   if (pathname.startsWith("/contact")) return null;
   return (
-    <div className="fixed bottom-24 right-9 flex flex-col-reverse items-center gap-3">
+    <div className="fixed bottom-5 right-5 flex flex-col-reverse items-center gap-3 max-md:z-[1000]">
+      <ChatButton />
       <GoToTopButton />
     </div>
   );

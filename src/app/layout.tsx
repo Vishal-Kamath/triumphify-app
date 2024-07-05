@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import FloatingActionButtons from "@/components/misc/floating-action-bottons";
 import { GoogleTagManagerScript } from "@/components/provider/google.tag.manager.provider";
 import CookieConfigProvider from "@/components/provider/cookie.config.provider";
+import SocketProvider from "@/components/provider/socket.provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,20 +24,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ReactQueryProvider>
-        <head>
-          <GoogleTagManagerScript />
-        </head>
-        <body
-          className={cn(
-            inter.className,
-            "flex h-full min-h-screen w-full flex-col overflow-x-hidden bg-slate-950 text-white scrollbar-none",
-          )}
-        >
-          <CookieConfigProvider />
-          {children}
-          <Toaster />
-          <FloatingActionButtons />
-        </body>
+        <SocketProvider>
+          <head>
+            <GoogleTagManagerScript />
+          </head>
+          <body
+            className={cn(
+              inter.className,
+              "relative isolate flex h-full min-h-screen w-full flex-col overflow-x-hidden bg-slate-950 text-white scrollbar-none",
+            )}
+          >
+            <CookieConfigProvider />
+            {children}
+            <Toaster />
+            <FloatingActionButtons />
+          </body>
+        </SocketProvider>
       </ReactQueryProvider>
     </html>
   );

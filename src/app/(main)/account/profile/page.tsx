@@ -58,6 +58,7 @@ const AccountProfile: FC = () => {
     defaultValues: {
       email: "",
       username: "",
+      tel: "",
       dateOfBirth: null,
       gender: null,
     },
@@ -67,11 +68,12 @@ const AccountProfile: FC = () => {
     if (user && user.data) {
       form.setValue("username", user.data.username || "");
       form.setValue("email", user.data.email);
+      form.setValue("tel", user.data.tel || "");
+      form.setValue("gender", "Female");
       form.setValue(
         "dateOfBirth",
         user.data.dateOfBirth ? new Date(user.data.dateOfBirth) : undefined,
       );
-      form.setValue("gender", user.data.gender || null);
     }
   }, [user]);
 
@@ -120,12 +122,14 @@ const AccountProfile: FC = () => {
 
   const username = form.watch("username");
   const email = form.watch("email");
-  const gender = form.watch("gender");
+  const tel = form.watch("tel");
+  const gender = form.getValues("gender");
   const dateOfBirth = form.watch("dateOfBirth");
 
   const buttonIsEnabled =
     username.trim() !== user?.data.username ||
     email?.trim() !== user?.data.email ||
+    tel?.trim() !== user?.data.tel ||
     gender?.trim() !== user?.data.gender ||
     (dateOfBirth &&
       dateOfBirth.getTime() !== new Date(user?.data.dateOfBirth!).getTime());
@@ -149,7 +153,7 @@ const AccountProfile: FC = () => {
             name="username"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Username</FormLabel>
+                <FormLabel className="text-slate-300">Username</FormLabel>
                 <FormControl>
                   <Input type="text" placeholder="John Doe" {...field} />
                 </FormControl>
@@ -166,7 +170,7 @@ const AccountProfile: FC = () => {
             name="email"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel className="flex items-center gap-3">
+                <FormLabel className="flex items-center gap-3 text-slate-300">
                   <span>Email</span>
                   {user?.data.emailVerified ? (
                     <div className="flex items-center gap-1 text-green-600">
@@ -200,7 +204,7 @@ const AccountProfile: FC = () => {
             name="tel"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel className="text-black">Mobile Number</FormLabel>
+                <FormLabel className="text-slate-300">Mobile Number</FormLabel>
                 <FormControl>
                   <PhoneInput international defaultCountry="US" {...field} />
                 </FormControl>
@@ -208,15 +212,16 @@ const AccountProfile: FC = () => {
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
             name="gender"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel className="text-black">Gender</FormLabel>
+                <FormLabel className="text-slate-300">Gender</FormLabel>
                 <FormControl>
                   <Select
-                    value={field.value || undefined}
+                    value={gender || undefined}
                     defaultValue={field.value || undefined}
                     onValueChange={field.onChange}
                   >
@@ -241,7 +246,7 @@ const AccountProfile: FC = () => {
             name="dateOfBirth"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel className="text-black">Date of birth</FormLabel>
+                <FormLabel className="text-slate-300">Date of birth</FormLabel>
                 <Popover
                   open={popoverOpen}
                   onOpenChange={setPopoverOpen}

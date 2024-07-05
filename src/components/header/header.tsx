@@ -30,7 +30,7 @@ const Header: FC = () => {
       <div className="h-[4.5rem]"></div>
       <div
         className={cn(
-          "padding-x fixed left-0 top-0 isolate z-[995] h-[4.5rem] w-full",
+          "padding-x fixed left-0 top-0 z-[995] h-[4.5rem] w-full",
           isHidden && "hidden",
           "bg-slate-950 text-white",
           !top && "border-b-1 border-slate-700 shadow-sm",

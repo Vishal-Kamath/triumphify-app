@@ -15,6 +15,7 @@ const nextConfig = {
   env: {
     ENDPOINT: process.env.ENDPOINT,
     APP_WEBSITE: process.env.APP_WEBSITE,
+    WS_WEBSITE: process.env.WS_WEBSITE,
   },
 };
 

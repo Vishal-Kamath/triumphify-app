@@ -88,14 +88,14 @@ const CountrySelect = ({
 
   const filteredContryList = options
     .filter((x) => x.label.toLowerCase().includes(search.toLowerCase()))
-    .map((option) => (
+    .map((option, index) => (
       <button
         type="button"
         className={cn(
           "flex w-full items-center justify-start gap-3 border-none px-3 py-2 text-left outline-none",
           option.value === value ? "bg-sky-950" : "bg-none",
         )}
-        key={option.value}
+        key={option.value + index}
         onClick={() => handleSelect(option.value)}
       >
         <FlagComponent country={option.value} countryName={option.label} />

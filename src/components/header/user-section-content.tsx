@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   UserRound,
@@ -20,6 +20,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { useWishlists } from "@/lib/wishlist";
 import { useAllCart } from "@/lib/cart";
 import { IconType } from "react-icons/lib";
+import { Socket } from "../provider/socket.provider";
 
 interface Nav {
   name: string;
@@ -43,6 +44,7 @@ const UserSectionContent: FC<{
   closeMenu: () => void;
 }> = ({ username, email, closeMenu }) => {
   const { toast } = useToast();
+  const { logout } = useContext(Socket);
   const router = useRouter();
 
   function onSignOut() {
@@ -62,6 +64,7 @@ const UserSectionContent: FC<{
         });
         invalidateUserData();
         closeMenu();
+        logout();
         router.replace("/auth/login");
       })
       .catch((err) => {
@@ -104,13 +107,6 @@ const UserSectionContent: FC<{
       icon: FaRegHeart,
     },
     {
-      name: "Cart",
-      type: "link",
-      href: "/cart",
-      floatingRight: cartCount,
-      icon: ShoppingCart,
-    },
-    {
       name: "Orders",
       type: "link",
       href: "/orders/history",
@@ -125,7 +121,7 @@ const UserSectionContent: FC<{
     {
       name: "Logout",
       type: "button",
-      className: "hover:bg-red-900/30 hover:text-red-600",
+      className: "hover:bg-red-600/30 hover:text-white text-red-400",
       action: onSignOut,
       icon: LogOut,
     },

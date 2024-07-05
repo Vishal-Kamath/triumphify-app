@@ -16,6 +16,7 @@ import UserSectionContent from "./user-section-content";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { Skeleton } from "../ui/skeleton";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const colors = [
   "bg-red-100 text-red-800",
@@ -55,16 +56,36 @@ const UserSection: FC<{ showRounded?: boolean }> = ({ showRounded }) => {
 
   if (isLoading) return <Skeleton className="h-10 w-10 rounded-full" />;
   return !data || data.type !== "success" ? (
-    <Link
-      className={(buttonVariants({ variant: "link" }), "text-white")}
-      href={`/auth/login${redirect}`}
-    >
-      Login
-    </Link>
+    <>
+      <Link
+        className={cn(buttonVariants({ variant: "link" }), "text-white")}
+        href={`/auth/login${redirect}`}
+      >
+        Sign in
+      </Link>
+      <Link
+        className={cn(
+          buttonVariants({ variant: "default" }),
+          "rounded-full bg-purple-800 text-white hover:bg-purple-600",
+        )}
+        href={`/auth/signup${redirect}`}
+      >
+        Get started
+      </Link>
+    </>
   ) : isMobile ? (
     <Drawer open={open} onOpenChange={(open) => setOpen(open)}>
-      <DrawerTrigger className="outline-none">
+      <DrawerTrigger className="relative outline-none">
         <AvatarElement image={data.data.image} username={data?.data.username} />
+        <div className="absolute bottom-0 right-0 flex size-5 translate-x-1/4 translate-y-1/4 items-center justify-center rounded-full border-2 border-slate-950 bg-purple-300 text-slate-800">
+          <ChevronUp
+            strokeWidth={3.5}
+            className={cn(
+              "size-3 transition-all duration-150 ease-in-out",
+              open ? "rotate-180" : "",
+            )}
+          />
+        </div>
       </DrawerTrigger>
       <DrawerContent className="border-slate-700 bg-slate-900">
         <UserSectionContent
@@ -76,8 +97,17 @@ const UserSection: FC<{ showRounded?: boolean }> = ({ showRounded }) => {
     </Drawer>
   ) : (
     <DropdownMenu open={open} onOpenChange={(open) => setOpen(open)}>
-      <DropdownMenuTrigger className="outline-none">
+      <DropdownMenuTrigger className="relative outline-none">
         <AvatarElement image={data.data.image} username={data?.data.username} />
+        <div className="absolute bottom-0 right-0 flex size-5 translate-x-1/4 translate-y-1/4 items-center justify-center rounded-full border-2 border-slate-950 bg-purple-300 text-slate-800">
+          <ChevronDown
+            strokeWidth={3.5}
+            className={cn(
+              "size-3 transition-all duration-150 ease-in-out",
+              open ? "rotate-180" : "",
+            )}
+          />
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent
         className={cn(

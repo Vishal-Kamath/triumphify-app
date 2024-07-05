@@ -7,6 +7,7 @@ interface User {
   created_at: Date;
   id: string;
   emailVerified: boolean | null;
+  tel: string | null;
   username: string | null;
   dateOfBirth: string | null;
   gender: "Male" | "Female" | "Other" | null;
