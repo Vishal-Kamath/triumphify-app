@@ -36,12 +36,9 @@ export const Socket = createContext<SocketContextType>({
   getConversationsList: () => {},
 });
 
-const socket = io("http://localhost:5500" as string, {
+const socket = io(process.env.WS_WEBSITE as string, {
   withCredentials: true,
 });
-// const socket = io(process.env.WS_WEBSITE as string, {
-//   withCredentials: true,
-// });
 
 const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const loggedIn = useRef(false);
@@ -55,7 +52,7 @@ const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
   >([]);
 
   useEffect(() => {
-    // if (isServer) return;
+    if (isServer) return;
 
     if (!loggedIn.current) {
       socket.emit("login");
@@ -104,8 +101,7 @@ const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
       loggedIn.current = false;
     };
-    // }, [isServer]);
-  }, []);
+  }, [isServer]);
 
   async function login() {
     console.log("called");
