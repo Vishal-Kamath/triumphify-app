@@ -43,7 +43,7 @@ const NewChatPage: FC<{
       {/* Chats */}
       <div className="flex h-full flex-col-reverse gap-4 overflow-y-auto px-4 py-6 scrollbar-thin scrollbar-track-slate-800 scrollbar-thumb-slate-700 scrollbar-track-rounded-md scrollbar-thumb-rounded-md">
         {terminated ? (
-          <div className="w-full px-4 py-3 text-center text-slate-400">
+          <div className="w-full px-4 py-3 text-center text-slate-400 md:text-xs">
             This conversation has been terminated
           </div>
         ) : null}

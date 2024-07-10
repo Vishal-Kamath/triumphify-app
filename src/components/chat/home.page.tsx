@@ -14,7 +14,7 @@ const ChatHomePage: FC<{
     (conversation) => conversation.status !== "closed",
   );
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className="flex h-full w-full flex-col overflow-y-auto pb-6 scrollbar-none">
       <div className="relative flex flex-col gap-6 border-b-2 border-slate-700 bg-purple-800 px-4 pb-9 pt-6">
         <h1 className="text-3xl font-medium">Hi there</h1>
         <p>Need help? Start a new conversation with us</p>
