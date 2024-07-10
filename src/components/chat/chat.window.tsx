@@ -29,7 +29,7 @@ const ChatWindow: FC<{ open: boolean; closeFn: VoidFunction }> = ({
       className={cn(
         "max-md:fixed max-md:left-0 max-md:top-0 max-md:min-h-screen",
         "md:absolute md:bottom-0 md:right-16 md:max-h-[30rem] md:min-h-[30rem] md:min-w-[21rem] md:max-w-[21rem]",
-        "flex h-full w-full flex-col justify-start overflow-hidden bg-slate-800 transition-all duration-150 ease-in-out md:rounded-md md:border-2 md:border-slate-700",
+        "flex h-full max-h-screen w-full flex-col justify-start overflow-hidden bg-slate-800 transition-all duration-150 ease-in-out md:rounded-md md:border-2 md:border-slate-700",
         !open ? "translate-y-[calc(100%+1.25rem)]" : "",
       )}
     >
