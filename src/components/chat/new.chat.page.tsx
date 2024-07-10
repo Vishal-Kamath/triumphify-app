@@ -41,7 +41,7 @@ const NewChatPage: FC<{
         </button>
       </div>
       {/* Chats */}
-      <div className="flex h-full max-h-full grow flex-col-reverse gap-4 overflow-y-auto px-4 py-6 scrollbar-thin scrollbar-track-slate-800 scrollbar-thumb-slate-700 scrollbar-track-rounded-md scrollbar-thumb-rounded-md">
+      <div className="flex h-full grow flex-col-reverse gap-4 overflow-y-auto px-4 py-6 scrollbar-thin scrollbar-track-slate-800 scrollbar-thumb-slate-700 scrollbar-track-rounded-md scrollbar-thumb-rounded-md">
         {terminated ? (
           <div className="w-full px-4 py-3 text-center text-slate-400">
             This conversation has been terminated
@@ -66,7 +66,7 @@ const NewChatPage: FC<{
       </div>
 
       {!terminated ? (
-        <div className="flex h-fit w-full items-center gap-4 border-t-2 border-slate-800 bg-slate-700 px-4 py-2">
+        <div className="flex h-fit w-full shrink-0 items-center gap-4 border-t-2 border-slate-800 bg-slate-700 px-4 py-2">
           <AutoResizingTextarea
             value={msg}
             onChange={(e) => setMsg(String.raw`${e.target.value}`)}
