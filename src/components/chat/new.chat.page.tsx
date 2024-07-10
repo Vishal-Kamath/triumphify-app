@@ -25,7 +25,7 @@ const NewChatPage: FC<{
   const terminated = conversation?.status === "closed";
 
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className="flex h-full max-h-screen w-full flex-col">
       <div className="flex w-full justify-between bg-purple-800 px-4 py-3">
         <button
           onClick={backToHome}
