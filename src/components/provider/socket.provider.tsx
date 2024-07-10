@@ -84,8 +84,11 @@ const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       socket.disconnect();
       socket.connect();
-      socket.emit("login");
-      pingCount.current += 1;
+
+      setTimeout(() => {
+        socket.emit("login");
+        pingCount.current += 1;
+      }, 1000);
     });
 
     socket.on("chat-updated", (room: string) => {
