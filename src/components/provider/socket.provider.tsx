@@ -55,7 +55,7 @@ const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
   >([]);
 
   useEffect(() => {
-    if (isServer) return;
+    // if (isServer) return;
 
     if (!loggedIn.current) {
       socket.emit("login");
@@ -101,7 +101,8 @@ const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
       loggedIn.current = false;
     };
-  }, [isServer]);
+    // }, [isServer]);
+  }, []);
 
   async function login() {
     console.log("called");
