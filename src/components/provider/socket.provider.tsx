@@ -36,9 +36,12 @@ export const Socket = createContext<SocketContextType>({
   getConversationsList: () => {},
 });
 
-const socket = io(process.env.WS_WEBSITE as string, {
+const socket = io("http://localhost:5500" as string, {
   withCredentials: true,
 });
+// const socket = io(process.env.WS_WEBSITE as string, {
+//   withCredentials: true,
+// });
 
 const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const loggedIn = useRef(false);
@@ -75,6 +78,10 @@ const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
     });
     socket.on("unauthorized", () => {
       console.log("una");
+      if (pingCount.current > 10) {
+        unauthorized.current = true;
+        return;
+      }
       socket.disconnect();
       socket.connect();
       socket.emit("login");
