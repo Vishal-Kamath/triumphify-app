@@ -44,23 +44,18 @@ const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const loggedIn = useRef(false);
   const loggedOut = useRef(true);
   const unauthorized = useRef(false);
+  const pingCount = useRef(0);
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [conversations, setConversations] = useState<
     ConversationWithLastMessage[]
   >([]);
 
-  const pingLogin = () => {
-    socket.emit("login");
-    if (unauthorized.current || loggedIn.current) return;
-    setTimeout(pingLogin, 1000);
-  };
-
   useEffect(() => {
     if (isServer) return;
 
-    if (!loggedIn.current && !unauthorized.current) {
-      pingLogin();
+    if (!loggedIn.current) {
+      socket.emit("login");
     }
 
     socket.on("loggedIn", () => {
@@ -79,7 +74,11 @@ const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
       setConversations([]);
     });
     socket.on("unauthorized", () => {
-      unauthorized.current = true;
+      console.log("una");
+      socket.disconnect();
+      socket.connect();
+      socket.emit("login");
+      pingCount.current += 1;
     });
 
     socket.on("chat-updated", (room: string) => {
@@ -99,11 +98,9 @@ const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   async function login() {
     console.log("called");
-    await socket.disconnect();
-    await socket.connect();
     unauthorized.current = false;
     loggedIn.current = false;
-    pingLogin();
+    socket.emit("login");
   }
 
   function logout() {
