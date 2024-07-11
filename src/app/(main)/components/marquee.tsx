@@ -49,69 +49,69 @@ const Marquee: FC<ComponentProps<"div">> = ({ className, ...props }) => {
         variants={marqueeVariants}
         animate="animate"
       >
-        <h1
+        <h2
           ref={reference}
           className="m-0 text-nowrap p-0 text-[8rem] font-bold leading-none text-slate-500/15"
         >
           TRIUMPHIFY THE PURPLE PILL{" "}
           <span className="text-purple-500/25">TRIUMPHIFY</span> THE PURPLE PILL
           TRIUMPHIFY THE PURPLE PILL TRIUMPHIFY THE PURPLE PILL
-        </h1>
+        </h2>
       </motion.div>
       <motion.div
         className="track"
         variants={marqueeVariants2}
         animate="animate"
       >
-        <h1
+        <h2
           ref={reference}
           className="m-0 text-nowrap p-0 text-[8rem] font-bold leading-none text-slate-500/20"
         >
           TRIUMPHIFY <span className="text-purple-500/25">THE</span> PURPLE PILL
           TRIUMPHIFY THE PURPLE PILL TRIUMPHIFY THE PURPLE PILL TRIUMPHIFY THE
           PURPLE PILL
-        </h1>
+        </h2>
       </motion.div>
       <motion.div
         className="track"
         variants={marqueeVariants}
         animate="animate"
       >
-        <h1
+        <h2
           ref={reference}
           className="m-0 text-nowrap p-0 text-[8rem] font-bold leading-none text-slate-500/25"
         >
           PILL TRIUMPHIFY THE PURPLE PILL TRIUMPHIFY THE{" "}
           <span className="text-purple-500/25">PURPLE</span> PILL TRIUMPHIFY THE
           PURPLE PILL TRIUMPHIFY THE PURPLE
-        </h1>
+        </h2>
       </motion.div>
       <motion.div
         className="track"
         variants={marqueeVariants2}
         animate="animate"
       >
-        <h1
+        <h2
           ref={reference}
           className="m-0 text-nowrap p-0 text-[8rem] font-bold leading-none text-slate-500/30"
         >
           PILL TRIUMPHIFY THE PURPLE{" "}
           <span className="text-purple-500/25">PILL</span> TRIUMPHIFY THE PURPLE
           PILL TRIUMPHIFY THE PURPLE PILL TRIUMPHIFY THE PURPLE
-        </h1>
+        </h2>
       </motion.div>
       <motion.div
         className="track"
         variants={marqueeVariants}
         animate="animate"
       >
-        <h1
+        <h2
           ref={reference}
           className="m-0 text-nowrap p-0 text-[8rem] font-bold leading-none text-slate-500/35 md:hidden"
         >
           TRIUMPHIFY THE PURPLE PILL TRIUMPHIFY THE PURPLE PILL TRIUMPHIFY THE
           PURPLE PILL TRIUMPHIFY THE PURPLE PILL
-        </h1>
+        </h2>
       </motion.div>
     </div>
   );

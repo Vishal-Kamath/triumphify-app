@@ -12,10 +12,9 @@ import SocketProvider from "@/components/provider/socket.provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title:
-    "Triumphify - Natural Men's Sexual Health Supplement | Boost Libido & Performance",
+  title: "Triumphify - Natural Men's Sexual Health Supplement",
   description:
-    "Discover Triumphify, a natural sexual health supplement for men. Enhance libido, improve performance, and boost satisfaction with our pure, high-quality herbal formula. Safe, effective, and free from artificial additives. Start your journey to better sexual health today!",
+    "Discover Triumphify, a natural sexual health supplement for men. Enhance libido, improve performance, and boost satisfaction with our high-quality herbal formula, free from artificial additives. Start today!",
   keywords: [
     "men's sexual health",
     "natural supplement",

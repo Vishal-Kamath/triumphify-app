@@ -25,21 +25,21 @@ export const useProduct = (slug: string) =>
     staleTime: 1000 * 60 * 15,
   });
 
-  const getProducts = (): Promise<Product[] & { type: string }> =>
-    axios
-      .get<{ data: Product[] & { type: string } }>(
-        `${process.env.ENDPOINT}/api/products/details/`,
-      )
-      .then((res) => res.data.data)
-      .catch((err) => err.response.data);
+const getProducts = (): Promise<Product[] & { type: string }> =>
+  axios
+    .get<{ data: Product[] & { type: string } }>(
+      `${process.env.ENDPOINT}/api/products/details/`,
+    )
+    .then((res) => res.data.data)
+    .catch((err) => err.response.data);
 
-  export const useProducts = () =>
-    useQuery({
-      queryKey: ["products"],
-      queryFn: getProducts,
-      retry: 0,
-      staleTime: 1000 * 60 * 15,
-    });
+export const useProducts = () =>
+  useQuery({
+    queryKey: ["products"],
+    queryFn: getProducts,
+    retry: 0,
+    staleTime: 1000 * 60 * 15,
+  });
 
 const getProductWithDetails = (
   slug: string,
