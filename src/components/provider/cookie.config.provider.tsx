@@ -109,13 +109,13 @@ const CookieConfigProvider: FC = () => {
               onClick={() => setConfigureCookiePageOpen(true)}
               className="h-10 w-fit text-nowrap rounded-full border-2 border-slate-800 px-6 text-sm text-slate-300 hover:border-purple-700 hover:bg-purple-950/30 hover:text-white"
             >
-              Configure Cookies
+              Configure
             </button>
             <button
               type="submit"
               className="h-10 w-fit text-nowrap rounded-full bg-slate-800 px-6 text-sm text-slate-300 hover:bg-purple-700 hover:text-white"
             >
-              Accept Cookies
+              Accept
             </button>
           </div>
         </form>

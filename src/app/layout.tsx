@@ -29,6 +29,13 @@ export const metadata: Metadata = {
     "male performance enhancement",
   ],
 
+  alternates: {
+    canonical: "https://triumphify.com",
+    languages: {
+      "en-US": "https://triumphify.com",
+    },
+  },
+
   authors: [
     {
       name: "Triumphify",
@@ -47,10 +54,28 @@ export const metadata: Metadata = {
         url: "https://triumphify.com/og.png",
         width: 1200,
         height: 630,
+        alt: "Triumphify",
+        type: "image/png",
       },
     ],
     locale: "en_US",
     type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Triumphify - Natural Men's Sexual Health Supplement",
+    description:
+      "Discover Triumphify, a natural sexual health supplement for men. Enhance libido, improve performance, and boost satisfaction with our high-quality herbal formula, free from artificial additives. Start today!",
+    images: [
+      {
+        url: "https://triumphify.com/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Triumphify",
+        type: "image/png",
+      },
+    ],
   },
 };
 
@@ -60,7 +85,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-US">
       <ReactQueryProvider>
         <SocketProvider>
           <head>
