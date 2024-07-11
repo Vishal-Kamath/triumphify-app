@@ -8,7 +8,6 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { AiOutlineLoading } from "react-icons/ai";
 import { FaGoogle } from "react-icons/fa";
@@ -23,8 +22,13 @@ import { useToast } from "@/components/ui/use-toast";
 import { useRouter, useSearchParams } from "next/navigation";
 import { invalidateAll } from "@/components/provider/reactquery.provider";
 import { Socket } from "@/components/provider/socket.provider";
+import AuthInput from "../auth-input";
+import { cn } from "@/lib/utils";
 
-const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
+const LoginForm: FC<{ inline?: boolean; className?: string }> = ({
+  inline,
+  className,
+}) => {
   const { toast } = useToast();
   const { login } = useContext(Socket);
 
@@ -86,10 +90,13 @@ const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex h-full w-full max-w-sm flex-col items-start gap-6"
+        className={cn(
+          "flex h-full w-full max-w-sm flex-col items-start gap-6",
+          className,
+        )}
       >
         <div className="flex w-full flex-col items-start gap-2">
-          <h2 className="text-2xl font-semibold text-fuchsia-900">
+          <h2 className="text-2xl font-semibold text-fuchsia-400">
             {inline ? "You seem to be Logged out" : "Welcome back!"}
           </h2>
           <p className="text-sm text-gray-500">
@@ -104,9 +111,8 @@ const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
               <FormItem className="w-full">
                 {/* <FormLabel>Email</FormLabel> */}
                 <FormControl>
-                  <Input
+                  <AuthInput
                     type="email"
-                    className="border-gray-300 bg-white/50 focus-visible:ring-fuchsia-300/50"
                     placeholder="johndoe@email.com"
                     {...field}
                   />
@@ -122,12 +128,7 @@ const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
               <FormItem className="w-full">
                 {/* <FormLabel>Password</FormLabel> */}
                 <FormControl>
-                  <Input
-                    className="border-gray-300 bg-white/50 focus-visible:ring-fuchsia-300/50"
-                    type="password"
-                    placeholder="******"
-                    {...field}
-                  />
+                  <AuthInput type="password" placeholder="******" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -145,7 +146,7 @@ const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
         {loading ? (
           <Button
             disabled
-            className="w-full bg-fuchsia-400/20 text-black hover:bg-fuchsia-400/30"
+            className="w-full bg-gray-100/20 text-white hover:bg-white/30"
           >
             <AiOutlineLoading className="mr-2 h-4 w-4 animate-spin" />
             Please wait...
@@ -153,14 +154,14 @@ const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
         ) : (
           <Button
             type="submit"
-            className="w-full bg-fuchsia-400/20 text-black hover:bg-fuchsia-400/30"
+            className="w-full bg-gray-100/20 text-white hover:bg-white/30"
           >
             Login
           </Button>
         )}
         <div className="flex w-full max-w-sm items-center gap-3">
           <Separator className="w-full shrink bg-gray-500" />
-          <span className="text-nowrap text-xs text-gray-800">OR</span>
+          <span className="text-nowrap text-xs text-gray-300">OR</span>
           <Separator className="w-full shrink bg-gray-500" />
         </div>
 
@@ -168,17 +169,17 @@ const LoginForm: FC<{ inline?: boolean }> = ({ inline }) => {
           variant="outline"
           type="button"
           onClick={handleGoogle}
-          className="w-full gap-3 border-gray-400 bg-transparent text-gray-700 hover:border-black  hover:bg-transparent hover:text-black"
+          className="w-full gap-3 border-gray-400 bg-gray-100/10 text-white hover:border-white hover:bg-white/30 hover:text-white"
         >
           <FaGoogle className="h-4 w-4" />
           <span>Continue with Google</span>
         </Button>
 
-        <div className="flex gap-1 text-sm text-gray-600">
+        <div className="flex gap-1 text-sm text-gray-400">
           <span>Don&apos;t have an account?</span>
           <Link
             href={`/auth/signup${redirectPath}`}
-            className="font-semibold hover:text-black hover:underline"
+            className="font-semibold hover:text-white hover:underline"
           >
             Sign up
           </Link>

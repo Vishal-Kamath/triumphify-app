@@ -1,14 +1,7 @@
 "use client";
 
 import { isServer } from "@tanstack/react-query";
-import {
-  FC,
-  ReactNode,
-  createContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { FC, ReactNode, createContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
 interface ConversationWithLastMessage extends Conversation {
@@ -18,6 +11,10 @@ interface ConversationWithLastMessage extends Conversation {
 interface SocketContextType {
   messages: Message[];
   conversations: ConversationWithLastMessage[];
+  loggedIn: boolean;
+  loggedOut: boolean;
+  unauthorized: boolean;
+
   login: VoidFunction;
   logout: VoidFunction;
   newChat: (msg: string, room: string, cb: Function) => void;
@@ -27,6 +24,9 @@ interface SocketContextType {
 export const Socket = createContext<SocketContextType>({
   messages: [],
   conversations: [],
+  loggedIn: false,
+  loggedOut: true,
+  unauthorized: false,
 
   login: () => {},
   logout: () => {},
@@ -41,10 +41,10 @@ const socket = io(process.env.WS_WEBSITE as string, {
 });
 
 const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const loggedIn = useRef(false);
-  const loggedOut = useRef(true);
-  const unauthorized = useRef(false);
-  const pingCount = useRef(0);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedOut, setLoggedOut] = useState(true);
+  const [unauthorized, setUnauthorized] = useState(false);
+  const [pingCount, setPingCount] = useState(0);
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [conversations, setConversations] = useState<
@@ -54,28 +54,28 @@ const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     if (isServer) return;
 
-    if (!loggedIn.current && !unauthorized.current) {
+    if (!loggedIn && !unauthorized) {
       socket.emit("login");
     }
 
     socket.on("loggedIn", () => {
-      loggedIn.current = true;
-      loggedOut.current = false;
-      unauthorized.current = false;
+      setLoggedIn(true);
+      setLoggedOut(false);
+      setUnauthorized(false);
 
       getConversationsList();
     });
     socket.on("loggedOut", () => {
-      loggedIn.current = false;
-      loggedOut.current = true;
-      unauthorized.current = true;
+      setLoggedIn(false);
+      setLoggedOut(true);
+      setUnauthorized(true);
 
       setMessages([]);
       setConversations([]);
     });
     socket.on("unauthorized", () => {
-      if (pingCount.current > 10) {
-        unauthorized.current = true;
+      if (pingCount > 10) {
+        setUnauthorized(true);
         return;
       }
       socket.disconnect();
@@ -83,7 +83,7 @@ const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
       setTimeout(() => {
         socket.emit("login");
-        pingCount.current += 1;
+        setPingCount((count) => count + 1);
       }, 1000);
     });
 
@@ -98,21 +98,21 @@ const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
       socket.off("unauthorized");
       socket.off("chat-updated");
 
-      loggedIn.current = false;
+      setLoggedIn(false);
     };
   }, [isServer]);
 
   async function login() {
     socket.disconnect();
     socket.connect();
-    unauthorized.current = false;
-    loggedIn.current = false;
+    setUnauthorized(false);
+    setLoggedIn(false);
     socket.emit("login");
   }
 
   function logout() {
-    if (!loggedOut.current) {
-      pingCount.current = 0;
+    if (!loggedOut) {
+      setPingCount(0);
       socket.emit("logout");
     }
   }
@@ -134,6 +134,10 @@ const SocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
       value={{
         messages,
         conversations,
+        loggedIn,
+        loggedOut,
+        unauthorized,
+
         login,
         logout,
         newChat,

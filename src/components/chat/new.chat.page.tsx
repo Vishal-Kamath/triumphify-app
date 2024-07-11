@@ -55,7 +55,7 @@ const NewChatPage: FC<{
                 key={index + "cavdnvd"}
                 className="relative mx-auto my-4 w-full max-w-sm border-b-1 border-slate-500"
               >
-                <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 bg-slate-800 px-2 text-xs text-slate-400">
+                <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 bg-slate-900 px-2 text-xs text-slate-400">
                   {formatDate(chat.date)}
                 </span>
               </div>
