@@ -9,6 +9,17 @@ const getProducts = (): Promise<Product[] & { type: string }> =>
     .then((res) => res.data.data)
     .catch((err) => err.response.data);
 
+const getBlogs = (
+  status?: Blog["status"],
+): Promise<Blog[] & { type: string }> =>
+  axios
+    .get<{ data: Blog[] & { type: string } }>(
+      `${process.env.ENDPOINT}/api/blogs${status ? `?status=${status}` : ""}`,
+      { withCredentials: true },
+    )
+    .then((res) => res.data.data)
+    .catch((err) => err.response.data);
+
 export default async function sitemap() {
   const products = await getProducts();
 
@@ -41,5 +52,13 @@ export default async function sitemap() {
     lastModified: new Date().toISOString(),
   }));
 
-  return [...mainLinks, ...policiesLinks, ...productLinks];
+  // blogs
+  const blogs = await getBlogs();
+  const blogRoutes = blogs.map((blog) => `/blogs/${blog.slug}`);
+  const blogLinks = blogRoutes.map((route) => ({
+    url: route,
+    lastModified: new Date().toISOString(),
+  }));
+
+  return [...mainLinks, ...policiesLinks, ...productLinks, ...blogLinks];
 }
