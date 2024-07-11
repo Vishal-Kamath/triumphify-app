@@ -169,7 +169,10 @@ const SignUpPage: FC = () => {
         <span className="text-xs">
           By registering, you agree to the processing of your personal data by
           Triumphify as described in the{" "}
-          <Link href="#" className="font-medium text-blue-400 hover:underline">
+          <Link
+            href="/policies/privacy"
+            className="font-medium text-blue-400 hover:underline"
+          >
             Privacy Policy
           </Link>
           .
