@@ -8,6 +8,7 @@ import CartButton from "./cart-button";
 import { SidebarButton } from "../sidebar/sidebar";
 import { Menu, X } from "lucide-react";
 import Logo from "../misc/logo";
+import HeaderNavMenu from "./nav.menu";
 
 const Header: FC = () => {
   const pathname = usePathname();
@@ -30,7 +31,7 @@ const Header: FC = () => {
       <div className="h-[4.5rem]"></div>
       <div
         className={cn(
-          "padding-x fixed left-0 top-0 z-[995] h-[4.5rem] w-full",
+          "padding-x fixed left-0 top-0 z-[995] flex h-[4.5rem] w-full flex-col",
           isHidden && "hidden",
           "bg-slate-950 text-white",
           !top && "border-b-1 border-slate-700 shadow-sm",
@@ -48,6 +49,7 @@ const Header: FC = () => {
               {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </SidebarButton>
             <Logo className="aspect-auto h-8 w-full fill-white object-contain object-left" />
+            <HeaderNavMenu className="pl-6 max-md:hidden" />
           </div>
 
           <div className="ml-auto flex gap-3">
