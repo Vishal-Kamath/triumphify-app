@@ -48,7 +48,7 @@ const Header: FC = () => {
             >
               {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </SidebarButton>
-            <Logo className="aspect-auto h-8 w-full fill-white object-contain object-left" />
+            <Logo className="aspect-auto h-8 w-fit fill-white" />
             <HeaderNavMenu className="pl-6 max-md:hidden" />
           </div>
 

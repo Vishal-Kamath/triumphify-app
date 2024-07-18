@@ -64,7 +64,7 @@ const HeroSection: FC = () => {
           </div>
         </div>
         <Image
-          src="/home/hero-image.svg"
+          src="/home/pill.png"
           alt="hero image"
           width={1000}
           height={1000}

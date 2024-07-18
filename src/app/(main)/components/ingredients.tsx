@@ -85,10 +85,11 @@ const IngredientsSection: FC = () => {
       <div ref={containerRef} className="padding-x relative h-[700vh] w-full">
         <div
           style={{
-            top:
-              progress > section5End && maxMd
-                ? `${10 - 25 * ((progress - section5End) / (1 - section5End))}rem`
-                : "10rem",
+            top: maxMd
+              ? progress > section5End
+                ? `${7 - 25 * ((progress - section5End) / (1 - section5End))}rem`
+                : "7rem"
+              : "10rem",
           }}
           className="sticky left-0 isolate z-10 flex w-full justify-between gap-9 max-md:h-[calc(100vh-15rem)] max-md:flex-col max-md:items-center"
         >
