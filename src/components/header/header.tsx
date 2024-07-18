@@ -37,7 +37,7 @@ const Header: FC = () => {
           !top && "border-b-1 border-slate-700 shadow-sm",
         )}
       >
-        <header className="flex h-full items-center justify-between gap-3">
+        <header className="flex h-full w-full items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <SidebarButton
               open={open}
@@ -48,7 +48,7 @@ const Header: FC = () => {
             >
               {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </SidebarButton>
-            <Logo className="aspect-auto h-8 w-fit fill-white" />
+            <Logo className="aspect-auto h-8 w-full max-w-[10rem] fill-white" />
             <HeaderNavMenu className="pl-6 max-md:hidden" />
           </div>
 

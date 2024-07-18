@@ -1191,6 +1191,9 @@ video {
 .max-w-6xl {
   max-width: 72rem;
 }
+.max-w-\[10rem\] {
+  max-width: 10rem;
+}
 .max-w-\[12\.5rem\] {
   max-width: 12.5rem;
 }
