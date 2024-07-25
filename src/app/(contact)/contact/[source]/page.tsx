@@ -34,7 +34,7 @@ const contactSchema = z.object({
     .refine((val) => !Number.isNaN(Number(val)), "Invalid input"),
 });
 
-type ContactType = z.infer<typeof contactSchema>;
+type ContactType = z.infer<typeof contactSchema> & { tel: E164Number };
 
 const ContactPage: FC = () => {
   const { toast } = useToast();

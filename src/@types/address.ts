@@ -6,6 +6,6 @@ export interface Address {
   state: string;
   zip: string;
   country: string;
-  tel: string;
+  tel: E164Number;
   email: string;
 }

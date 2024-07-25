@@ -16,7 +16,9 @@ export const SignupFormSchema = z
     message: "Passwords don't match",
     path: ["confirmPassword"],
   });
-export type SignupFormType = z.infer<typeof SignupFormSchema>;
+export type SignupFormType = z.infer<typeof SignupFormSchema> & {
+  tel: E164Number;
+};
 
 function isUser18Plus(birthdate: Date) {
   const userBirthdate = new Date(birthdate);

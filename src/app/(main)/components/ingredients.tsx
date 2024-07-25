@@ -1,14 +1,15 @@
 "use client";
 
-import { ElementRef, FC, useRef, useState } from "react";
+import { ElementRef, FC, useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useScroll } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import useResponsive from "@/lib/hooks/use-responsive";
-import { ChevronDown, Mouse } from "lucide-react";
+import { ChevronDown, ChevronUp, Mouse } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import "./ingredients.css";
 import { LogoSvg } from "@/components/misc/logo";
+import { Link as ReactSmoothScroll } from "react-scroll";
 
 const IngredientsSection: FC = () => {
   const { maxMd } = useResponsive();
@@ -41,6 +42,12 @@ const IngredientsSection: FC = () => {
   const section3Range = progress > section2End && progress < section3End;
   const section4Range = progress > section3End && progress < section4End;
 
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      console.log("sc");
+    });
+  });
+
   // shrink range
   const shrinkRange = (
     (maxMd ? 12 : 15) -
@@ -68,18 +75,45 @@ const IngredientsSection: FC = () => {
           ? "Shilajeet / Asphaltum, Black Bitumen, or Mineral Pitch"
           : "none";
 
+  const componentRef = useRef<ElementRef<"div">>(null);
+  function autoScroll() {
+    componentRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+    });
+  }
+
   return (
-    <div className="flex flex-col gap-9 py-12">
-      <div className="padding-x flex w-full items-center justify-center gap-6 text-slate-500">
-        <Separator className="w-full max-w-12 bg-slate-700 sm:max-w-28" />
-        <div className="flex items-center justify-center gap-3">
-          <div className="flex flex-col">
-            <Mouse className="h-5 w-5 translate-y-[2px]" />
-            <ChevronDown className="h-5 w-5 -translate-y-[2px]" />
+    <div ref={componentRef} className="flex flex-col gap-9 pt-12">
+      <div
+        id="up"
+        className="padding-x flex w-full items-center justify-center gap-6 pb-4 md:pb-12"
+      >
+        <Separator className="w-full max-w-28 bg-slate-500 max-md:max-w-12" />
+        <ReactSmoothScroll
+          to="down"
+          smooth={true}
+          offset={
+            typeof window !== "undefined" && (window.screen.height * 2) / 3
+              ? -(window.screen.height * 2) / 3
+              : -100
+          }
+          duration={14000}
+          ignoreCancelEvents={true}
+          onTouchCancel={() => {}}
+          className="flex translate-y-2 cursor-pointer items-center justify-center gap-3 text-slate-400 hover:text-purple-500"
+        >
+          <div className="flex cursor-pointer items-center justify-center gap-3 text-slate-400 hover:text-purple-500">
+            <div className="flex h-10 flex-col items-center justify-center">
+              <Mouse className="h-5 w-5 -translate-y-1" />
+              <ChevronDown className="h-5 w-5 -translate-y-2" />
+            </div>
+            <span className="flex h-10 items-start text-nowrap text-lg lg:text-xl">
+              Click to Scroll
+            </span>
           </div>
-          <span className="text-lg lg:text-xl">Scroll</span>
-        </div>
-        <Separator className="w-full max-w-12 bg-slate-700 sm:max-w-28" />
+        </ReactSmoothScroll>
+        <Separator className="w-full max-w-28 bg-slate-500 max-md:max-w-12" />
       </div>
 
       <div ref={containerRef} className="padding-x relative h-[700vh] w-full">
@@ -93,9 +127,9 @@ const IngredientsSection: FC = () => {
           }}
           className="sticky left-0 isolate z-10 flex w-full justify-between gap-9 max-md:h-[calc(100vh-15rem)] max-md:flex-col max-md:items-center"
         >
-          <div className="flex w-full flex-col gap-6 text-white md:max-w-lg">
-            <h2 className="text-4xl font-semibold text-white">
-              Made with <span className="text-purple-300">Natural</span>{" "}
+          <div className="flex w-full flex-col gap-6 text-white md:max-w-lg md:gap-9">
+            <h2 className="text-4xl font-semibold leading-[1.2] text-white lg:text-5xl lg:leading-[1.2]">
+              Made with <span className="text-purple-400">Natural</span>{" "}
               Ingredients
             </h2>
 
@@ -327,6 +361,31 @@ const IngredientsSection: FC = () => {
           />
         </div>
       </div>
+      <div
+        id="down"
+        className="padding-x flex w-full items-center justify-center gap-6 pt-4 md:pt-12"
+      >
+        <Separator className="w-full max-w-28 bg-slate-500 max-md:max-w-12" />
+        <ReactSmoothScroll
+          to="up"
+          smooth={true}
+          offset={-300}
+          duration={2000}
+          className="flex -translate-y-2 cursor-pointer items-center justify-center gap-3 text-slate-400 hover:text-purple-500"
+        >
+          <div className="flex cursor-pointer items-center justify-center gap-3 text-slate-400 hover:text-purple-500">
+            <div className="flex h-10 flex-col items-center justify-center">
+              <ChevronUp className="h-5 w-5 translate-y-1" />
+              <Mouse className="h-5 w-5" />
+            </div>
+            <span className="flex h-10 items-end text-lg lg:text-xl">
+              Click to Scroll
+            </span>
+          </div>
+        </ReactSmoothScroll>
+        <Separator className="w-full max-w-28 bg-slate-500 max-md:max-w-12" />
+      </div>
+      <div id="down"></div>
     </div>
   );
 };

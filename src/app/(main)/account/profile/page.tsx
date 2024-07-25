@@ -68,7 +68,7 @@ const AccountProfile: FC = () => {
     if (user && user.data) {
       form.setValue("username", user.data.username || "");
       form.setValue("email", user.data.email);
-      form.setValue("tel", user.data.tel || "");
+      form.setValue("tel", (user.data.tel || "") as E164Number);
       form.setValue("gender", "Female");
       form.setValue(
         "dateOfBirth",

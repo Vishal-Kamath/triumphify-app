@@ -58,7 +58,7 @@ const CartPaymentPage: FC = () => {
           variant: res.data.type,
         });
         invalidateAllCarts();
-        router.push("/orders/history");
+        // router.push("/orders/history");
       })
       .catch((err) => {
         setLoading(false);

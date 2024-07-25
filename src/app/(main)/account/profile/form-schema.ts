@@ -16,7 +16,9 @@ export const accountProfileFormSchema = z.object({
     }, "You must be 18 years or older")
     .nullish(),
 });
-export type AccountProfileFormType = z.infer<typeof accountProfileFormSchema>;
+export type AccountProfileFormType = z.infer<
+  typeof accountProfileFormSchema
+> & { tel: E164Number };
 
 function isUser18Plus(birthdate: Date) {
   const userBirthdate = new Date(birthdate);

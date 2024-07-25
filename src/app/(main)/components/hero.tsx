@@ -31,13 +31,14 @@ const HeroSection: FC = () => {
             height={125}
             className="absolute left-0 top-0 -z-0 -translate-y-14 md:hidden"
           />
-          <h1 className="z-10 text-5xl font-semibold text-white lg:text-6xl">
-            A product for <span className="text-purple-300">Men</span>, by Men
+          <h1 className="z-10 text-5xl font-semibold leading-[1.3] text-white lg:text-6xl lg:leading-[1.2]">
+            Welcome to <span className="text-purple-400">Triumphify</span>
           </h1>
-          <p className="z-10 text-justify text-[16px] text-slate-300">
-            Our all-natural formula enhances libido, performance, and
-            satisfaction, promoting sexual health without artificial additives.
-            Feel confident and fulfilled today.
+          <p className="z-10 text-justify text-[1rem] text-slate-300 md:text-[0.9rem]">
+            At Triumphify, we believe in empowering your health with nature’s
+            finest offerings. Our products are crafted with care, using only the
+            highest quality natural ingredients to ensure you experience the
+            best nature has to offer.
           </p>
           <div className="flex items-center gap-6">
             {data?.product ? (
@@ -68,7 +69,7 @@ const HeroSection: FC = () => {
           alt="hero image"
           width={1000}
           height={1000}
-          className="h-full w-full object-contain object-center max-lg:mx-auto max-md:px-6 max-md:pb-12 md:max-w-md lg:max-w-md"
+          className="h-full w-full object-contain object-center max-lg:mx-auto max-md:px-6 max-md:pb-12 sm:max-w-sm md:max-w-md lg:max-w-md"
         />
       </div>
     </div>

@@ -6,7 +6,7 @@ const EmailListContactForm: FC = () => {
   return (
     <div className="py-9">
       <div className="flex flex-col bg-purple-600">
-        <div className="h-9 w-full rounded-b-[1.5rem] bg-slate-950"></div>
+        {/* <div className="h-9 w-full rounded-b-[1.5rem] bg-slate-950"></div> */}
         <div className="padding-x flex w-full items-center justify-between gap-8 py-14 max-md:flex-col max-md:items-center">
           <div className="flex flex-col gap-2 max-md:items-center">
             <h4 className="text-3xl font-semibold text-white">
@@ -29,7 +29,7 @@ const EmailListContactForm: FC = () => {
             </button>
           </div>
         </div>
-        <div className="h-9 w-full rounded-t-[1.5rem] bg-slate-950"></div>
+        {/* <div className="h-9 w-full rounded-t-[1.5rem] bg-slate-950"></div> */}
       </div>
     </div>
   );

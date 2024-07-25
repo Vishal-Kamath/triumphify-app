@@ -37,4 +37,6 @@ export const addAddressSchema = z.object({
     .refine((val) => !!val.trim(), "Field is required"),
 });
 
-export type AddressFormType = z.infer<typeof addAddressSchema>;
+export type AddressFormType = z.infer<typeof addAddressSchema> & {
+  tel: E164Number;
+};

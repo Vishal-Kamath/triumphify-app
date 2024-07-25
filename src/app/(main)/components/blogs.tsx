@@ -19,10 +19,18 @@ const BlogsSections: FC = () => {
   const { maxLg, maxSm } = useResponsive();
 
   return blogs && Array.isArray(blogs) && blogs.length ? (
-    <div className="padding-x flex flex-col gap-9 py-20">
-      <h2 className="text-4xl font-semibold text-white">
-        Read <span className="text-purple-300">More</span> from us.
-      </h2>
+    <div className="padding-x flex w-full flex-col gap-9 py-20">
+      <div className="flex items-center justify-between gap-6">
+        <h2 className="text-4xl font-semibold leading-[1.2] text-white md:leading-[1.2] lg:text-5xl">
+          Read <span className="text-purple-400">More</span> from us.
+        </h2>
+        <Link
+          href="/blogs"
+          className="ml-auto text-[1rem] text-slate-500 underline underline-offset-2 hover:text-slate-200"
+        >
+          View More
+        </Link>
+      </div>
       <Carousel
         opts={{
           skipSnaps: true,
