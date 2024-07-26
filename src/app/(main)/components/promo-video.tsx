@@ -2,12 +2,17 @@
 
 import { ElementRef, FC, useEffect, useRef } from "react";
 import { isServer } from "@tanstack/react-query";
-import "plyr/dist/plyr.css";
+import { Options } from "plyr";
+import "./plyr.css";
 
 const PromoVideoComponent: FC = () => {
   const videoPlayerRef = useRef<ElementRef<"video">>(null);
 
-  const options = {
+  const options: Options = {
+    speed: {
+      selected: 1,
+      options: [0.5, 1, 1.5, 2],
+    },
     controls: [
       "play-large",
       "restart",
