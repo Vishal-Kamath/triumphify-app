@@ -712,9 +712,6 @@ video {
 .z-10 {
   z-index: 10;
 }
-.z-20 {
-  z-index: 20;
-}
 .z-30 {
   z-index: 30;
 }
@@ -866,10 +863,6 @@ video {
 .size-14 {
   width: 3.5rem;
   height: 3.5rem;
-}
-.size-16 {
-  width: 4rem;
-  height: 4rem;
 }
 .size-3 {
   width: 0.75rem;
@@ -1324,10 +1317,6 @@ video {
 }
 .translate-x-\[-50\%\] {
   --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-.translate-x-\[2px\] {
-  --tw-translate-x: 2px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .translate-y-1 {
@@ -2674,9 +2663,6 @@ video {
 .opacity-70 {
   opacity: 0.7;
 }
-.opacity-75 {
-  opacity: 0.75;
-}
 .opacity-90 {
   opacity: 0.9;
 }
@@ -4021,11 +4007,6 @@ input[type="search"].dark::-webkit-search-cancel-button {
     display: none;
   }
 
-  .md\:size-24 {
-    width: 6rem;
-    height: 6rem;
-  }
-
   .md\:size-6 {
     width: 1.5rem;
     height: 1.5rem;
@@ -4128,11 +4109,6 @@ input[type="search"].dark::-webkit-search-cancel-button {
     flex-basis: 50%;
   }
 
-  .md\:translate-x-1 {
-    --tw-translate-x: 0.25rem;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
   .md\:translate-y-3 {
     --tw-translate-y: 0.75rem;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -4162,9 +4138,9 @@ input[type="search"].dark::-webkit-search-cancel-button {
     border-radius: calc(var(--radius) - 2px);
   }
 
-  .md\:rounded-b-lg {
-    border-bottom-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
+  .md\:rounded-b-xl {
+    border-bottom-right-radius: 0.75rem;
+    border-bottom-left-radius: 0.75rem;
   }
 
   .md\:rounded-t-3xl {

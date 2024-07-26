@@ -1,17 +1,73 @@
 "use client";
 
-import { ElementRef, FC, useRef, useState } from "react";
-import { FaPlay } from "react-icons/fa";
+import { ElementRef, FC, useEffect, useRef } from "react";
+import { isServer } from "@tanstack/react-query";
+import "plyr/dist/plyr.css";
 
 const PromoVideoComponent: FC = () => {
-  const [playing, setPlaying] = useState(false);
-  const videoRef = useRef<ElementRef<"video">>(null);
+  const videoPlayerRef = useRef<ElementRef<"video">>(null);
 
-  const playVideo = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-    }
+  const options = {
+    controls: [
+      "play-large",
+      "restart",
+      "rewind",
+      "play",
+      "fast-forward",
+      "progress",
+      "current-time",
+      "duration",
+      "mute",
+      "volume",
+      "captions",
+      "settings",
+      "pip",
+      "airplay",
+      // "download",
+      "fullscreen",
+    ],
   };
+
+  const sources = {
+    type: "video",
+    sources: [
+      {
+        src: "/home/promo-video/360.mp4",
+        type: "video/mp4",
+        size: 360,
+      },
+      {
+        src: "/home/promo-video/480.mp4",
+        type: "video/mp4",
+        size: 480,
+      },
+      {
+        src: "/home/promo-video/720.mp4",
+        type: "video/mp4",
+        size: 720,
+      },
+      {
+        src: "/home/promo-video/1080.mp4",
+        type: "video/mp4",
+        size: 1080,
+      },
+    ],
+  };
+
+  useEffect(() => {
+    if (isServer || document === undefined) return () => {};
+
+    async function loadPlyr() {
+      const Plyr = (await import("plyr")).default;
+      const player = new Plyr("#promo-video-player", options);
+      player.source = sources as any;
+
+      return () => {
+        player.destroy();
+      };
+    }
+    loadPlyr();
+  }, [videoPlayerRef, isServer]);
 
   return (
     <div className="isolate flex flex-col gap-16 md:gap-24 md:py-12">
@@ -20,26 +76,14 @@ const PromoVideoComponent: FC = () => {
       </h2>
 
       <div className="relative md:px-[max(calc(50vw-40rem),5vw)]">
-        <video
-          ref={videoRef}
-          src="/home/promo-video.mp4"
+        <div
           style={{
             boxShadow: "0 0 80px 0 #a855f7, 0 0 10px 0 #d8b4fe",
           }}
-          className="z-0 overflow-hidden md:rounded-b-lg md:rounded-t-3xl"
-          controls
-          controlsList="nodownload"
-          onPlay={() => setPlaying(true)}
-          onPause={() => setPlaying(false)}
-        ></video>
-        {playing ? null : (
-          <button
-            onClick={playVideo}
-            className="absolute left-1/2 top-1/2 z-20 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-purple-700 opacity-75 hover:opacity-100 md:size-24"
-          >
-            <FaPlay className="size-6 translate-x-[2px] text-white md:size-9 md:translate-x-1" />
-          </button>
-        )}
+          className="overflow-hidden md:rounded-b-xl md:rounded-t-3xl"
+        >
+          <video id="promo-video-player" ref={videoPlayerRef}></video>
+        </div>
       </div>
     </div>
   );
