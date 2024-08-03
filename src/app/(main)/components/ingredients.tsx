@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import "./ingredients.css";
 import { LogoSvg } from "@/components/misc/logo";
 import { Link as ReactSmoothScroll } from "react-scroll";
+import Link from "next/link";
 
 const IngredientsSection: FC = () => {
   const { maxMd } = useResponsive();
@@ -196,7 +197,7 @@ const IngredientsSection: FC = () => {
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800">
                     1
                   </div>
-                  <h3 className="text-left text-lg text-purple-500 underline group-hover:text-purple-300 md:text-xl">
+                  <h3 className="text-left text-lg text-purple-400 group-hover:text-purple-300 md:text-xl">
                     Abhrak Bhasma / calcined mica ash
                   </h3>
                 </button>
@@ -207,7 +208,7 @@ const IngredientsSection: FC = () => {
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800">
                     2
                   </div>
-                  <h3 className="text-left text-lg text-purple-500 underline group-hover:text-purple-300 md:text-xl">
+                  <h3 className="text-left text-lg text-purple-400 group-hover:text-purple-300 md:text-xl">
                     Dalchinni / cinnamomum zylanicum
                   </h3>
                 </button>
@@ -218,7 +219,7 @@ const IngredientsSection: FC = () => {
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800">
                     3
                   </div>
-                  <h3 className="text-left text-lg text-purple-500 underline group-hover:text-purple-300 md:text-xl">
+                  <h3 className="text-left text-lg text-purple-400 group-hover:text-purple-300 md:text-xl">
                     Gokhru / tribulus trerrestris
                   </h3>
                 </button>
@@ -229,10 +230,20 @@ const IngredientsSection: FC = () => {
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800">
                     4
                   </div>
-                  <h3 className="text-left text-lg text-purple-500 underline group-hover:text-purple-300 md:text-xl">
+                  <h3 className="text-left text-lg text-purple-400 group-hover:text-purple-300 md:text-xl">
                     Shilajeet / Asphaltum, Black Bitumen, or Mineral Pitch
                   </h3>
                 </button>
+
+                <div className="group flex items-center justify-start gap-4">
+                  <div className="h-8 w-8"></div>
+                  <Link
+                    href="#"
+                    className="text-left text-lg text-purple-400 group-hover:text-purple-300 md:text-xl"
+                  >
+                    Read more...
+                  </Link>
+                </div>
               </div>
             )}
           </div>
