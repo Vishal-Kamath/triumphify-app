@@ -42,12 +42,6 @@ const IngredientsSection: FC = () => {
   const section3Range = progress > section2End && progress < section3End;
   const section4Range = progress > section3End && progress < section4End;
 
-  useEffect(() => {
-    document.addEventListener("scroll", () => {
-      console.log("sc");
-    });
-  });
-
   // shrink range
   const shrinkRange = (
     (maxMd ? 12 : 15) -
@@ -76,10 +70,13 @@ const IngredientsSection: FC = () => {
           : "none";
 
   const componentRef = useRef<ElementRef<"div">>(null);
-  function autoScroll() {
-    componentRef.current?.scrollIntoView({
+  function scrollToIngredient(sectionEnd: number) {
+    const top = containerRef.current?.clientTop || 0;
+    const height = containerRef.current?.clientHeight || 10;
+
+    window.scrollTo({
+      top: top + sectionEnd * height,
       behavior: "smooth",
-      block: "end",
     });
   }
 
@@ -192,38 +189,50 @@ const IngredientsSection: FC = () => {
               </div>
             ) : (
               <div className="flex flex-col gap-4">
-                <div className="flex items-center gap-4">
+                <button
+                  className="group flex items-center justify-start gap-4"
+                  onClick={() => scrollToIngredient(section1End)}
+                >
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800">
                     1
                   </div>
-                  <h3 className="text-lg text-purple-300 md:text-xl">
+                  <h3 className="text-left text-lg text-purple-500 underline group-hover:text-purple-300 md:text-xl">
                     Abhrak Bhasma / calcined mica ash
                   </h3>
-                </div>
-                <div className="flex items-center gap-4">
+                </button>
+                <button
+                  className="group flex items-center justify-start gap-4"
+                  onClick={() => scrollToIngredient(section2End)}
+                >
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800">
                     2
                   </div>
-                  <h3 className="text-lg text-purple-300 md:text-xl">
+                  <h3 className="text-left text-lg text-purple-500 underline group-hover:text-purple-300 md:text-xl">
                     Dalchinni / cinnamomum zylanicum
                   </h3>
-                </div>
-                <div className="flex items-center gap-4">
+                </button>
+                <button
+                  className="group flex items-center justify-start gap-4"
+                  onClick={() => scrollToIngredient(section3End)}
+                >
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800">
                     3
                   </div>
-                  <h3 className="text-lg text-purple-300 md:text-xl">
+                  <h3 className="text-left text-lg text-purple-500 underline group-hover:text-purple-300 md:text-xl">
                     Gokhru / tribulus trerrestris
                   </h3>
-                </div>
-                <div className="flex items-center gap-4">
+                </button>
+                <button
+                  className="group flex items-center justify-start gap-4"
+                  onClick={() => scrollToIngredient(section4End)}
+                >
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800">
                     4
                   </div>
-                  <h3 className="text-lg text-purple-300 md:text-xl">
+                  <h3 className="text-left text-lg text-purple-500 underline group-hover:text-purple-300 md:text-xl">
                     Shilajeet / Asphaltum, Black Bitumen, or Mineral Pitch
                   </h3>
-                </div>
+                </button>
               </div>
             )}
           </div>
@@ -254,7 +263,8 @@ const IngredientsSection: FC = () => {
                       : "15rem",
               }}
             >
-              <div
+              <button
+                onClick={() => scrollToIngredient(section1End)}
                 className={cn(
                   "absolute left-0 top-1/2 -translate-y-1/2 rounded-full bg-slate-400 p-2 transition-all duration-500 ease-in-out",
                   section1Range
@@ -272,8 +282,9 @@ const IngredientsSection: FC = () => {
                   height={200}
                   className="counterspin"
                 />
-              </div>
-              <div
+              </button>
+              <button
+                onClick={() => scrollToIngredient(section2End)}
                 className={cn(
                   "absolute left-1/2 top-0 -translate-x-1/2 rounded-full bg-slate-400 p-2 transition-all duration-500 ease-in-out",
                   section2Range
@@ -291,8 +302,9 @@ const IngredientsSection: FC = () => {
                   height={200}
                   className="counterspin"
                 />
-              </div>
-              <div
+              </button>
+              <button
+                onClick={() => scrollToIngredient(section3End)}
                 className={cn(
                   "absolute right-0 top-1/2 -translate-y-1/2 rounded-full bg-slate-400 p-2 transition-all duration-500 ease-in-out",
                   section3Range
@@ -310,8 +322,9 @@ const IngredientsSection: FC = () => {
                   height={200}
                   className="counterspin"
                 />
-              </div>
-              <div
+              </button>
+              <button
+                onClick={() => scrollToIngredient(section4End)}
                 className={cn(
                   "absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-slate-400 p-2 transition-all duration-500 ease-in-out",
                   section4Range
@@ -329,7 +342,7 @@ const IngredientsSection: FC = () => {
                   height={200}
                   className="counterspin"
                 />
-              </div>
+              </button>
             </motion.div>
             <div
               className={cn(
